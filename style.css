@@ -221,11 +221,11 @@ footer .bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--edge)
   .grid,.grid.two,.dl-cards,.points,.contact-grid{grid-template-columns:1fr}
   .grid{gap:14px;margin-top:36px}.card{padding:26px 22px}
   .hero{padding:48px 0 48px}.page-head{padding:56px 0 24px}.feature-block{margin-top:48px}
-  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,104px),1fr));gap:10px;margin-top:40px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:40px}
   .stat{padding:16px 10px;min-width:0}.stat b{font-size:26px}.stat span{font-size:12px}
   .cta{flex-direction:column;align-items:stretch}.btn,.btn.big{width:100%;padding:0 20px}
   .repo-strip{padding:24px 22px}
-  .toc{justify-content:flex-start}
+  .toc{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;justify-content:stretch}.toc a{justify-content:center}
 }
 @media(max-width:440px){.wrap{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}footer .cols{grid-template-columns:1fr}.lang summary{padding:0 10px}}
 
