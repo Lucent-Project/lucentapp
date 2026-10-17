@@ -288,4 +288,40 @@
     <xhtml:link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/support.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/support.html"/>
   </url>
+  <url>
+    <loc>https://yuan0-o.github.io/lucentapp/license.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/license.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/license.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/license.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/license.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/license.html"/>
+  </url>
+  <url>
+    <loc>https://yuan0-o.github.io/lucentapp/zh/license.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/license.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/license.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/license.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/license.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/license.html"/>
+  </url>
+  <url>
+    <loc>https://yuan0-o.github.io/lucentapp/ja/license.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/license.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/license.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/license.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/license.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/license.html"/>
+  </url>
+  <url>
+    <loc>https://yuan0-o.github.io/lucentapp/ko/license.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/license.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/license.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/license.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/license.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/license.html"/>
+  </url>
 </urlset>
