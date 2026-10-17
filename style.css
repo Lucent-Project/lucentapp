@@ -42,19 +42,59 @@ a,button,summary{touch-action:manipulation}
   radial-gradient(1100px 750px at 85% -10%,var(--mesh1),transparent 60%),
   radial-gradient(950px 700px at 8% 18%,var(--mesh2),transparent 55%),
   radial-gradient(1000px 800px at 50% 115%,var(--mesh3),transparent 60%),var(--bg)}
+.bg::before{content:"";position:absolute;inset:-20%;background:
+  radial-gradient(1000px 750px at 75% 20%,var(--mesh2),transparent 60%),
+  radial-gradient(900px 700px at 20% 80%,var(--mesh3),transparent 55%),
+  radial-gradient(850px 650px at 45% 35%,var(--mesh1),transparent 50%);
+  opacity:.7;filter:blur(40px);animation:mesh-flow 36s ease-in-out infinite alternate;
+  will-change:transform,opacity;pointer-events:none}
 .bg::after{content:"";position:absolute;inset:0;background:
   radial-gradient(60% 38% at 18% 0%,rgba(255,255,255,var(--glint)),transparent 70%),
-  radial-gradient(42% 30% at 92% 100%,rgba(255,255,255,calc(var(--glint)*.7)),transparent 70%)}
+  radial-gradient(42% 30% at 92% 100%,rgba(255,255,255,calc(var(--glint)*.7)),transparent 70%);
+  animation:glint-drift 24s ease-in-out infinite alternate;
+  will-change:transform,opacity;pointer-events:none}
 .orb{position:absolute;width:clamp(280px,42vmax,560px);aspect-ratio:1;background:var(--o);opacity:var(--blob);filter:blur(var(--ob));
-  border-radius:42% 58% 63% 37%/45% 38% 62% 55%;animation:morph var(--d,22s) ease-in-out infinite alternate;will-change:transform,border-radius}
-.orb.a{--o:var(--o1);left:-9%;top:2%}
-.orb.b{--o:var(--o2);right:-11%;top:30%;--d:27s;animation-delay:-9s}
-.orb.c{--o:var(--o3);left:26%;bottom:-16%;--d:25s;animation-delay:-15s}
-.orb.d{--o:var(--o4);right:24%;top:-14%;--d:30s;animation-delay:-5s;width:clamp(220px,30vmax,420px)}
-@keyframes morph{
-  0%{border-radius:42% 58% 63% 37%/45% 38% 62% 55%;transform:translate3d(0,0,0) rotate(0) scale(1)}
-  50%{border-radius:61% 39% 35% 65%/58% 62% 38% 42%;transform:translate3d(6vw,4vh,0) rotate(60deg) scale(1.12)}
-  100%{border-radius:38% 62% 52% 48%/36% 52% 48% 64%;transform:translate3d(-3vw,8vh,0) rotate(140deg) scale(.94)}}
+  border-radius:42% 58% 63% 37%/45% 38% 62% 55%;will-change:transform,opacity}
+.orb::after{content:"";position:absolute;inset:0;border-radius:inherit;
+  background:radial-gradient(circle at 60% 40%,var(--o-shift),transparent 70%);
+  animation:color-shift 28s ease-in-out infinite alternate;
+  will-change:transform,opacity}
+.orb.a{--o:var(--o1);--o-shift:var(--o3);left:-9%;top:2%;animation:orb-flow-a 32s ease-in-out infinite alternate}
+.orb.b{--o:var(--o2);--o-shift:var(--o4);right:-11%;top:30%;animation:orb-flow-b 36s ease-in-out infinite alternate;animation-delay:-8s}
+.orb.c{--o:var(--o3);--o-shift:var(--o1);left:26%;bottom:-16%;animation:orb-flow-c 34s ease-in-out infinite alternate;animation-delay:-14s}
+.orb.d{--o:var(--o4);--o-shift:var(--o2);right:24%;top:-14%;width:clamp(220px,30vmax,420px);animation:orb-flow-d 40s ease-in-out infinite alternate;animation-delay:-5s}
+@keyframes mesh-flow{
+  0%{transform:translate3d(0,0,0) scale(1);opacity:.55}
+  50%{transform:translate3d(-4vw,5vh,0) scale(1.08) rotate(15deg);opacity:.8}
+  100%{transform:translate3d(5vw,-3vh,0) scale(.96) rotate(-10deg);opacity:.6}}
+@keyframes glint-drift{
+  0%{opacity:.8;transform:scale(1)}
+  50%{opacity:1.2;transform:scale(1.04) translate3d(2vw,1vh,0)}
+  100%{opacity:.9;transform:scale(.98) translate3d(-1vw,2vh,0)}}
+@keyframes color-shift{
+  0%{opacity:.15;transform:scale(.9) rotate(0deg)}
+  50%{opacity:.65;transform:scale(1.1) rotate(60deg)}
+  100%{opacity:.25;transform:scale(.95) rotate(120deg)}}
+@keyframes orb-flow-a{
+  0%{transform:translate3d(0,0,0) rotate(0deg) scale(1);opacity:var(--blob)}
+  33%{transform:translate3d(10vw,8vh,0) rotate(45deg) scale(1.12);opacity:calc(var(--blob)*1.1)}
+  66%{transform:translate3d(4vw,18vh,0) rotate(90deg) scale(.95);opacity:calc(var(--blob)*.85)}
+  100%{transform:translate3d(-4vw,12vh,0) rotate(140deg) scale(1.06);opacity:var(--blob)}}
+@keyframes orb-flow-b{
+  0%{transform:translate3d(0,0,0) rotate(0deg) scale(1);opacity:var(--blob)}
+  33%{transform:translate3d(-10vw,-8vh,0) rotate(-40deg) scale(1.08);opacity:calc(var(--blob)*.88)}
+  66%{transform:translate3d(-16vw,6vh,0) rotate(-85deg) scale(.94);opacity:calc(var(--blob)*1.12)}
+  100%{transform:translate3d(-6vw,14vh,0) rotate(-130deg) scale(1.04);opacity:var(--blob)}}
+@keyframes orb-flow-c{
+  0%{transform:translate3d(0,0,0) rotate(0deg) scale(1);opacity:var(--blob)}
+  33%{transform:translate3d(12vw,-12vh,0) rotate(40deg) scale(1.14);opacity:calc(var(--blob)*1.08)}
+  66%{transform:translate3d(-8vw,-18vh,0) rotate(95deg) scale(.92);opacity:calc(var(--blob)*.9)}
+  100%{transform:translate3d(6vw,-6vh,0) rotate(150deg) scale(1.08);opacity:var(--blob)}}
+@keyframes orb-flow-d{
+  0%{transform:translate3d(0,0,0) rotate(0deg) scale(1);opacity:var(--blob)}
+  33%{transform:translate3d(-12vw,14vh,0) rotate(-50deg) scale(1.1);opacity:calc(var(--blob)*.86)}
+  66%{transform:translate3d(-4vw,22vh,0) rotate(-105deg) scale(.92);opacity:calc(var(--blob)*1.14)}
+  100%{transform:translate3d(8vw,10vh,0) rotate(-160deg) scale(1.05);opacity:var(--blob)}}
 .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--grain);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 
@@ -662,6 +702,10 @@ footer a:focus-visible,
 
 /* 5. Reduced motion support */
 @media(prefers-reduced-motion:reduce) {
+  .bg::before,
+  .bg::after,
+  .orb,
+  .orb::after,
   .shot,
   .dl-card,
   .step,
