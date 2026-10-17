@@ -262,7 +262,7 @@ if(cl){
   const fmt=iso=>{try{return new Intl.DateTimeFormat(h.lang||undefined,{year:'numeric',month:'short',day:'numeric'}).format(new Date(iso))}catch(e){return String(iso||'').slice(0,10)}};
   const isPre=r=>!!r.prerelease||/^p/i.test(r.tag_name||'');
   const parseRelease=(body,lang)=>{
-    const text=String(body||'').replace(/\r/g,'');
+    const text=String(body||'').replace(/\r/g,'').replace(/Yuan0-o\/Lucent/g,'Lucent-Project/Lucent');
     const firstDet=text.indexOf('<details>');
     const enBody=(firstDet!==-1?text.slice(0,firstDet):text).trim();
     if(lang==='en')return {title:null,body:enBody};
