@@ -667,8 +667,91 @@ footer a:focus-visible,
   .repo-strip,
   .release,
   .policy-toc a,
-  .rel-link {
+  .rel-link,
+  .donate-qr-box {
     transition: none !important;
     transform: none !important;
   }
 }
+
+/* ==========================================================================
+   Phase 4: Support / Donate section
+   ========================================================================== */
+section#donate {
+  padding-top: clamp(24px, 4vw, 48px);
+}
+.donate-panel {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  padding: clamp(28px, 4.5vw, 40px) clamp(24px, 4.5vw, 44px);
+}
+.donate-content {
+  flex: 1 1 360px;
+}
+.donate-content .kicker {
+  margin-bottom: 8px;
+}
+.donate-content h2 {
+  font-size: clamp(26px, 3.8vw, 34px);
+  margin-bottom: 12px;
+}
+.donate-content p {
+  color: var(--muted);
+  font-size: 15.5px;
+  line-height: 1.75;
+  margin: 0;
+}
+.donate-qr-wrap {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.donate-qr-box {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--rim-lo);
+  box-shadow: 0 12px 32px var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: #fff;
+}
+@media (hover: hover) and (pointer: fine) {
+  .donate-qr-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 44px var(--shadow), inset 0 1px 0 var(--rim);
+  }
+}
+.donate-qr {
+  display: block;
+  width: 170px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1080 / 1446;
+}
+.donate-qr-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+  text-transform: uppercase;
+}
+@media (max-width: 680px) {
+  .donate-panel {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+    padding: 28px 20px;
+  }
+  .donate-content {
+    flex: 1 1 auto;
+  }
+  .donate-qr {
+    width: 180px;
+  }
+}
+
