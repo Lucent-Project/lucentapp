@@ -191,7 +191,7 @@ if(isDlPage){
 const cl=$('[data-changelog]');
 if(cl){
   const L=cl.dataset,list=$('[data-cl-list]',cl),status=$('[data-cl-status]',cl),prev=$('[data-cl-previews]',cl);
-  const RK='lucent-releases-list',API='https://api.github.com/repos/Yuan0-o/Lucent/releases?per_page=30',ALL='https://github.com/Yuan0-o/Lucent/releases';
+  const RK='lucent-releases-list',API='https://api.github.com/repos/Yuan0-o/Lucent/releases?per_page=30',LATEST='https://api.github.com/repos/Yuan0-o/Lucent/releases/latest',ALL='https://github.com/Yuan0-o/Lucent/releases';
   const isSub=$('script[src*="app.js"]')?.getAttribute('src')?.startsWith('../')||/\/(zh|ja|ko)(\/|$)/.test(location.pathname);
   const base=isSub?'../':'./';
   const el=(tag,cls,txt)=>{const n=d.createElement(tag);if(cls)n.className=cls;if(txt!=null)n.textContent=txt;return n};
@@ -286,12 +286,23 @@ if(cl){
     if(!data){
       const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),7000);
       try{
-        const res=await fetch(API,{headers:{Accept:'application/vnd.github+json'},signal:ac.signal});
+        const [res,lres]=await Promise.all([
+          fetch(API,{headers:{Accept:'application/vnd.github+json'},signal:ac.signal}),
+          fetch(LATEST,{headers:{Accept:'application/vnd.github+json'},signal:ac.signal}).catch(()=>null)
+        ]);
         clearTimeout(tm);if(!res.ok)throw new Error(res.status);
         raw=await res.json();if(!Array.isArray(raw))throw new Error('shape');
         data=raw.map(r=>({tag_name:r.tag_name,name:r.name,body:r.body,html_url:r.html_url,published_at:r.published_at,prerelease:r.prerelease,draft:r.draft,assets:null}));
+        if(lres&&lres.ok){
+          try{
+            const l=await lres.json();
+            if(l&&l.tag_name&&!data.some(r=>r.tag_name===l.tag_name)){
+              data.push({tag_name:l.tag_name,name:l.name,body:l.body,html_url:l.html_url,published_at:l.published_at,prerelease:l.prerelease,draft:l.draft,assets:(l.assets||[]).map(a=>({name:a.name,browser_download_url:a.browser_download_url}))});
+            }
+          }catch(e){}
+        }
         const first=data.find(r=>!r.draft&&!isPre(r));
-        if(first){
+        if(first&&!first.assets){
           const full=raw.find(j=>j.tag_name===first.tag_name);
           first.assets=((full&&full.assets)||[]).map(a=>({name:a.name,browser_download_url:a.browser_download_url}));
         }
