@@ -127,12 +127,24 @@
       <p>Push to GitHub, open <strong style="color:var(--ink)">Actions</strong>, run the workflow you want, and download the result — a properly signed release or a double-click installer. The workflows live in the repository, so the recipe is in the box rather than in the author's head, and the build is as inspectable as the code.</p>
       <div class="cta" style="justify-content:flex-start"><a class="btn ghost" href="https://github.com/Yuan0-o/Lucent/actions" target="_blank" rel="noopener">View the workflows →</a></div>
     </div>
+  </div>
+</section>
 
-    <div class="panel glass rv">
+<section id="changelog" style="padding-top:0">
+  <div class="wrap">
+    <div class="panel glass rv" style="margin-bottom:28px">
       <div class="kicker">VERSION HISTORY</div>
       <h2>Every release, <span class="grad-text">on the record</span></h2>
-      <p>Every stable release, newest first, is on the changelog page — pulled live from GitHub, so it never goes stale. Older builds, signatures and preview builds stay on GitHub's releases page, where previews are listed above the stable release; nothing is ever quietly replaced.</p>
-      <div class="cta" style="justify-content:flex-start"><a class="btn primary" href="changelog.html">Read the changelog →</a><a class="btn ghost" href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">All releases on GitHub (previews included)</a></div>
+      <p>Every release, stable and preview, newest first — pulled live from GitHub, so this page never goes stale. Previews stay hidden unless you ask for them. The latest stable build downloads from this site’s mirror; older and preview builds download from GitHub.</p>
+    </div>
+    <div data-changelog data-l-loading="Loading releases from GitHub…" data-l-error="Couldn&#x27;t reach GitHub just now. The same notes are on the releases page:" data-l-err-link="Open the releases on GitHub →" data-l-empty="No releases to show yet." data-l-empty-hint="Tick “Include preview builds” to see preview versions." data-l-latest="Latest" data-l-preview="Preview" data-l-view="View on GitHub" data-l-no-notes="No release notes for this version." data-l-dl-android="Download for Android" data-l-dl-windows="Download for Windows" data-l-dl-gh="Download on GitHub">
+      <div class="cl-tools">
+        <label><input type="checkbox" data-cl-previews> <span>Include preview builds</span></label>
+        <a class="btn ghost" href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">All releases on GitHub →</a>
+      </div>
+      <p class="cl-status" data-cl-status role="status">Loading releases from GitHub…</p>
+      <div data-cl-list></div>
+      <noscript><p class="cl-status">JavaScript is needed to load the releases here. Everything is on GitHub: <a href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">github.com/Yuan0-o/Lucent/releases</a></p></noscript>
     </div>
   </div>
 </section>

@@ -127,12 +127,24 @@
       <p>GitHub にプッシュし、<strong style="color:var(--ink)">Actions</strong> を開き、使いたいワークフローを実行して、結果をダウンロード——署名済みリリースか、ダブルクリックのインストーラーか。ワークフローはリポジトリの中に住んでいるので、レシピは箱の中にあり、作者の頭の中ではありません。ビルドはコードと同じくらい検証可能です。</p>
       <div class="cta" style="justify-content:flex-start"><a class="btn ghost" href="https://github.com/Yuan0-o/Lucent/actions" target="_blank" rel="noopener">ワークフローを見る →</a></div>
     </div>
+  </div>
+</section>
 
-    <div class="panel glass rv">
+<section id="changelog" style="padding-top:0">
+  <div class="wrap">
+    <div class="panel glass rv" style="margin-bottom:28px">
       <div class="kicker">バージョン履歴</div>
       <h2>すべてのリリースが<span class="grad-text">記録に残る</span></h2>
-      <p>安定版のリリースはすべて、新しい順に更新履歴のページに並びます——GitHub からリアルタイムで取得するので、古くなりません。過去のビルド、署名、プレビュー版は GitHub の Releases ページに残り、そこではプレビュー版が安定版より上に並びます。こっそり置き換えられるものは何もありません。</p>
-      <div class="cta" style="justify-content:flex-start"><a class="btn primary" href="changelog.html">更新履歴を読む →</a><a class="btn ghost" href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">GitHub のすべてのリリース（プレビュー版を含む）</a></div>
+      <p>安定版もプレビュー版も、すべてのリリースを新しい順に GitHub からリアルタイムで取得します。このページが古くなることはありません。プレビュー版は必要なときだけ表示します。最新の安定版は本サイトのミラーから、その他のバージョンは GitHub からダウンロードできます。</p>
+    </div>
+    <div data-changelog data-l-loading="GitHub からリリースを読み込み中…" data-l-error="いま GitHub に接続できませんでした。同じ内容は Releases ページにあります：" data-l-err-link="GitHub で Releases を開く →" data-l-empty="表示できるリリースはまだありません。" data-l-empty-hint="「プレビュー版を含める」にチェックすると、プレビュー版が表示されます。" data-l-latest="最新" data-l-preview="プレビュー" data-l-view="GitHub で見る" data-l-no-notes="このバージョンのリリースノートはありません。" data-l-dl-android="Android 版をダウンロード" data-l-dl-windows="Windows 版をダウンロード" data-l-dl-gh="GitHub でダウンロード">
+      <div class="cl-tools">
+        <label><input type="checkbox" data-cl-previews> <span>プレビュー版を含める</span></label>
+        <a class="btn ghost" href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">GitHub のすべてのリリース →</a>
+      </div>
+      <p class="cl-status" data-cl-status role="status">GitHub からリリースを読み込み中…</p>
+      <div data-cl-list></div>
+      <noscript><p class="cl-status">リリースの読み込みには JavaScript が必要です。すべて GitHub にあります：<a href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">github.com/Yuan0-o/Lucent/releases</a></p></noscript>
     </div>
   </div>
 </section>

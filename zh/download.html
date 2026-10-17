@@ -127,12 +127,24 @@
       <p>Push 到 GitHub，打开 <strong style="color:var(--ink)">Actions</strong>，运行你想要的工作流，下载结果——一份签名完备的 release，或一个双击即装的安装包。工作流就住在仓库里，配方在盒子里，不在作者的脑子里；构建过程和代码一样经得起检查。</p>
       <div class="cta" style="justify-content:flex-start"><a class="btn ghost" href="https://github.com/Yuan0-o/Lucent/actions" target="_blank" rel="noopener">看看工作流 →</a></div>
     </div>
+  </div>
+</section>
 
-    <div class="panel glass rv">
+<section id="changelog" style="padding-top:0">
+  <div class="wrap">
+    <div class="panel glass rv" style="margin-bottom:28px">
       <div class="kicker">版本历史</div>
       <h2>每个版本，<span class="grad-text">都有案可查</span></h2>
-      <p>每个稳定版本，由新到旧，都列在更新日志页——实时取自 GitHub，永不过期。更早的构建、签名和预览版留在 GitHub 的 Releases 页面，那里预览版排在稳定版上方；没有任何东西会被悄悄替换。</p>
-      <div class="cta" style="justify-content:flex-start"><a class="btn primary" href="changelog.html">查看更新日志 →</a><a class="btn ghost" href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">GitHub 上的全部版本（含预览版）</a></div>
+      <p>所有版本——稳定版与预览版，由新到旧，实时取自 GitHub，因此这个页面不会过期。预览版默认隐藏，需要时再展开。最新稳定版从本站镜像下载；旧版本与预览版从 GitHub 下载。</p>
+    </div>
+    <div data-changelog data-l-loading="正在从 GitHub 加载版本…" data-l-error="暂时无法连接 GitHub。相同的更新说明在 Releases 页面：" data-l-err-link="在 GitHub 打开 Releases →" data-l-empty="暂无可显示的版本。" data-l-empty-hint="勾选“包含预览版”即可查看预览版本。" data-l-latest="最新" data-l-preview="预览" data-l-view="在 GitHub 查看" data-l-no-notes="此版本没有更新说明。" data-l-dl-android="下载 Android 版" data-l-dl-windows="下载 Windows 版" data-l-dl-gh="在 GitHub 下载">
+      <div class="cl-tools">
+        <label><input type="checkbox" data-cl-previews> <span>包含预览版</span></label>
+        <a class="btn ghost" href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">GitHub 上的全部版本 →</a>
+      </div>
+      <p class="cl-status" data-cl-status role="status">正在从 GitHub 加载版本…</p>
+      <div data-cl-list></div>
+      <noscript><p class="cl-status">在此处加载版本需要启用 JavaScript。全部内容都在 GitHub 上：<a href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">github.com/Yuan0-o/Lucent/releases</a></p></noscript>
     </div>
   </div>
 </section>
