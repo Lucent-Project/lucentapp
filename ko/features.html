@@ -8,6 +8,33 @@
 <script>(function(){var h=document.documentElement,t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';try{var s=localStorage.getItem('lucent-theme');if(s==='light'||s==='dark')t=s}catch(e){}h.dataset.theme=t;h.classList.add('js');var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light'?'#eef2fb':'#080b16'})()</script>
 <title>기능 — Lucent</title>
 <meta name="description" content="Lucent 기능 깊이 보기: 손을 쓰는 AI 비서, 편집증 수준의 암호화, 기억하는 메모, 이빨 달린 할 일, 온디바이스 모델, 유리로 만든 인터페이스.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://yuan0-o.github.io/lucentapp/ko/features.html">
+<link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/features.html">
+<link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/features.html">
+<link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/features.html">
+<link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/features.html">
+<link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/features.html">
+<meta property="og:site_name" content="Lucent">
+<meta property="og:type" content="website">
+<meta property="og:title" content="기능 — Lucent">
+<meta property="og:description" content="Lucent 기능 깊이 보기: 손을 쓰는 AI 비서, 편집증 수준의 암호화, 기억하는 메모, 이빨 달린 할 일, 온디바이스 모델, 유리로 만든 인터페이스.">
+<meta property="og:url" content="https://yuan0-o.github.io/lucentapp/ko/features.html">
+<meta property="og:image" content="https://yuan0-o.github.io/lucentapp/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="프로스트 글라스 배경 위의 Lucent 로고와 워드마크. 아래 문구: Android · Windows · Open source">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="기능 — Lucent">
+<meta name="twitter:description" content="Lucent 기능 깊이 보기: 손을 쓰는 AI 비서, 편집증 수준의 암호화, 기억하는 메모, 이빨 달린 할 일, 온디바이스 모델, 유리로 만든 인터페이스.">
+<meta name="twitter:image" content="https://yuan0-o.github.io/lucentapp/assets/og-image.png">
+<meta name="twitter:image:alt" content="프로스트 글라스 배경 위의 Lucent 로고와 워드마크. 아래 문구: Android · Windows · Open source">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -60,7 +87,7 @@
     <div class="feature-block rv">
       <div class="num">02 — 모델의 선택</div>
       <h2>클라우드, 온디바이스, <span class="grad-text">혹은 부재</span></h2>
-      <p class="body"><strong>.gguf</strong> 파일을 가져오면 비서는 기기 위에서 직접 도는 llama.cpp로 대답합니다 — 계정도, API 키도, 네트워크도 필요 없습니다. 앱을 떠나면 모델은 내려갑니다. 휴대폰에서는 1–4GB Q4 모델이 적당하고, 데스크톱에서는 더 야심 차게 가도 됩니다. 로컬 도구는 옵트인, GPU 가속은 솔직한 경고 뒤에 선택할 수 있습니다.</p>
+      <p class="body"><strong>.gguf</strong> 파일(또는 .gguf가 든 <strong>.zip</strong>)을 가져오면 비서는 기기 위에서 직접 도는 llama.cpp로 대답합니다 — 계정도, API 키도, 네트워크도 필요 없습니다. 앱을 떠나면 모델은 내려갑니다. 휴대폰에서는 1–4GB Q4 모델이 적당하고, 데스크톱에서는 더 야심 차게 가도 됩니다. 로컬 도구는 옵트인, GPU 가속은 솔직한 경고 뒤에 선택할 수 있습니다. CPU는 언제나 믿을 만하고, GPU가 말을 듣지 않으면 부드럽게 CPU로 물러납니다. 비전도 선택 사항입니다 — mmproj 파일을 가져오면 비서가 사진을 살펴보고 함께 이야기할 수 있습니다.</p>
       <div class="points">
         <div class="point glass"><b>☁️ 클라우드 모델</b>여러 프로필을 저장하고 원터치로 전환. 요금은 당신의 선택대로.</div>
         <div class="point glass"><b>📲 온디바이스 모델</b>자신의 실리콘 위에서 도는 llama.cpp. 정직한 오프라인 지능입니다.</div>
@@ -74,8 +101,8 @@
       <div class="points">
         <div class="point glass"><b>🕰️ 스냅샷과 히스토리</b>새벽의 고쳐쓰기도 아침이면 되돌릴 수 있습니다.</div>
         <div class="point glass"><b>🔗 양방향 링크</b>[[ ]]로 쓰면 링크가 됩니다. 빨간 링크는 탭으로 태어납니다.</div>
-        <div class="point glass"><b>📝 템플릿</b>백지에는 원터치 시작 4종 — 당신의 템플릿을 저장하면 이후의 백지에서 마중 나옵니다.</div>
-        <div class="point glass"><b>🎨 낙서와 리치 텍스트</b>말이 닿지 않는 생각에는 캔버스를. 체크리스트는 일등 시민입니다.</div>
+        <div class="point glass"><b>📝 템플릿</b>백지에는 원터치 시작 4종 — 당신의 템플릿을 저장하면 이후의 백지에서 마중 나옵니다. 길게 누르면 편집하거나 은퇴시킬 수 있습니다.</div>
+        <div class="point glass"><b>🎨 낙서와 리치 텍스트</b>말이 닿지 않는 생각에는 캔버스를. 체크리스트는 일등 시민입니다 — 항목은 그 자리에서 고치고, 작은 항목이 야심을 품으면 널찍한 팝아웃 편집기를 열 수 있습니다.</div>
         <div class="point glass"><b>🏷️ 태그·색·고정</b>첨부파일은 개별 암호화, 독립된 자물쇠의 비밀 공간도 있습니다.</div>
         <div class="point glass"><b>🗑️ 임시 저장 ≠ 휴지통</b>미완의 생각은 쓰레기가 아닙니다 — 임시 저장은 휴지통 옆에 품위 있게.</div>
       </div>
@@ -96,7 +123,7 @@
     <div class="feature-block rv">
       <div class="num">05 — 겉모습</div>
       <h2>부끄럼 없이, <span class="grad-text">유리로 만들었습니다</span></h2>
-      <p class="body">살아 있는 그러데이션이 아래를 지나는 것을 흐리게 하는 프로스트 글라스 패널 뒤에서 유유히 흐르고, 거의 반복되지 않으며, 기기가 미리 허락한 비용으로 동작합니다. 8가지 스타일 패밀리에 넉넉한 팔레트, 라이트·다크·시스템 연동, 그리고 Monet 풍 테마의 화랑 — <strong>Android 12 이상에서는 배경화면의 색을 그날의 팔레트로 빌려옵니다</strong>. 위젯은 같은 유리의 표면을 런처로 가져오고, Windows에서는 앱이 트레이로 미끄러져 들어가 와이드 모니터에는 사이드바가 응합니다. 휴대폰 레이아웃을 늘인 것보다 훨씬 나은 대접입니다.</p>
+      <p class="body">살아 있는 그러데이션이 아래를 지나는 것을 흐리게 하는 프로스트 글라스 패널 뒤에서 유유히 흐르고, 거의 반복되지 않으며, 기기가 미리 허락한 비용으로 동작합니다. 8가지 스타일 패밀리에 넉넉한 팔레트, 그 사이를 자동으로 순환하거나 무작위로 거니는 동반 기능, 라이트·다크·시스템 연동, 그리고 Monet 풍 테마의 화랑 — <strong>Android 12 이상에서는 배경화면의 색을 그날의 팔레트로 빌려옵니다</strong>. 위젯은 같은 유리의 표면을 런처로 가져오고, Windows에서는 앱이 트레이로 미끄러져 들어가 와이드 모니터에는 사이드바가 응합니다. 휴대폰 레이아웃을 늘인 것보다 훨씬 나은 대접입니다.</p>
     </div>
 
     <div class="feature-block rv">
@@ -118,21 +145,22 @@
       </div>
       <div>
         <h4>페이지</h4>
-        <a href="index.html">홈</a><a href="features.html">기능</a><a href="download.html">다운로드</a><a href="privacy.html">개인정보</a>
+        <a href="index.html">홈</a><a href="features.html">기능</a><a href="download.html">다운로드</a><a href="changelog.html">변경 내역</a><a href="about.html">소개·문의</a>
+      </div>
+      <div>
+        <h4>법적 고지</h4>
+        <a href="privacy.html">개인정보</a><a href="terms.html">이용약관</a><a href="https://github.com/Yuan0-o/Lucent/blob/main/LICENSE" target="_blank" rel="noopener">MIT 라이선스</a>
       </div>
       <div>
         <h4>개발자</h4>
         <a href="https://github.com/Yuan0-o" target="_blank" rel="noopener">GitHub 프로필</a>
         <a href="https://github.com/Yuan0-o/Lucent" target="_blank" rel="noopener">Lucent 저장소</a>
         <a href="https://github.com/Yuan0-o/Lucent/issues" target="_blank" rel="noopener">이슈 제보</a>
-      </div>
-      <div>
-        <h4>연락처</h4>
         <a href="mailto:yuan47578@gmail.com">yuan47578@gmail.com</a>
       </div>
     </div>
     <div class="bottom">
-      <span>© 2026 Yuan0-o · MIT Licence</span>
+      <span>© 2026 Yuan0-o · MIT 라이선스</span>
     </div>
   </div>
 </footer>

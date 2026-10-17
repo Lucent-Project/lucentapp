@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yuan0-o.github.io/lucentapp/sitemap.xml

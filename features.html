@@ -8,6 +8,33 @@
 <script>(function(){var h=document.documentElement,t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';try{var s=localStorage.getItem('lucent-theme');if(s==='light'||s==='dark')t=s}catch(e){}h.dataset.theme=t;h.classList.add('js');var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light'?'#eef2fb':'#080b16'})()</script>
 <title>Features — Lucent</title>
 <meta name="description" content="Lucent features in depth: an AI assistant with hands, paranoid-grade encryption, notes with memory, tasks with teeth, on-device models, and an interface made of glass.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://yuan0-o.github.io/lucentapp/features.html">
+<link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/features.html">
+<link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/features.html">
+<link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/features.html">
+<link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/features.html">
+<link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/features.html">
+<meta property="og:site_name" content="Lucent">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Features — Lucent">
+<meta property="og:description" content="Lucent features in depth: an AI assistant with hands, paranoid-grade encryption, notes with memory, tasks with teeth, on-device models, and an interface made of glass.">
+<meta property="og:url" content="https://yuan0-o.github.io/lucentapp/features.html">
+<meta property="og:image" content="https://yuan0-o.github.io/lucentapp/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Lucent wordmark and logo on a frosted-glass background: Android · Windows · Open source">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Features — Lucent">
+<meta name="twitter:description" content="Lucent features in depth: an AI assistant with hands, paranoid-grade encryption, notes with memory, tasks with teeth, on-device models, and an interface made of glass.">
+<meta name="twitter:image" content="https://yuan0-o.github.io/lucentapp/assets/og-image.png">
+<meta name="twitter:image:alt" content="The Lucent wordmark and logo on a frosted-glass background: Android · Windows · Open source">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -60,7 +87,7 @@
     <div class="feature-block rv">
       <div class="num">02 — YOUR MODEL, YOUR CALL</div>
       <h2>Cloud, on-device, or <span class="grad-text">no assistant at all</span></h2>
-      <p class="body">Import a <strong>.gguf</strong> file and the assistant answers using llama.cpp running directly on the device — no account, no API key, no network, the model unloaded the moment you leave the app. Roughly 1–4&nbsp;GB Q4 models hit the sweet spot on a phone; a desktop can afford greater ambition. Tools are opt-in locally, GPU acceleration is a choice made after a plain warning, and vision arrives with an mmproj file.</p>
+      <p class="body">Import a <strong>.gguf</strong> file (or a <strong>.zip</strong> with one inside) and the assistant answers using llama.cpp running directly on the device — no account, no API key, no network, the model unloaded the moment you leave the app. Roughly 1–4&nbsp;GB Q4 models hit the sweet spot on a phone; a desktop can afford greater ambition. Tools are opt-in locally, and GPU acceleration is a choice made after a plain warning: the CPU always works, and a GPU that disagrees falls back gracefully. Vision is optional too — import an mmproj file and the assistant can study a photograph and discuss it.</p>
       <div class="points">
         <div class="point glass"><b>☁️ Cloud models</b>Several profiles, one-tap switching, billed by you to whoever you choose.</div>
         <div class="point glass"><b>📲 On-device models</b>llama.cpp on your own silicon. Honest offline intelligence.</div>
@@ -74,8 +101,8 @@
       <div class="points">
         <div class="point glass"><b>🕰️ Snapshots &amp; history</b>A 2 a.m. rewrite can always be undone by morning.</div>
         <div class="point glass"><b>🔗 Bidirectional links</b>Write [[ ]], get a link. Red links are born with a tap.</div>
-        <div class="point glass"><b>📝 Templates</b>Four one-tap starters on every blank page — plus your own, which greet you on arrival and retire on long-press.</div>
-        <div class="point glass"><b>🎨 Doodles &amp; rich text</b>For thoughts that words cannot reach, a canvas. Checklists are first-class citizens.</div>
+        <div class="point glass"><b>📝 Templates</b>Four one-tap starters on every blank page — plus your own, which greet you on arrival; long-press any of them to edit or retire it.</div>
+        <div class="point glass"><b>🎨 Doodles &amp; rich text</b>For thoughts that words cannot reach, a canvas. Checklists are first-class citizens — edit items in place, or open a roomy pop-out editor when a quick item develops ambitions.</div>
         <div class="point glass"><b>🏷️ Tags · colours · pins</b>Attachments encrypted individually, plus a private area with its own lock.</div>
         <div class="point glass"><b>🗑️ Drafts ≠ trash</b>An unfinished thought is never an abandoned one — drafts sit beside the trash, not in it.</div>
       </div>
@@ -96,7 +123,7 @@
     <div class="feature-block rv">
       <div class="num">05 — THE LOOK</div>
       <h2>Made, unashamedly, of <span class="grad-text">glass</span></h2>
-      <p class="body">A living gradient drifts behind frosted panels that blur whatever passes beneath them, never quite repeating itself, at a cost the device agreed to in advance. A generous spread of palettes across eight style families, light, dark, system, and a gallery of Monet-tinted themes — <strong>on Android 12 or later the palette borrows your wallpaper's colours for the day</strong>. Widgets bring the same glassy surface to your launcher; on Windows the app slips into the tray and a sidebar takes over from the bottom tab bar, because a wide monitor deserves better than a phone layout stretched sideways.</p>
+      <p class="body">A living gradient drifts behind frosted panels that blur whatever passes beneath them, never quite repeating itself, at a cost the device agreed to in advance. A generous spread of palettes across eight style families, with an auto-cycle or random companion that wanders through them; light, dark, system, and a gallery of Monet-tinted themes — <strong>on Android 12 or later the palette borrows your wallpaper's colours for the day</strong>. Widgets bring the same glassy surface to your launcher; on Windows the app slips into the tray and a sidebar takes over from the bottom tab bar, because a wide monitor deserves better than a phone layout stretched sideways.</p>
     </div>
 
     <div class="feature-block rv">
@@ -114,25 +141,26 @@
     <div class="cols">
       <div class="brand">
         <a class="logo" href="index.html" style="display:inline-block;margin-bottom:12px">Lucent</a>
-        <p>Notes, tasks, and an AI assistant with actual hands. Free and open source under the MIT Licence.</p>
+        <p>Notes, tasks, and an AI assistant with actual hands. Free and open source under the MIT License.</p>
       </div>
       <div>
         <h4>Pages</h4>
-        <a href="index.html">Home</a><a href="features.html">Features</a><a href="download.html">Download</a><a href="privacy.html">Privacy</a>
+        <a href="index.html">Home</a><a href="features.html">Features</a><a href="download.html">Download</a><a href="changelog.html">Changelog</a><a href="about.html">About · Contact</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="https://github.com/Yuan0-o/Lucent/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
       </div>
       <div>
         <h4>Developer</h4>
         <a href="https://github.com/Yuan0-o" target="_blank" rel="noopener">GitHub profile</a>
         <a href="https://github.com/Yuan0-o/Lucent" target="_blank" rel="noopener">Lucent repository</a>
         <a href="https://github.com/Yuan0-o/Lucent/issues" target="_blank" rel="noopener">Report an issue</a>
-      </div>
-      <div>
-        <h4>Contact</h4>
         <a href="mailto:yuan47578@gmail.com">yuan47578@gmail.com</a>
       </div>
     </div>
     <div class="bottom">
-      <span>© 2026 Yuan0-o · MIT Licence</span>
+      <span>© 2026 Yuan0-o · MIT License</span>
     </div>
   </div>
 </footer>

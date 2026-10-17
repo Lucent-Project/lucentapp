@@ -8,6 +8,33 @@
 <script>(function(){var h=document.documentElement,t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';try{var s=localStorage.getItem('lucent-theme');if(s==='light'||s==='dark')t=s}catch(e){}h.dataset.theme=t;h.classList.add('js');var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light'?'#eef2fb':'#080b16'})()</script>
 <title>Lucent — 笔记、任务，和一位真正能动手的 AI 助手</title>
 <meta name="description" content="Lucent：笔记与任务应用，内置一位真正能触及你数据的助手——一切封存在你设备上的加密数据库里。Android 与 Windows 双平台，开源免费。">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://yuan0-o.github.io/lucentapp/zh/">
+<link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/">
+<link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/">
+<link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/">
+<link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/">
+<link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/">
+<meta property="og:site_name" content="Lucent">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Lucent — 笔记、任务，和一位真正能动手的 AI 助手">
+<meta property="og:description" content="Lucent：笔记与任务应用，内置一位真正能触及你数据的助手——一切封存在你设备上的加密数据库里。Android 与 Windows 双平台，开源免费。">
+<meta property="og:url" content="https://yuan0-o.github.io/lucentapp/zh/">
+<meta property="og:image" content="https://yuan0-o.github.io/lucentapp/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Lucent 标志与字标，毛玻璃背景，下方文字：Android · Windows · Open source">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lucent — 笔记、任务，和一位真正能动手的 AI 助手">
+<meta name="twitter:description" content="Lucent：笔记与任务应用，内置一位真正能触及你数据的助手——一切封存在你设备上的加密数据库里。Android 与 Windows 双平台，开源免费。">
+<meta name="twitter:image" content="https://yuan0-o.github.io/lucentapp/assets/og-image.png">
+<meta name="twitter:image:alt" content="Lucent 标志与字标，毛玻璃背景，下方文字：Android · Windows · Open source">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -43,15 +70,9 @@
       <a class="btn ghost" href="features.html">看看它能做什么</a>
     </div>
     <div class="stats rv">
-      <div class="stat glass"><b>0</b><span>数据离开你的设备</span></div>
-      <div class="stat glass"><b>4</b><span>语言一键切换</span></div>
+      <div class="stat glass"><b>0</b><span>数据离开设备——除非你主动开启</span></div>
+      <div class="stat glass"><b>4</b><span>种语言可选</span></div>
       <div class="stat glass"><b>2</b><span>平台，同一颗心脏</span></div>
-    </div>
-    <div class="toc rv">
-      <a href="features.html">✨ 功能详解</a>
-      <a href="download.html">⬇️ 获取应用</a>
-      <a href="privacy.html">🔒 隐私承诺</a>
-      <a href="about.html">👩‍💻 关于开发者</a>
     </div>
   </div>
 </header>
@@ -71,6 +92,24 @@
       <div class="card glass rv"><span class="icon">🫧</span><h3>玻璃做的界面</h3><p>流动的渐变在毛玻璃后悠然漂移，八大风格系列，Android 12 以上还会借你壁纸的配色过日子。</p></div>
     </div>
     <div class="cta rv"><a class="btn ghost" href="features.html">深入了解每一项功能 →</a></div>
+  </div>
+</section>
+
+<section data-shots hidden>
+  <div class="wrap center">
+    <div class="kicker rv">实际模样</div>
+    <h2 class="rv">玻璃质感，实物呈现</h2>
+    <p class="lead rv">Android 与 Windows，浅色与深色——直接来自应用本身。</p>
+    <div class="shots">
+      <figure class="shot glass" data-device="android" data-src-light="../assets/shots/android-light.png" data-src-dark="../assets/shots/android-dark.png" data-alt-light="Android 版 Lucent — 浅色主题" data-alt-dark="Android 版 Lucent — 深色主题" hidden>
+        <img alt="" decoding="async">
+        <figcaption>Android 版 Lucent</figcaption>
+      </figure>
+      <figure class="shot glass" data-device="windows" data-src-light="../assets/shots/windows-light.png" data-src-dark="../assets/shots/windows-dark.png" data-alt-light="Windows 版 Lucent — 浅色主题" data-alt-dark="Windows 版 Lucent — 深色主题" hidden>
+        <img alt="" decoding="async">
+        <figcaption>Windows 版 Lucent</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -106,21 +145,22 @@
       </div>
       <div>
         <h4>页面</h4>
-        <a href="index.html">首页</a><a href="features.html">功能</a><a href="download.html">下载</a><a href="privacy.html">隐私</a>
+        <a href="index.html">首页</a><a href="features.html">功能</a><a href="download.html">下载</a><a href="changelog.html">更新日志</a><a href="about.html">关于·联系</a>
+      </div>
+      <div>
+        <h4>法律</h4>
+        <a href="privacy.html">隐私</a><a href="terms.html">使用条款</a><a href="https://github.com/Yuan0-o/Lucent/blob/main/LICENSE" target="_blank" rel="noopener">MIT 协议</a>
       </div>
       <div>
         <h4>开发者</h4>
         <a href="https://github.com/Yuan0-o" target="_blank" rel="noopener">GitHub 主页</a>
         <a href="https://github.com/Yuan0-o/Lucent" target="_blank" rel="noopener">Lucent 仓库</a>
         <a href="https://github.com/Yuan0-o/Lucent/issues" target="_blank" rel="noopener">问题反馈</a>
-      </div>
-      <div>
-        <h4>联系</h4>
         <a href="mailto:yuan47578@gmail.com">yuan47578@gmail.com</a>
       </div>
     </div>
     <div class="bottom">
-      <span>© 2026 Yuan0-o · MIT Licence</span>
+      <span>© 2026 Yuan0-o · 采用 MIT 协议</span>
     </div>
   </div>
 </footer>

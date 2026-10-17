@@ -8,6 +8,33 @@
 <script>(function(){var h=document.documentElement,t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';try{var s=localStorage.getItem('lucent-theme');if(s==='light'||s==='dark')t=s}catch(e){}h.dataset.theme=t;h.classList.add('js');var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light'?'#eef2fb':'#080b16'})()</script>
 <title>Download — Lucent</title>
 <meta name="description" content="Download Lucent: Android APK and Windows installer, free and open source. Always grab the latest release from GitHub.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="canonical" href="https://yuan0-o.github.io/lucentapp/download.html">
+<link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/download.html">
+<link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/download.html">
+<link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/download.html">
+<link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/download.html">
+<link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/download.html">
+<meta property="og:site_name" content="Lucent">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Download — Lucent">
+<meta property="og:description" content="Download Lucent: Android APK and Windows installer, free and open source. Always grab the latest release from GitHub.">
+<meta property="og:url" content="https://yuan0-o.github.io/lucentapp/download.html">
+<meta property="og:image" content="https://yuan0-o.github.io/lucentapp/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Lucent wordmark and logo on a frosted-glass background: Android · Windows · Open source">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Download — Lucent">
+<meta name="twitter:description" content="Download Lucent: Android APK and Windows installer, free and open source. Always grab the latest release from GitHub.">
+<meta name="twitter:image" content="https://yuan0-o.github.io/lucentapp/assets/og-image.png">
+<meta name="twitter:image:alt" content="The Lucent wordmark and logo on a frosted-glass background: Android · Windows · Open source">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -47,16 +74,34 @@
         <span class="icon">📱</span>
         <h3>Android</h3>
         <p>A signed release APK — Kotlin and Jetpack Compose, Room over SQLCipher, llama.cpp through the NDK. Home-screen widgets included, naturally.</p>
-        <a class="btn primary" data-dl="android" href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">Download APK</a>
-        <span class="ver"><span data-ver>Latest stable</span> · <a href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">View on GitHub</a></span>
+        <a class="btn primary" data-dl="android" href="https://github.com/Yuan0-o/Lucent/releases/latest" target="_blank" rel="noopener">Download APK</a>
+        <span class="ver"><span data-ver>Latest stable</span> · <a href="https://github.com/Yuan0-o/Lucent/releases/latest" target="_blank" rel="noopener">Stable release on GitHub</a></span>
       </div>
       <div class="dl-card glass rv">
         <span class="icon">💻</span>
         <h3>Windows</h3>
         <p>A double-click <code>.exe</code> installer — Compose for Desktop on a pure JVM, SQLite over JDBC, llama.cpp as a DLL. Tray-resident, with a sidebar made for wide monitors.</p>
-        <a class="btn primary" data-dl="windows" href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">Download installer</a>
-        <span class="ver"><span data-ver>Latest stable</span> · <a href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">View on GitHub</a></span>
+        <a class="btn primary" data-dl="windows" href="https://github.com/Yuan0-o/Lucent/releases/latest" target="_blank" rel="noopener">Download installer</a>
+        <span class="ver"><span data-ver>Latest stable</span> · <a href="https://github.com/Yuan0-o/Lucent/releases/latest" target="_blank" rel="noopener">Stable release on GitHub</a></span>
       </div>
+    </div>
+
+    <p class="legal-note rv">Free and open source under the MIT License. By downloading Lucent you agree to the <a href="terms.html">Terms of Use</a>; the <a href="privacy.html#policy">Privacy Policy</a> explains exactly what stays on your device.</p>
+
+    <div data-shots hidden style="margin-top:56px;text-align:center">
+    <div class="kicker rv">SEE IT</div>
+    <h2 class="rv">Glass, in the flesh</h2>
+    <p class="lead rv">Android and Windows, light and dark — straight from the app.</p>
+    <div class="shots">
+      <figure class="shot glass" data-device="android" data-src-light="assets/shots/android-light.png" data-src-dark="assets/shots/android-dark.png" data-alt-light="Lucent on Android — light theme" data-alt-dark="Lucent on Android — dark theme" hidden>
+        <img alt="" decoding="async">
+        <figcaption>Lucent on Android</figcaption>
+      </figure>
+      <figure class="shot glass" data-device="windows" data-src-light="assets/shots/windows-light.png" data-src-dark="assets/shots/windows-dark.png" data-alt-light="Lucent on Windows — light theme" data-alt-dark="Lucent on Windows — dark theme" hidden>
+        <img alt="" decoding="async">
+        <figcaption>Lucent on Windows</figcaption>
+      </figure>
+    </div>
     </div>
 
     <div class="repo-strip glass rv">
@@ -86,8 +131,8 @@
     <div class="panel glass rv">
       <div class="kicker">VERSION HISTORY</div>
       <h2>Every release, <span class="grad-text">on the record</span></h2>
-      <p>Changelogs, signatures and older builds all live on the releases page — nothing is ever quietly replaced. If you like knowing exactly what changed and when, that's your reading room.</p>
-      <div class="cta" style="justify-content:flex-start"><a class="btn primary" href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">Browse all releases →</a></div>
+      <p>Every stable release, newest first, is on the changelog page — pulled live from GitHub, so it never goes stale. Older builds, signatures and preview builds stay on GitHub's releases page, where previews are listed above the stable release; nothing is ever quietly replaced.</p>
+      <div class="cta" style="justify-content:flex-start"><a class="btn primary" href="changelog.html">Read the changelog →</a><a class="btn ghost" href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">All releases on GitHub (previews included)</a></div>
     </div>
   </div>
 </section>
@@ -97,25 +142,26 @@
     <div class="cols">
       <div class="brand">
         <a class="logo" href="index.html" style="display:inline-block;margin-bottom:12px">Lucent</a>
-        <p>Notes, tasks, and an AI assistant with actual hands. Free and open source under the MIT Licence.</p>
+        <p>Notes, tasks, and an AI assistant with actual hands. Free and open source under the MIT License.</p>
       </div>
       <div>
         <h4>Pages</h4>
-        <a href="index.html">Home</a><a href="features.html">Features</a><a href="download.html">Download</a><a href="privacy.html">Privacy</a>
+        <a href="index.html">Home</a><a href="features.html">Features</a><a href="download.html">Download</a><a href="changelog.html">Changelog</a><a href="about.html">About · Contact</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="https://github.com/Yuan0-o/Lucent/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
       </div>
       <div>
         <h4>Developer</h4>
         <a href="https://github.com/Yuan0-o" target="_blank" rel="noopener">GitHub profile</a>
         <a href="https://github.com/Yuan0-o/Lucent" target="_blank" rel="noopener">Lucent repository</a>
         <a href="https://github.com/Yuan0-o/Lucent/issues" target="_blank" rel="noopener">Report an issue</a>
-      </div>
-      <div>
-        <h4>Contact</h4>
         <a href="mailto:yuan47578@gmail.com">yuan47578@gmail.com</a>
       </div>
     </div>
     <div class="bottom">
-      <span>© 2026 Yuan0-o · MIT Licence</span>
+      <span>© 2026 Yuan0-o · MIT License</span>
     </div>
   </div>
 </footer>
