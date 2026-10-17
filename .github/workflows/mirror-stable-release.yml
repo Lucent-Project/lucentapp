@@ -30,7 +30,6 @@ jobs:
         run: |
           set -euo pipefail
 
-          MAX_SIZE=104857600 # 100 MiB (100 * 1024 * 1024 bytes)
           REPOS=("Yuan0-o/lucentapp" "Yuan0-o/Lucent")
 
           echo "Searching for latest stable release..."
@@ -107,21 +106,58 @@ jobs:
           echo "APK asset: $APK_NAME"
           echo "EXE asset: $EXE_NAME"
 
-          # Idempotency check: if downloads/version.json exists and sha256 matches, do nothing
-          if [ -f "downloads/version.json" ] && [ -f "downloads/$APK_NAME" ] && [ -f "downloads/$EXE_NAME" ]; then
-            CURR_TAG=$(jq -r '.tag_name // empty' downloads/version.json)
-            CURR_APK_SHA=$(jq -r --arg n "$APK_NAME" '.assets[] | select(.name == $n) | .sha256 // empty' downloads/version.json)
-            CURR_EXE_SHA=$(jq -r --arg n "$EXE_NAME" '.assets[] | select(.name == $n) | .sha256 // empty' downloads/version.json)
-            ACT_APK_SHA=$(sha256sum "downloads/$APK_NAME" | cut -d' ' -f1)
-            ACT_EXE_SHA=$(sha256sum "downloads/$EXE_NAME" | cut -d' ' -f1)
+          SPLIT_THRESHOLD=99614720
 
-            if [ "$CURR_TAG" = "$TAG_NAME" ] && [ "$CURR_APK_SHA" = "$ACT_APK_SHA" ] && [ "$CURR_EXE_SHA" = "$ACT_EXE_SHA" ]; then
-              echo "Release $TAG_NAME is already mirrored and verified in downloads/. Nothing to do."
-              exit 0
+          if [ -f "downloads/version.json" ]; then
+            CURR_TAG=$(jq -r '.tag_name // empty' downloads/version.json)
+            if [ "$CURR_TAG" = "$TAG_NAME" ]; then
+              ALL_VERIFIED=true
+              ASSET_COUNT=$(jq '.assets | length' downloads/version.json 2>/dev/null || echo 0)
+              if [ "$ASSET_COUNT" -eq 0 ]; then
+                ALL_VERIFIED=false
+              fi
+              for ((i=0; i<ASSET_COUNT; i++)); do
+                ASSET_NAME=$(jq -r ".assets[$i].name" downloads/version.json)
+                HAS_SPLIT=$(jq -r ".assets[$i].split != null" downloads/version.json)
+                if [ "$HAS_SPLIT" = "true" ]; then
+                  PART_COUNT=$(jq ".assets[$i].split.parts | length" downloads/version.json 2>/dev/null || echo 0)
+                  if [ "$PART_COUNT" -eq 0 ]; then
+                    ALL_VERIFIED=false
+                    break
+                  fi
+                  for ((j=0; j<PART_COUNT; j++)); do
+                    PART_NAME=$(jq -r ".assets[$i].split.parts[$j].name" downloads/version.json)
+                    EXP_SHA=$(jq -r ".assets[$i].split.parts[$j].sha256" downloads/version.json)
+                    if [ ! -f "downloads/$PART_NAME" ]; then
+                      ALL_VERIFIED=false
+                      break 2
+                    fi
+                    ACT_SHA=$(sha256sum "downloads/$PART_NAME" | cut -d' ' -f1)
+                    if [ "$ACT_SHA" != "$EXP_SHA" ]; then
+                      ALL_VERIFIED=false
+                      break 2
+                    fi
+                  done
+                else
+                  EXP_SHA=$(jq -r ".assets[$i].sha256 // empty" downloads/version.json)
+                  if [ ! -f "downloads/$ASSET_NAME" ]; then
+                    ALL_VERIFIED=false
+                    break
+                  fi
+                  ACT_SHA=$(sha256sum "downloads/$ASSET_NAME" | cut -d' ' -f1)
+                  if [ "$ACT_SHA" != "$EXP_SHA" ]; then
+                    ALL_VERIFIED=false
+                    break
+                  fi
+                fi
+              done
+              if [ "$ALL_VERIFIED" = "true" ]; then
+                echo "Release $TAG_NAME is already mirrored and verified in downloads/. Nothing to do."
+                exit 0
+              fi
             fi
           fi
 
-          # Download assets to temporary staging folder
           STAGE_DIR="downloads_staging_$$"
           mkdir -p "$STAGE_DIR"
           trap 'rm -rf "$STAGE_DIR"' EXIT
@@ -132,41 +168,135 @@ jobs:
           echo "Downloading EXE from $EXE_URL..."
           curl -fL --retry 3 --retry-delay 2 ${GITHUB_TOKEN:+-H "Authorization: Bearer $GITHUB_TOKEN"} -o "$STAGE_DIR/$EXE_NAME" "$EXE_URL"
 
-          # SAFETY: ABORT the sync (fail the job, change nothing) if either file > 104857600 bytes (100 MiB)
-          APK_SIZE=$(stat -c %s "$STAGE_DIR/$APK_NAME")
-          EXE_SIZE=$(stat -c %s "$STAGE_DIR/$EXE_NAME")
+          process_asset() {
+            local FILE_NAME="$1"
+            local PLATFORM="$2"
+            local DL_URL="$3"
+            local FILE_PATH="$STAGE_DIR/$FILE_NAME"
 
-          echo "Downloaded file sizes: APK = $APK_SIZE bytes, EXE = $EXE_SIZE bytes"
+            local FILE_SIZE
+            FILE_SIZE=$(stat -c %s "$FILE_PATH")
+            if [ "$FILE_SIZE" -le 0 ]; then
+              echo "::error::SAFETY CHECK FAILED: Downloaded file is empty! $FILE_NAME: $FILE_SIZE bytes. Aborting sync."
+              exit 1
+            fi
 
-          if [ "$APK_SIZE" -gt "$MAX_SIZE" ] || [ "$EXE_SIZE" -gt "$MAX_SIZE" ]; then
-            echo "::error::SAFETY CHECK FAILED: Downloaded asset exceeds 104857600 bytes (100 MiB)! APK: $APK_SIZE bytes, EXE: $EXE_SIZE bytes. Aborting sync without changes."
-            rm -rf "$STAGE_DIR"
-            exit 1
-          fi
+            local WHOLE_SHA256
+            WHOLE_SHA256=$(sha256sum "$FILE_PATH" | cut -d' ' -f1)
 
-          if [ "$APK_SIZE" -le 0 ] || [ "$EXE_SIZE" -le 0 ]; then
-            echo "::error::SAFETY CHECK FAILED: Downloaded file is empty! APK: $APK_SIZE bytes, EXE: $EXE_SIZE bytes. Aborting sync."
-            rm -rf "$STAGE_DIR"
-            exit 1
-          fi
+            if [ "$FILE_SIZE" -gt "$SPLIT_THRESHOLD" ]; then
+              split -b 95M "$FILE_PATH" "$FILE_PATH.part"
+              rm -f "$FILE_PATH"
 
-          # Compute SHA-256
-          APK_SHA256=$(sha256sum "$STAGE_DIR/$APK_NAME" | cut -d' ' -f1)
-          EXE_SHA256=$(sha256sum "$STAGE_DIR/$EXE_NAME" | cut -d' ' -f1)
+              local PARTS_JSON="[]"
+              for PART in $(ls -1 "$FILE_PATH.part"* | LC_ALL=C sort); do
+                local PNAME
+                PNAME=$(basename "$PART")
+                local PSIZE
+                PSIZE=$(stat -c %s "$PART")
+                if [ "$PSIZE" -le 0 ] || [ "$PSIZE" -gt 104857600 ]; then
+                  echo "::error::SAFETY CHECK FAILED: Invalid part size for $PNAME: $PSIZE bytes. Aborting sync."
+                  exit 1
+                fi
+                local PSHA
+                PSHA=$(sha256sum "$PART" | cut -d' ' -f1)
+                local PURL="https://yuan0-o.github.io/lucentapp/downloads/$PNAME"
+                PARTS_JSON=$(jq -c --arg n "$PNAME" --argjson s "$PSIZE" --arg h "$PSHA" --arg u "$PURL" \
+                  '. + [{name: $n, size: $s, sha256: $h, url: $u}]' <<< "$PARTS_JSON")
+              done
 
-          echo "APK SHA-256: $APK_SHA256"
-          echo "EXE SHA-256: $EXE_SHA256"
+              ASSET_ENTRY=$(jq -n \
+                --arg name "$FILE_NAME" \
+                --arg ver "$VERSION" \
+                --arg platform "$PLATFORM" \
+                --argjson size "$FILE_SIZE" \
+                --arg sha256 "$WHOLE_SHA256" \
+                --arg fallback "$DL_URL" \
+                --argjson parts "$PARTS_JSON" \
+                '{
+                  name: $name,
+                  version: $ver,
+                  platform: $platform,
+                  size: $size,
+                  sha256: $sha256,
+                  fallback_download_url: $fallback,
+                  split: {
+                    parts: $parts
+                  }
+                }')
 
-          # Deploy to downloads/ directory (clean up old APK/EXE files)
+              FILE_ENTRY=$(jq -n \
+                --arg name "$FILE_NAME" \
+                --arg ver "$VERSION" \
+                --arg platform "$PLATFORM" \
+                --argjson size "$FILE_SIZE" \
+                --arg sha256 "$WHOLE_SHA256" \
+                --arg fallback "$DL_URL" \
+                --argjson parts "$PARTS_JSON" \
+                '{
+                  name: $name,
+                  version: $ver,
+                  platform: $platform,
+                  size: $size,
+                  sha256: $sha256,
+                  fallback_download_url: $fallback,
+                  split: {
+                    parts: $parts
+                  }
+                }')
+            else
+              local MIRROR_URL="https://yuan0-o.github.io/lucentapp/downloads/$FILE_NAME"
+              ASSET_ENTRY=$(jq -n \
+                --arg name "$FILE_NAME" \
+                --arg ver "$VERSION" \
+                --arg platform "$PLATFORM" \
+                --argjson size "$FILE_SIZE" \
+                --arg sha256 "$WHOLE_SHA256" \
+                --arg mirror "$MIRROR_URL" \
+                --arg fallback "$DL_URL" \
+                '{
+                  name: $name,
+                  version: $ver,
+                  platform: $platform,
+                  size: $size,
+                  sha256: $sha256,
+                  browser_download_url: $mirror,
+                  fallback_download_url: $fallback
+                }')
+
+              FILE_ENTRY=$(jq -n \
+                --arg name "$FILE_NAME" \
+                --arg ver "$VERSION" \
+                --arg platform "$PLATFORM" \
+                --argjson size "$FILE_SIZE" \
+                --arg sha256 "$WHOLE_SHA256" \
+                --arg mirror "$MIRROR_URL" \
+                '{
+                  name: $name,
+                  version: $ver,
+                  platform: $platform,
+                  size: $size,
+                  sha256: $sha256,
+                  url: $mirror
+                }')
+            fi
+          }
+
+          process_asset "$APK_NAME" "android" "$APK_URL"
+          APK_ASSET="$ASSET_ENTRY"
+          APK_FILE="$FILE_ENTRY"
+
+          process_asset "$EXE_NAME" "windows" "$EXE_URL"
+          EXE_ASSET="$ASSET_ENTRY"
+          EXE_FILE="$FILE_ENTRY"
+
           mkdir -p downloads
-          rm -f downloads/*.apk downloads/*.exe
+          rm -f downloads/*.apk downloads/*.exe downloads/*.part*
 
-          mv "$STAGE_DIR/$APK_NAME" "downloads/$APK_NAME"
-          mv "$STAGE_DIR/$EXE_NAME" "downloads/$EXE_NAME"
+          mv "$STAGE_DIR"/* downloads/
           rm -rf "$STAGE_DIR"
           trap - EXIT
 
-          # Write downloads/version.json
           jq -n \
             --arg tag "$TAG_NAME" \
             --arg ver "$VERSION" \
@@ -174,16 +304,10 @@ jobs:
             --arg html_url "$HTML_URL" \
             --arg pub "$PUBLISHED_AT" \
             --arg body "$REL_BODY" \
-            --arg apk_name "$APK_NAME" \
-            --argjson apk_size "$APK_SIZE" \
-            --arg apk_sha "$APK_SHA256" \
-            --arg apk_fb "$APK_URL" \
-            --arg apk_mirror "https://yuan0-o.github.io/lucentapp/downloads/$APK_NAME" \
-            --arg exe_name "$EXE_NAME" \
-            --argjson exe_size "$EXE_SIZE" \
-            --arg exe_sha "$EXE_SHA256" \
-            --arg exe_fb "$EXE_URL" \
-            --arg exe_mirror "https://yuan0-o.github.io/lucentapp/downloads/$EXE_NAME" \
+            --argjson apk_asset "$APK_ASSET" \
+            --argjson exe_asset "$EXE_ASSET" \
+            --argjson apk_file "$APK_FILE" \
+            --argjson exe_file "$EXE_FILE" \
             '{
               tag_name: $tag,
               version: $ver,
@@ -191,44 +315,8 @@ jobs:
               html_url: $html_url,
               published_at: $pub,
               body: $body,
-              assets: [
-                {
-                  name: $apk_name,
-                  version: $ver,
-                  platform: "android",
-                  size: $apk_size,
-                  sha256: $apk_sha,
-                  browser_download_url: $apk_mirror,
-                  fallback_download_url: $apk_fb
-                },
-                {
-                  name: $exe_name,
-                  version: $ver,
-                  platform: "windows",
-                  size: $exe_size,
-                  sha256: $exe_sha,
-                  browser_download_url: $exe_mirror,
-                  fallback_download_url: $exe_fb
-                }
-              ],
-              files: [
-                {
-                  name: $apk_name,
-                  version: $ver,
-                  platform: "android",
-                  size: $apk_size,
-                  sha256: $apk_sha,
-                  url: $apk_mirror
-                },
-                {
-                  name: $exe_name,
-                  version: $ver,
-                  platform: "windows",
-                  size: $exe_size,
-                  sha256: $exe_sha,
-                  url: $exe_mirror
-                }
-              ]
+              assets: [$apk_asset, $exe_asset],
+              files: [$apk_file, $exe_file]
             }' > downloads/version.json
 
           echo "Successfully wrote downloads/version.json"

@@ -2,6 +2,34 @@
 const d=document,h=d.documentElement,$=(s,r=d)=>r.querySelector(s),$$=(s,r=d)=>[...r.querySelectorAll(s)];
 const nav=$('nav'),lg=$('.lang'),burger=$('.burger');
 const COLORS={dark:'#080b16',light:'#eef2fb'};
+const isSub=$('script[src*="app.js"]')?.getAttribute('src')?.startsWith('../')||/\/(zh|ja|ko)(\/|$)/.test(location.pathname);
+const base=isSub?'../':'./';
+const mergeSplitDownload=async(manifest,fallbackUrl)=>{
+  try{
+    if(!manifest||!Array.isArray(manifest.parts)||!manifest.parts.length)throw new Error('invalid');
+    const bufs=[];
+    for(const p of manifest.parts){
+      const u=p.url||(base+'downloads/'+p.name);
+      const res=await fetch(u);
+      if(!res.ok)throw new Error('part fetch');
+      bufs.push(await res.arrayBuffer());
+    }
+    const blob=new Blob(bufs);
+    const hashBuf=await crypto.subtle.digest('SHA-256',await blob.arrayBuffer());
+    const hash=[...new Uint8Array(hashBuf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+    if(hash.toLowerCase()!==String(manifest.sha256||'').toLowerCase())throw new Error('sha256');
+    const objUrl=URL.createObjectURL(blob);
+    const a=d.createElement('a');
+    a.href=objUrl;
+    a.download=manifest.name||'download';
+    d.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(objUrl),60000);
+  }catch(err){
+    if(fallbackUrl)window.location.assign(fallbackUrl);
+  }
+};
 
 /* theme: follows the system until the visitor chooses; the choice is remembered */
 const paint=t=>{h.dataset.theme=t;const m=$('meta[name=theme-color]');if(m)m.content=COLORS[t]};
@@ -54,16 +82,14 @@ const isDlPage=dlBtns.length>0||verEls.length>0||$('a[href*="download.html"]');
 if(isDlPage){
   const KEY='lucent-latest-release';
   verEls.forEach(el=>el.classList.add('loading'));
-  const isSub=$('script[src*="app.js"]')?.getAttribute('src')?.startsWith('../')||/\/(zh|ja|ko)(\/|$)/.test(location.pathname);
-  const base=isSub?'../':'./';
-  const vUrl=isSub?'../downloads/version.json':'./downloads/version.json';
+  const vUrl=base+'downloads/version.json';
   const fmtDate=iso=>{try{return new Intl.DateTimeFormat(h.lang||undefined,{year:'numeric',month:'short',day:'numeric'}).format(new Date(iso))}catch(e){return ''}};
   const readCache=(st,max)=>{
     try{
       const raw=st.getItem(KEY);
       if(!raw)return null;
       const it=JSON.parse(raw);
-      if(it&&it.ts&&(Date.now()-it.ts<max)&&it.urls)return it;
+      if(it&&it.ts&&(Date.now()-it.ts<max)&&(it.urls||it.splits))return it;
     }catch(e){}
     return null;
   };
@@ -93,24 +119,45 @@ if(isDlPage){
     const android=apks.find(a=>/universal|release/i.test(a?.name||''))||apks[0];
     const windows=exes.find(a=>/setup|installer/i.test(a?.name||''))||exes[0];
     if(!android&&!windows)return null;
+    const toManifest=a=>a?.split?{name:a.name,sha256:a.sha256,parts:a.split.parts||[]}:null;
+    const toFallback=a=>a?.fallback_download_url||a?.browser_download_url||a?.url||null;
     const toUrl=a=>{
-      if(!a)return null;
+      if(!a||a.split)return null;
       if(a.name)return base+'downloads/'+a.name;
       return a.browser_download_url||a.url||null;
     };
     return {
       tag:data.tag_name||data.version||android?.version||windows?.version||'',
       urls:{android:toUrl(android),windows:toUrl(windows)},
+      splits:{android:toManifest(android),windows:toManifest(windows)},
+      fallbacks:{android:toFallback(android),windows:toFallback(windows)},
       date:data.published_at||data.date||''
     };
   };
-  const applyRelease=(tag,urls,date)=>{
+  const applyRelease=(tag,urls={},date='',splits={},fallbacks={})=>{
     dlBtns.forEach(btn=>{
-      const u=urls[btn.dataset.dl];
-      if(u){
-        btn.href=u;
-        btn.removeAttribute('target');
-        btn.dataset.assetUrl=u;
+      const platform=btn.dataset.dl;
+      const sp=splits&&splits[platform];
+      const fb=fallbacks&&fallbacks[platform];
+      if(sp){
+        if(fb){
+          btn.href=fb;
+          btn.target='_blank';
+          btn.rel='noopener';
+        }
+        btn.dataset.split=JSON.stringify(sp);
+        if(fb)btn.dataset.fallback=fb;
+        delete btn.dataset.assetUrl;
+      }else{
+        const u=urls&&urls[platform];
+        if(u){
+          btn.href=u;
+          btn.removeAttribute('target');
+          btn.removeAttribute('rel');
+          btn.dataset.assetUrl=u;
+          delete btn.dataset.split;
+          delete btn.dataset.fallback;
+        }
       }
     });
     if(tag){
@@ -122,13 +169,12 @@ if(isDlPage){
   const resolvePromise=(async()=>{
     const cached=readCache(sessionStorage,15*60*1000);
     if(cached){
-      applyRelease(cached.tag,cached.urls,cached.date);
+      applyRelease(cached.tag,cached.urls,cached.date,cached.splits,cached.fallbacks);
       verEls.forEach(el=>el.classList.remove('loading'));
       fetchDone=true;
       return;
     }
     let entry=null;
-    // 1. Fetch ./downloads/version.json FIRST for download URLs
     try{
       const ac1=new AbortController(),tm1=setTimeout(()=>ac1.abort(),3000);
       const res=await fetch(vUrl,{headers:{Accept:'application/json'},signal:ac1.signal});
@@ -136,13 +182,12 @@ if(isDlPage){
       if(res.ok){
         const data=await res.json();
         const parsed=selectFromVersionJson(data);
-        if(parsed&&(parsed.urls.android||parsed.urls.windows)){
-          entry={tag:parsed.tag,urls:parsed.urls,ts:Date.now(),date:parsed.date};
+        if(parsed&&(parsed.urls.android||parsed.urls.windows||parsed.splits?.android||parsed.splits?.windows)){
+          entry={tag:parsed.tag,urls:parsed.urls,splits:parsed.splits,fallbacks:parsed.fallbacks,ts:Date.now(),date:parsed.date};
         }
       }
     }catch(e){}
 
-    // 2. Fall back to GitHub API when version.json is missing or stale
     if(!entry){
       const ac2=new AbortController(),tm2=setTimeout(()=>ac2.abort(),4000);
       try{
@@ -155,34 +200,50 @@ if(isDlPage){
         const data=await res.json();
         if(data.prerelease||data.draft||!data.tag_name||/^p/i.test(data.tag_name))throw new Error('invalid');
         const urls=selectAssets(data.assets);
-        entry={tag:data.tag_name,urls,ts:Date.now(),date:data.published_at};
+        entry={tag:data.tag_name,urls,splits:{},fallbacks:{},ts:Date.now(),date:data.published_at};
       }catch(err){
         clearTimeout(tm2);
         const stale=readCache(localStorage,6*60*60*1000);
         if(stale){
-          applyRelease(stale.tag,stale.urls,stale.date);
+          applyRelease(stale.tag,stale.urls,stale.date,stale.splits,stale.fallbacks);
         }
       }
     }
 
     if(entry){
       writeCache(entry);
-      applyRelease(entry.tag,entry.urls,entry.date);
+      applyRelease(entry.tag,entry.urls,entry.date,entry.splits,entry.fallbacks);
     }
     fetchDone=true;
     verEls.forEach(el=>el.classList.remove('loading'));
   })();
   dlBtns.forEach(btn=>{
     btn.addEventListener('click',async e=>{
+      if(btn.dataset.split){
+        e.preventDefault();
+        btn.setAttribute('aria-busy','true');
+        try{
+          await mergeSplitDownload(JSON.parse(btn.dataset.split),btn.dataset.fallback||btn.href);
+        }finally{
+          btn.removeAttribute('aria-busy');
+        }
+        return;
+      }
       if(btn.dataset.assetUrl||fetchDone)return;
       e.preventDefault();
       btn.setAttribute('aria-busy','true');
       try{
         await resolvePromise;
       }catch(err){}
-      finally{
-        btn.removeAttribute('aria-busy');
+      if(btn.dataset.split){
+        try{
+          await mergeSplitDownload(JSON.parse(btn.dataset.split),btn.dataset.fallback||btn.href);
+        }finally{
+          btn.removeAttribute('aria-busy');
+        }
+        return;
       }
+      btn.removeAttribute('aria-busy');
       window.location.assign(btn.dataset.assetUrl||btn.href);
     });
   });
@@ -192,8 +253,6 @@ const cl=$('[data-changelog]');
 if(cl){
   const L=cl.dataset,list=$('[data-cl-list]',cl),status=$('[data-cl-status]',cl),prev=$('[data-cl-previews]',cl);
   const RK='lucent-releases-list',API='https://api.github.com/repos/Yuan0-o/Lucent/releases?per_page=30',LATEST='https://api.github.com/repos/Yuan0-o/Lucent/releases/latest',ALL='https://github.com/Yuan0-o/Lucent/releases';
-  const isSub=$('script[src*="app.js"]')?.getAttribute('src')?.startsWith('../')||/\/(zh|ja|ko)(\/|$)/.test(location.pathname);
-  const base=isSub?'../':'./';
   const el=(tag,cls,txt)=>{const n=d.createElement(tag);if(cls)n.className=cls;if(txt!=null)n.textContent=txt;return n};
   const fmt=iso=>{try{return new Intl.DateTimeFormat(h.lang||undefined,{year:'numeric',month:'short',day:'numeric'}).format(new Date(iso))}catch(e){return String(iso||'').slice(0,10)}};
   const isPre=r=>!!r.prerelease||/^p/i.test(r.tag_name||'');
@@ -208,11 +267,20 @@ if(cl){
       if(vtag&&vtag!==tag)return null;
       const items=Array.isArray(data.assets)?data.assets:(Array.isArray(data.files)?data.files:[]);
       const valid=items.filter(a=>!/\.(sha256|sig|asc|txt)$/i.test(a?.name||''));
-      const apk=valid.find(a=>/\.apk$/i.test(a?.name||''));
-      const exe=valid.find(a=>/\.exe$/i.test(a?.name||''));
-      const toUrl=a=>a&&a.name?base+'downloads/'+a.name:(a?.browser_download_url||a?.url||null);
+      const apk=valid.find(a=>/\.apk$/i.test(a?.name||'')||a?.platform==='android'||a?.content_type==='application/vnd.android.package-archive');
+      const exe=valid.find(a=>/\.exe$/i.test(a?.name||'')||a?.platform==='windows');
+      const toManifest=a=>a?.split?{name:a.name,sha256:a.sha256,parts:a.split.parts||[]}:null;
+      const toFallback=a=>a?.fallback_download_url||a?.browser_download_url||a?.url||null;
+      const toUrl=a=>{
+        if(!a)return null;
+        if(a.split)return toFallback(a);
+        if(a.name)return base+'downloads/'+a.name;
+        return a.browser_download_url||a.url||null;
+      };
       const urls={android:toUrl(apk),windows:toUrl(exe)};
-      return (urls.android||urls.windows)?urls:null;
+      const splits={android:toManifest(apk),windows:toManifest(exe)};
+      if(!urls.android&&!urls.windows&&!splits.android&&!splits.windows)return null;
+      return {android:urls.android,windows:urls.windows,splits};
     }catch(e){return null}
   };
   const ghAssets=assets=>{
@@ -268,8 +336,27 @@ if(cl){
       if(n.childNodes.length)body.append(n);else body.append(el('p',0,L.lNoNotes));
       if(r._dl&&(r._dl.android||r._dl.windows)){
         const dl=el('div','rel-dl');
-        if(r._dl.android){const a=el('a','btn ghost',L.lDlAndroid);a.href=r._dl.android;dl.append(a)}
-        if(r._dl.windows){const a=el('a','btn ghost',L.lDlWindows);a.href=r._dl.windows;dl.append(a)}
+        ['android','windows'].forEach(k=>{
+          const u=r._dl[k];
+          if(!u)return;
+          const a=el('a','btn ghost',k==='android'?L.lDlAndroid:L.lDlWindows);
+          a.href=u;
+          const sp=r._dl.splits?.[k];
+          if(sp){
+            a.target='_blank';
+            a.rel='noopener';
+            a.addEventListener('click',async e=>{
+              e.preventDefault();
+              a.setAttribute('aria-busy','true');
+              try{
+                await mergeSplitDownload(sp,u);
+              }finally{
+                a.removeAttribute('aria-busy');
+              }
+            });
+          }
+          dl.append(a);
+        });
         body.append(dl);
       }
       if(/^https:\/\/github\.com\//.test(r.html_url||'')){const a=el('a','rel-link',r.tag_name===cl._latestTag?L.lView:L.lDlGh);a.href=r.html_url;a.target='_blank';a.rel='noopener';body.append(a)}
