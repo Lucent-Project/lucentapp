@@ -1,0 +1,253 @@
+name: Mirror Stable Release
+
+'on':
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: mirror-stable-release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync latest stable release
+        id: sync
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          MAX_SIZE=104857600 # 100 MiB (100 * 1024 * 1024 bytes)
+          REPOS=("Yuan0-o/lucentapp" "Yuan0-o/Lucent")
+
+          echo "Searching for latest stable release..."
+          RELEASE_JSON=""
+          SELECTED_REPO=""
+
+          for REPO in "${REPOS[@]}"; do
+            echo "Checking repo: $REPO"
+            AUTH_HEADER=()
+            if [ -n "${GITHUB_TOKEN:-}" ]; then
+              AUTH_HEADER=(-H "Authorization: Bearer $GITHUB_TOKEN")
+            fi
+
+            # Check /releases/latest first
+            HTTP_CODE=$(curl -sSL -o /tmp/rel.json -w "%{http_code}" \
+              -H "Accept: application/vnd.github+json" \
+              "${AUTH_HEADER[@]}" \
+              "https://api.github.com/repos/$REPO/releases/latest" || true)
+
+            if [ "$HTTP_CODE" = "200" ]; then
+              IS_PRE=$(jq -r '.prerelease // true' /tmp/rel.json)
+              IS_DRAFT=$(jq -r '.draft // true' /tmp/rel.json)
+              TAG=$(jq -r '.tag_name // empty' /tmp/rel.json)
+              if [ "$IS_PRE" = "false" ] && [ "$IS_DRAFT" = "false" ] && [ -n "$TAG" ]; then
+                HAS_APK=$(jq -r '[.assets[] | select(.name | test("\\.apk$") and (test("\\.sha256$") | not))] | length' /tmp/rel.json)
+                HAS_EXE=$(jq -r '[.assets[] | select(.name | test("\\.exe$") and (test("\\.sha256$") | not))] | length' /tmp/rel.json)
+                if [ "$HAS_APK" -gt 0 ] && [ "$HAS_EXE" -gt 0 ]; then
+                  RELEASE_JSON=$(cat /tmp/rel.json)
+                  SELECTED_REPO="$REPO"
+                  break
+                fi
+              fi
+            fi
+
+            # Check recent releases list if /latest did not match
+            HTTP_CODE=$(curl -sSL -o /tmp/rel_list.json -w "%{http_code}" \
+              -H "Accept: application/vnd.github+json" \
+              "${AUTH_HEADER[@]}" \
+              "https://api.github.com/repos/$REPO/releases?per_page=30" || true)
+
+            if [ "$HTTP_CODE" = "200" ]; then
+              MATCH=$(jq -c '
+                [.[] | select(.prerelease == false and .draft == false) |
+                 select(([.assets[] | select(.name | test("\\.apk$") and (test("\\.sha256$") | not))] | length > 0) and
+                        ([.assets[] | select(.name | test("\\.exe$") and (test("\\.sha256$") | not))] | length > 0))] | first // empty
+              ' /tmp/rel_list.json)
+              if [ -n "$MATCH" ] && [ "$MATCH" != "null" ]; then
+                RELEASE_JSON="$MATCH"
+                SELECTED_REPO="$REPO"
+                break
+              fi
+            fi
+          done
+
+          if [ -z "$RELEASE_JSON" ] || [ "$RELEASE_JSON" = "null" ]; then
+            echo "No stable release with both APK and EXE assets found. Exiting."
+            exit 0
+          fi
+
+          TAG_NAME=$(echo "$RELEASE_JSON" | jq -r '.tag_name')
+          VERSION=$(echo "$TAG_NAME" | sed 's/^[vV]//')
+          HTML_URL=$(echo "$RELEASE_JSON" | jq -r '.html_url // ""')
+          PUBLISHED_AT=$(echo "$RELEASE_JSON" | jq -r '.published_at // ""')
+          REL_BODY=$(echo "$RELEASE_JSON" | jq -r '.body // ""')
+          REL_NAME=$(echo "$RELEASE_JSON" | jq -r '.name // ""')
+
+          APK_NAME=$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name | test("\\.apk$") and (test("\\.sha256$") | not)) | .name' | head -n 1)
+          APK_URL=$(echo "$RELEASE_JSON" | jq -r --arg n "$APK_NAME" '.assets[] | select(.name == $n) | .browser_download_url' | head -n 1)
+
+          EXE_NAME=$(echo "$RELEASE_JSON" | jq -r '.assets[] | select(.name | test("\\.exe$") and (test("\\.sha256$") | not)) | .name' | head -n 1)
+          EXE_URL=$(echo "$RELEASE_JSON" | jq -r --arg n "$EXE_NAME" '.assets[] | select(.name == $n) | .browser_download_url' | head -n 1)
+
+          echo "Found stable release: $TAG_NAME ($VERSION) from $SELECTED_REPO"
+          echo "APK asset: $APK_NAME"
+          echo "EXE asset: $EXE_NAME"
+
+          # Idempotency check: if downloads/version.json exists and sha256 matches, do nothing
+          if [ -f "downloads/version.json" ] && [ -f "downloads/$APK_NAME" ] && [ -f "downloads/$EXE_NAME" ]; then
+            CURR_TAG=$(jq -r '.tag_name // empty' downloads/version.json)
+            CURR_APK_SHA=$(jq -r --arg n "$APK_NAME" '.assets[] | select(.name == $n) | .sha256 // empty' downloads/version.json)
+            CURR_EXE_SHA=$(jq -r --arg n "$EXE_NAME" '.assets[] | select(.name == $n) | .sha256 // empty' downloads/version.json)
+            ACT_APK_SHA=$(sha256sum "downloads/$APK_NAME" | cut -d' ' -f1)
+            ACT_EXE_SHA=$(sha256sum "downloads/$EXE_NAME" | cut -d' ' -f1)
+
+            if [ "$CURR_TAG" = "$TAG_NAME" ] && [ "$CURR_APK_SHA" = "$ACT_APK_SHA" ] && [ "$CURR_EXE_SHA" = "$ACT_EXE_SHA" ]; then
+              echo "Release $TAG_NAME is already mirrored and verified in downloads/. Nothing to do."
+              exit 0
+            fi
+          fi
+
+          # Download assets to temporary staging folder
+          STAGE_DIR="downloads_staging_$$"
+          mkdir -p "$STAGE_DIR"
+          trap 'rm -rf "$STAGE_DIR"' EXIT
+
+          echo "Downloading APK from $APK_URL..."
+          curl -fL --retry 3 --retry-delay 2 ${GITHUB_TOKEN:+-H "Authorization: Bearer $GITHUB_TOKEN"} -o "$STAGE_DIR/$APK_NAME" "$APK_URL"
+
+          echo "Downloading EXE from $EXE_URL..."
+          curl -fL --retry 3 --retry-delay 2 ${GITHUB_TOKEN:+-H "Authorization: Bearer $GITHUB_TOKEN"} -o "$STAGE_DIR/$EXE_NAME" "$EXE_URL"
+
+          # SAFETY: ABORT the sync (fail the job, change nothing) if either file > 104857600 bytes (100 MiB)
+          APK_SIZE=$(stat -c %s "$STAGE_DIR/$APK_NAME")
+          EXE_SIZE=$(stat -c %s "$STAGE_DIR/$EXE_NAME")
+
+          echo "Downloaded file sizes: APK = $APK_SIZE bytes, EXE = $EXE_SIZE bytes"
+
+          if [ "$APK_SIZE" -gt "$MAX_SIZE" ] || [ "$EXE_SIZE" -gt "$MAX_SIZE" ]; then
+            echo "::error::SAFETY CHECK FAILED: Downloaded asset exceeds 104857600 bytes (100 MiB)! APK: $APK_SIZE bytes, EXE: $EXE_SIZE bytes. Aborting sync without changes."
+            rm -rf "$STAGE_DIR"
+            exit 1
+          fi
+
+          if [ "$APK_SIZE" -le 0 ] || [ "$EXE_SIZE" -le 0 ]; then
+            echo "::error::SAFETY CHECK FAILED: Downloaded file is empty! APK: $APK_SIZE bytes, EXE: $EXE_SIZE bytes. Aborting sync."
+            rm -rf "$STAGE_DIR"
+            exit 1
+          fi
+
+          # Compute SHA-256
+          APK_SHA256=$(sha256sum "$STAGE_DIR/$APK_NAME" | cut -d' ' -f1)
+          EXE_SHA256=$(sha256sum "$STAGE_DIR/$EXE_NAME" | cut -d' ' -f1)
+
+          echo "APK SHA-256: $APK_SHA256"
+          echo "EXE SHA-256: $EXE_SHA256"
+
+          # Deploy to downloads/ directory (clean up old APK/EXE files)
+          mkdir -p downloads
+          rm -f downloads/*.apk downloads/*.exe
+
+          mv "$STAGE_DIR/$APK_NAME" "downloads/$APK_NAME"
+          mv "$STAGE_DIR/$EXE_NAME" "downloads/$EXE_NAME"
+          rm -rf "$STAGE_DIR"
+          trap - EXIT
+
+          # Write downloads/version.json
+          jq -n \
+            --arg tag "$TAG_NAME" \
+            --arg ver "$VERSION" \
+            --arg name "$REL_NAME" \
+            --arg html_url "$HTML_URL" \
+            --arg pub "$PUBLISHED_AT" \
+            --arg body "$REL_BODY" \
+            --arg apk_name "$APK_NAME" \
+            --argjson apk_size "$APK_SIZE" \
+            --arg apk_sha "$APK_SHA256" \
+            --arg apk_fb "$APK_URL" \
+            --arg apk_mirror "https://yuan0-o.github.io/lucentapp/downloads/$APK_NAME" \
+            --arg exe_name "$EXE_NAME" \
+            --argjson exe_size "$EXE_SIZE" \
+            --arg exe_sha "$EXE_SHA256" \
+            --arg exe_fb "$EXE_URL" \
+            --arg exe_mirror "https://yuan0-o.github.io/lucentapp/downloads/$EXE_NAME" \
+            '{
+              tag_name: $tag,
+              version: $ver,
+              name: $name,
+              html_url: $html_url,
+              published_at: $pub,
+              body: $body,
+              assets: [
+                {
+                  name: $apk_name,
+                  version: $ver,
+                  platform: "android",
+                  size: $apk_size,
+                  sha256: $apk_sha,
+                  browser_download_url: $apk_mirror,
+                  fallback_download_url: $apk_fb
+                },
+                {
+                  name: $exe_name,
+                  version: $ver,
+                  platform: "windows",
+                  size: $exe_size,
+                  sha256: $exe_sha,
+                  browser_download_url: $exe_mirror,
+                  fallback_download_url: $exe_fb
+                }
+              ],
+              files: [
+                {
+                  name: $apk_name,
+                  version: $ver,
+                  platform: "android",
+                  size: $apk_size,
+                  sha256: $apk_sha,
+                  url: $apk_mirror
+                },
+                {
+                  name: $exe_name,
+                  version: $ver,
+                  platform: "windows",
+                  size: $exe_size,
+                  sha256: $exe_sha,
+                  url: $exe_mirror
+                }
+              ]
+            }' > downloads/version.json
+
+          echo "Successfully wrote downloads/version.json"
+
+          if [ -n "${GITHUB_OUTPUT:-}" ]; then
+            echo "tag_name=$TAG_NAME" >> "$GITHUB_OUTPUT"
+            echo "synced=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push synced files
+        if: steps.sync.outputs.synced == 'true'
+        run: |
+          git config user.name "Yuan0-o"
+          git config user.email "yuan47578@gmail.com"
+          git add -A downloads/
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(mirror): sync stable release ${{ steps.sync.outputs.tag_name }}"
+            git pull --rebase origin main || true
+            git push origin main
+          fi

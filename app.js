@@ -49,11 +49,14 @@ if(matchMedia('(hover:hover) and (pointer:fine) and (min-width:861px)').matches&
   addEventListener('scroll',()=>{tick||(tick=requestAnimationFrame(()=>{tick=0;orbs.forEach((o,i)=>o.style.translate=`0 ${scrollY*(.04+i*.02)}px`)}))},{passive:true});
 }
 
-const dlBtns=$$('[data-dl]');
-if(dlBtns.length){
+const dlBtns=$$('[data-dl]'),verEls=$$('[data-ver]');
+const isDlPage=dlBtns.length>0||verEls.length>0||$('a[href*="download.html"]');
+if(isDlPage){
   const KEY='lucent-latest-release';
-  const verEls=$$('[data-ver]');
   verEls.forEach(el=>el.classList.add('loading'));
+  const isSub=$('script[src*="app.js"]')?.getAttribute('src')?.startsWith('../')||/\/(zh|ja|ko)(\/|$)/.test(location.pathname);
+  const base=isSub?'../':'./';
+  const vUrl=isSub?'../downloads/version.json':'./downloads/version.json';
   const fmtDate=iso=>{try{return new Intl.DateTimeFormat(h.lang||undefined,{year:'numeric',month:'short',day:'numeric'}).format(new Date(iso))}catch(e){return ''}};
   const readCache=(st,max)=>{
     try{
@@ -80,6 +83,27 @@ if(dlBtns.length){
       windows:windows?.browser_download_url
     };
   };
+  const selectFromVersionJson=data=>{
+    if(!data)return null;
+    const list=Array.isArray(data.assets)?data.assets:(Array.isArray(data.files)?data.files:[]);
+    if(!list.length)return null;
+    const valid=list.filter(a=>!/\.(sha256|sig|asc|txt)$/i.test(a?.name||''));
+    const apks=valid.filter(a=>/\.apk$/i.test(a?.name||'')||a?.platform==='android'||a?.content_type==='application/vnd.android.package-archive');
+    const exes=valid.filter(a=>/\.exe$/i.test(a?.name||'')||a?.platform==='windows');
+    const android=apks.find(a=>/universal|release/i.test(a?.name||''))||apks[0];
+    const windows=exes.find(a=>/setup|installer/i.test(a?.name||''))||exes[0];
+    if(!android&&!windows)return null;
+    const toUrl=a=>{
+      if(!a)return null;
+      if(a.name)return base+'downloads/'+a.name;
+      return a.browser_download_url||a.url||null;
+    };
+    return {
+      tag:data.tag_name||data.version||android?.version||windows?.version||'',
+      urls:{android:toUrl(android),windows:toUrl(windows)},
+      date:data.published_at||data.date||''
+    };
+  };
   const applyRelease=(tag,urls,date)=>{
     dlBtns.forEach(btn=>{
       const u=urls[btn.dataset.dl];
@@ -103,31 +127,50 @@ if(dlBtns.length){
       fetchDone=true;
       return;
     }
-    const ac=new AbortController();
-    const tm=setTimeout(()=>ac.abort(),4000);
+    let entry=null;
+    // 1. Fetch ./downloads/version.json FIRST for download URLs
     try{
-      const res=await fetch('https://api.github.com/repos/Yuan0-o/Lucent/releases/latest',{
-        headers:{Accept:'application/vnd.github+json'},
-        signal:ac.signal
-      });
-      clearTimeout(tm);
-      if(!res.ok)throw new Error(res.status);
-      const data=await res.json();
-      if(data.prerelease||data.draft||!data.tag_name||/^p/i.test(data.tag_name))throw new Error('invalid');
-      const urls=selectAssets(data.assets);
-      const entry={tag:data.tag_name,urls,ts:Date.now(),date:data.published_at};
+      const ac1=new AbortController(),tm1=setTimeout(()=>ac1.abort(),3000);
+      const res=await fetch(vUrl,{headers:{Accept:'application/json'},signal:ac1.signal});
+      clearTimeout(tm1);
+      if(res.ok){
+        const data=await res.json();
+        const parsed=selectFromVersionJson(data);
+        if(parsed&&(parsed.urls.android||parsed.urls.windows)){
+          entry={tag:parsed.tag,urls:parsed.urls,ts:Date.now(),date:parsed.date};
+        }
+      }
+    }catch(e){}
+
+    // 2. Fall back to GitHub API when version.json is missing or stale
+    if(!entry){
+      const ac2=new AbortController(),tm2=setTimeout(()=>ac2.abort(),4000);
+      try{
+        const res=await fetch('https://api.github.com/repos/Yuan0-o/Lucent/releases/latest',{
+          headers:{Accept:'application/vnd.github+json'},
+          signal:ac2.signal
+        });
+        clearTimeout(tm2);
+        if(!res.ok)throw new Error(res.status);
+        const data=await res.json();
+        if(data.prerelease||data.draft||!data.tag_name||/^p/i.test(data.tag_name))throw new Error('invalid');
+        const urls=selectAssets(data.assets);
+        entry={tag:data.tag_name,urls,ts:Date.now(),date:data.published_at};
+      }catch(err){
+        clearTimeout(tm2);
+        const stale=readCache(localStorage,6*60*60*1000);
+        if(stale){
+          applyRelease(stale.tag,stale.urls,stale.date);
+        }
+      }
+    }
+
+    if(entry){
       writeCache(entry);
       applyRelease(entry.tag,entry.urls,entry.date);
-    }catch(err){
-      clearTimeout(tm);
-      const stale=readCache(localStorage,6*60*60*1000);
-      if(stale){
-        applyRelease(stale.tag,stale.urls,stale.date);
-      }
-    }finally{
-      fetchDone=true;
-      verEls.forEach(el=>el.classList.remove('loading'));
     }
+    fetchDone=true;
+    verEls.forEach(el=>el.classList.remove('loading'));
   })();
   dlBtns.forEach(btn=>{
     btn.addEventListener('click',async e=>{
