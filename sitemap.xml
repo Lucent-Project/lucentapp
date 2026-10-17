@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://yuan0-o.github.io/lucentapp/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/"/>
@@ -11,7 +11,7 @@
   </url>
   <url>
     <loc>https://yuan0-o.github.io/lucentapp/zh/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/"/>
@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://yuan0-o.github.io/lucentapp/ja/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/"/>
@@ -29,7 +29,7 @@
   </url>
   <url>
     <loc>https://yuan0-o.github.io/lucentapp/ko/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/"/>
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/"/>
     <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/"/>
@@ -251,5 +251,41 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/about.html"/>
     <xhtml:link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/about.html"/>
+  </url>
+  <url>
+    <loc>https://yuan0-o.github.io/lucentapp/support.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/support.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/support.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/support.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/support.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/support.html"/>
+  </url>
+  <url>
+    <loc>https://yuan0-o.github.io/lucentapp/zh/support.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/support.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/support.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/support.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/support.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/support.html"/>
+  </url>
+  <url>
+    <loc>https://yuan0-o.github.io/lucentapp/ja/support.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/support.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/support.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/support.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/support.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/support.html"/>
+  </url>
+  <url>
+    <loc>https://yuan0-o.github.io/lucentapp/ko/support.html</loc>
+    <lastmod>2026-10-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuan0-o.github.io/lucentapp/support.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://yuan0-o.github.io/lucentapp/zh/support.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://yuan0-o.github.io/lucentapp/ja/support.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://yuan0-o.github.io/lucentapp/ko/support.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuan0-o.github.io/lucentapp/support.html"/>
   </url>
 </urlset>
