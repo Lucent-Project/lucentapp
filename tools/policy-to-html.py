@@ -2,7 +2,7 @@
 """Copy the official Lucent privacy policies, word for word, into the site's privacy pages.
 
 The text is never retyped or rewritten: this script reads the official Markdown files from the
-app repository (Yuan0-o/Lucent, PRIVACY/ folder) and converts only their *formatting* to HTML.
+app repository (Lucent-Project/Lucent, PRIVACY/ folder) and converts only their *formatting* to HTML.
 
 Setup (once): put the official files in policy-src/ using their original names:
 

@@ -30,7 +30,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          REPOS=("Yuan0-o/lucentapp" "Yuan0-o/Lucent")
+          REPOS=("Lucent-Project/lucentapp" "Lucent-Project/Lucent")
 
           echo "Searching for latest stable release..."
           RELEASE_JSON=""
@@ -200,7 +200,7 @@ jobs:
                 fi
                 local PSHA
                 PSHA=$(sha256sum "$PART" | cut -d' ' -f1)
-                local PURL="https://yuan0-o.github.io/lucentapp/downloads/$PNAME"
+                local PURL="https://lucent-project.github.io/lucentapp/downloads/$PNAME"
                 PARTS_JSON=$(jq -c --arg n "$PNAME" --argjson s "$PSIZE" --arg h "$PSHA" --arg u "$PURL" \
                   '. + [{name: $n, size: $s, sha256: $h, url: $u}]' <<< "$PARTS_JSON")
               done
@@ -245,7 +245,7 @@ jobs:
                   }
                 }')
             else
-              local MIRROR_URL="https://yuan0-o.github.io/lucentapp/downloads/$FILE_NAME"
+              local MIRROR_URL="https://lucent-project.github.io/lucentapp/downloads/$FILE_NAME"
               ASSET_ENTRY=$(jq -n \
                 --arg name "$FILE_NAME" \
                 --arg ver "$VERSION" \

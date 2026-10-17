@@ -191,7 +191,7 @@ if(isDlPage){
     if(!entry){
       const ac2=new AbortController(),tm2=setTimeout(()=>ac2.abort(),4000);
       try{
-        const res=await fetch('https://api.github.com/repos/Yuan0-o/Lucent/releases/latest',{
+        const res=await fetch('https://api.github.com/repos/Lucent-Project/Lucent/releases/latest',{
           headers:{Accept:'application/vnd.github+json'},
           signal:ac2.signal
         });
@@ -252,7 +252,7 @@ if(isDlPage){
 const cl=$('[data-changelog]');
 if(cl){
   const L=cl.dataset,list=$('[data-cl-list]',cl),status=$('[data-cl-status]',cl),prev=$('[data-cl-previews]',cl);
-  const RK='lucent-releases-v2',ALL='https://github.com/Yuan0-o/Lucent/releases';
+  const RK='lucent-releases-v2',ALL='https://github.com/Lucent-Project/Lucent/releases';
   const LANG_LABELS={zh:'简体中文',ja:'日本語',ko:'한국어'};
   const pageLang=(h.lang||'').toLowerCase().startsWith('zh')?'zh':
                  (h.lang||'').toLowerCase().startsWith('ja')?'ja':
@@ -396,7 +396,7 @@ if(cl){
     if(!data){
       const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),12000);
       try{
-        let nextUrl='https://api.github.com/repos/Yuan0-o/Lucent/releases?per_page=100';
+        let nextUrl='https://api.github.com/repos/Lucent-Project/Lucent/releases?per_page=100';
         const raw=[];
         while(nextUrl){
           const res=await fetch(nextUrl,{headers:{Accept:'application/vnd.github+json'},signal:ac.signal});
