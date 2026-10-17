@@ -51,8 +51,8 @@ jobs:
               "https://api.github.com/repos/$REPO/releases/latest" || true)
 
             if [ "$HTTP_CODE" = "200" ]; then
-              IS_PRE=$(jq -r '.prerelease // true' /tmp/rel.json)
-              IS_DRAFT=$(jq -r '.draft // true' /tmp/rel.json)
+              IS_PRE=$(jq -r '.prerelease' /tmp/rel.json)
+              IS_DRAFT=$(jq -r '.draft' /tmp/rel.json)
               TAG=$(jq -r '.tag_name // empty' /tmp/rel.json)
               if [ "$IS_PRE" = "false" ] && [ "$IS_DRAFT" = "false" ] && [ -n "$TAG" ]; then
                 HAS_APK=$(jq -r '[.assets[] | select(.name | test("\\.apk$") and (test("\\.sha256$") | not))] | length' /tmp/rel.json)
@@ -69,7 +69,7 @@ jobs:
             HTTP_CODE=$(curl -sSL -o /tmp/rel_list.json -w "%{http_code}" \
               -H "Accept: application/vnd.github+json" \
               "${AUTH_HEADER[@]}" \
-              "https://api.github.com/repos/$REPO/releases?per_page=30" || true)
+              "https://api.github.com/repos/$REPO/releases?per_page=100" || true)
 
             if [ "$HTTP_CODE" = "200" ]; then
               MATCH=$(jq -c '
