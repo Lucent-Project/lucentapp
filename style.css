@@ -299,6 +299,8 @@ html.js:not(.rv-ready) .rv:not(.on){animation:rv-failsafe .5s ease 2.5s forwards
 .rel-body h4{font-size:16px;margin:20px 0 4px}
 .rel-body p,.rel-body li{font-size:15px}
 .rel-link{display:inline-block;margin-top:10px;font-size:14px;color:var(--accent);text-underline-offset:3px}
+.rel-dl{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 2px}
+.rel-dl .btn{min-height:44px;padding:0 22px;font-size:14.5px}
 
 @media(max-width:720px){.policy-toc ul{columns:1}.prose p,.prose li{font-size:15.5px}.policy{margin-top:48px}}
 

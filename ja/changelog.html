@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#080b16">
 <script>(function(){var h=document.documentElement,t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';try{var s=localStorage.getItem('lucent-theme');if(s==='light'||s==='dark')t=s}catch(e){}h.dataset.theme=t;h.classList.add('js');var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light'?'#eef2fb':'#080b16'})()</script>
 <title>更新履歴 — Lucent</title>
-<meta name="description" content="Lucent の安定版リリースを新しい順に、GitHub からリアルタイムで表示。プレビュー版は初期状態では非表示です。">
+<meta name="description" content="Lucent のすべてのリリース（安定版・プレビュー版）を新しい順に、完全なリリースノート付きで GitHub からリアルタイム表示。">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="Lucent">
 <meta property="og:type" content="website">
 <meta property="og:title" content="更新履歴 — Lucent">
-<meta property="og:description" content="Lucent の安定版リリースを新しい順に、GitHub からリアルタイムで表示。プレビュー版は初期状態では非表示です。">
+<meta property="og:description" content="Lucent のすべてのリリース（安定版・プレビュー版）を新しい順に、完全なリリースノート付きで GitHub からリアルタイム表示。">
 <meta property="og:url" content="https://yuan0-o.github.io/lucentapp/ja/changelog.html">
 <meta property="og:image" content="https://yuan0-o.github.io/lucentapp/assets/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -32,7 +32,7 @@
 <meta property="og:locale:alternate" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="更新履歴 — Lucent">
-<meta name="twitter:description" content="Lucent の安定版リリースを新しい順に、GitHub からリアルタイムで表示。プレビュー版は初期状態では非表示です。">
+<meta name="twitter:description" content="Lucent のすべてのリリース（安定版・プレビュー版）を新しい順に、完全なリリースノート付きで GitHub からリアルタイム表示。">
 <meta name="twitter:image" content="https://yuan0-o.github.io/lucentapp/assets/og-image.png">
 <meta name="twitter:image:alt" content="すりガラス調の背景に Lucent のロゴとワードマーク。下に「Android · Windows · Open source」">
 <link rel="stylesheet" href="../style.css">
@@ -63,13 +63,13 @@
   <div class="wrap">
     <div class="kicker rv">更新履歴</div>
     <h1 class="rv" style="font-size:clamp(44px,7vw,76px)">何が、いつ変わったか</h1>
-    <p class="sub rv">安定版を新しい順に、GitHub からリアルタイムで取得します。このページが古くなることはありません。プレビュー版は、必要なときだけ表示します。</p>
+    <p class="sub rv">安定版もプレビュー版も、すべてのリリースを新しい順に GitHub からリアルタイムで取得します。このページが古くなることはありません。プレビュー版は必要なときだけ表示します。最新の安定版は本サイトのミラーから、その他のバージョンは GitHub からダウンロードできます。</p>
   </div>
 </div>
 
 <section style="padding-top:20px">
   <div class="wrap">
-    <div data-changelog data-l-loading="GitHub からリリースを読み込み中…" data-l-error="いま GitHub に接続できませんでした。同じ内容は Releases ページにあります：" data-l-err-link="GitHub で Releases を開く →" data-l-empty="表示できるリリースはまだありません。" data-l-latest="最新" data-l-preview="プレビュー" data-l-view="GitHub で見る" data-l-no-notes="このバージョンのリリースノートはありません。">
+    <div data-changelog data-l-loading="GitHub からリリースを読み込み中…" data-l-error="いま GitHub に接続できませんでした。同じ内容は Releases ページにあります：" data-l-err-link="GitHub で Releases を開く →" data-l-empty="表示できるリリースはまだありません。" data-l-empty-hint="「プレビュー版を含める」にチェックすると、プレビュー版が表示されます。" data-l-latest="最新" data-l-preview="プレビュー" data-l-view="GitHub で見る" data-l-no-notes="このバージョンのリリースノートはありません。" data-l-dl-android="Android 版をダウンロード" data-l-dl-windows="Windows 版をダウンロード" data-l-dl-gh="GitHub でダウンロード">
       <div class="cl-tools">
         <label><input type="checkbox" data-cl-previews> <span>プレビュー版を含める</span></label>
         <a class="btn ghost" href="https://github.com/Yuan0-o/Lucent/releases" target="_blank" rel="noopener">GitHub のすべてのリリース →</a>

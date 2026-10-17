@@ -187,14 +187,41 @@ if(isDlPage){
     });
   });
 }
-/* changelog: stable releases pulled live from GitHub, built from DOM nodes only (never innerHTML) */
+/* changelog: all releases pulled live from GitHub (stable + preview), built from DOM nodes only (never innerHTML) */
 const cl=$('[data-changelog]');
 if(cl){
   const L=cl.dataset,list=$('[data-cl-list]',cl),status=$('[data-cl-status]',cl),prev=$('[data-cl-previews]',cl);
   const RK='lucent-releases-list',API='https://api.github.com/repos/Yuan0-o/Lucent/releases?per_page=30',ALL='https://github.com/Yuan0-o/Lucent/releases';
+  const isSub=$('script[src*="app.js"]')?.getAttribute('src')?.startsWith('../')||/\/(zh|ja|ko)(\/|$)/.test(location.pathname);
+  const base=isSub?'../':'./';
   const el=(tag,cls,txt)=>{const n=d.createElement(tag);if(cls)n.className=cls;if(txt!=null)n.textContent=txt;return n};
   const fmt=iso=>{try{return new Intl.DateTimeFormat(h.lang||undefined,{year:'numeric',month:'short',day:'numeric'}).format(new Date(iso))}catch(e){return String(iso||'').slice(0,10)}};
   const isPre=r=>!!r.prerelease||/^p/i.test(r.tag_name||'');
+  const mirrorFor=async tag=>{
+    try{
+      const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),3000);
+      const res=await fetch(base+'downloads/version.json',{headers:{Accept:'application/json'},signal:ac.signal});
+      clearTimeout(tm);
+      if(!res.ok)return null;
+      const data=await res.json();
+      const vtag=data.tag_name||data.version;
+      if(vtag&&vtag!==tag)return null;
+      const items=Array.isArray(data.assets)?data.assets:(Array.isArray(data.files)?data.files:[]);
+      const valid=items.filter(a=>!/\.(sha256|sig|asc|txt)$/i.test(a?.name||''));
+      const apk=valid.find(a=>/\.apk$/i.test(a?.name||''));
+      const exe=valid.find(a=>/\.exe$/i.test(a?.name||''));
+      const toUrl=a=>a&&a.name?base+'downloads/'+a.name:(a?.browser_download_url||a?.url||null);
+      const urls={android:toUrl(apk),windows:toUrl(exe)};
+      return (urls.android||urls.windows)?urls:null;
+    }catch(e){return null}
+  };
+  const ghAssets=assets=>{
+    const valid=(assets||[]).filter(a=>!/\.(sha256|sig|asc|txt)$/i.test(a?.name||''));
+    const apk=valid.find(a=>/\.apk$/i.test(a?.name||''));
+    const exe=valid.find(a=>/\.exe$/i.test(a?.name||''));
+    const urls={android:apk?.browser_download_url||null,windows:exe?.browser_download_url||null};
+    return (urls.android||urls.windows)?urls:null;
+  };
   const inline=(s,p)=>{
     const re=/`([^`]+)`|\*\*([^*]+)\*\*|\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g;let i=0,m;
     while((m=re.exec(s))){
@@ -220,7 +247,12 @@ if(cl){
   const draw=()=>{
     const rows=(cl._rel||[]).filter(r=>!r.draft&&(prev.checked||!isPre(r)));
     list.replaceChildren();
-    if(!rows.length){status.hidden=false;status.textContent=L.lEmpty;return}
+    if(!rows.length){
+      status.hidden=false;
+      const hiddenPre=(cl._rel||[]).some(r=>!r.draft&&isPre(r))&&!prev.checked;
+      status.textContent=L.lEmpty+(hiddenPre&&L.lEmptyHint?' '+L.lEmptyHint:'');
+      return;
+    }
     status.hidden=true;
     let latest=true;
     rows.forEach((r,i)=>{
@@ -234,7 +266,13 @@ if(cl){
       const body=el('div','rel-body prose');
       const n=notes(r.body);
       if(n.childNodes.length)body.append(n);else body.append(el('p',0,L.lNoNotes));
-      if(/^https:\/\/github\.com\//.test(r.html_url||'')){const a=el('a','rel-link',L.lView);a.href=r.html_url;a.target='_blank';a.rel='noopener';body.append(a)}
+      if(r._dl&&(r._dl.android||r._dl.windows)){
+        const dl=el('div','rel-dl');
+        if(r._dl.android){const a=el('a','btn ghost',L.lDlAndroid);a.href=r._dl.android;dl.append(a)}
+        if(r._dl.windows){const a=el('a','btn ghost',L.lDlWindows);a.href=r._dl.windows;dl.append(a)}
+        body.append(dl);
+      }
+      if(/^https:\/\/github\.com\//.test(r.html_url||'')){const a=el('a','rel-link',r.tag_name===cl._latestTag?L.lView:L.lDlGh);a.href=r.html_url;a.target='_blank';a.rel='noopener';body.append(a)}
       det.append(body);list.append(det);
     });
   };
@@ -244,19 +282,32 @@ if(cl){
   prev.addEventListener('change',()=>{if(cl._rel)draw()});
   (async()=>{
     status.hidden=false;status.textContent=L.lLoading;
-    let data=read(sessionStorage,15*60*1000);
+    let data=read(sessionStorage,15*60*1000),raw=null;
     if(!data){
       const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),7000);
       try{
         const res=await fetch(API,{headers:{Accept:'application/vnd.github+json'},signal:ac.signal});
         clearTimeout(tm);if(!res.ok)throw new Error(res.status);
-        const json=await res.json();if(!Array.isArray(json))throw new Error('shape');
-        data=json.map(r=>({tag_name:r.tag_name,name:r.name,body:r.body,html_url:r.html_url,published_at:r.published_at,prerelease:r.prerelease,draft:r.draft}));
+        raw=await res.json();if(!Array.isArray(raw))throw new Error('shape');
+        data=raw.map(r=>({tag_name:r.tag_name,name:r.name,body:r.body,html_url:r.html_url,published_at:r.published_at,prerelease:r.prerelease,draft:r.draft,assets:null}));
+        const first=data.find(r=>!r.draft&&!isPre(r));
+        if(first){
+          const full=raw.find(j=>j.tag_name===first.tag_name);
+          first.assets=((full&&full.assets)||[]).map(a=>({name:a.name,browser_download_url:a.browser_download_url}));
+        }
         save(data);
       }catch(e){clearTimeout(tm);data=read(localStorage,6*60*60*1000)}
     }
     if(!data){fail();return}
-    cl._rel=data;draw();
+    cl._rel=data;
+    const latest=data.find(r=>!r.draft&&!isPre(r));
+    if(latest){
+      cl._latestTag=latest.tag_name;
+      let urls=await mirrorFor(latest.tag_name);
+      if(!urls)urls=ghAssets(latest.assets);
+      if(urls)latest._dl=urls;
+    }
+    draw();
   })();
 }
 
