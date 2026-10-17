@@ -252,10 +252,32 @@ if(isDlPage){
 const cl=$('[data-changelog]');
 if(cl){
   const L=cl.dataset,list=$('[data-cl-list]',cl),status=$('[data-cl-status]',cl),prev=$('[data-cl-previews]',cl);
-  const RK='lucent-releases-list',API='https://api.github.com/repos/Yuan0-o/Lucent/releases?per_page=30',LATEST='https://api.github.com/repos/Yuan0-o/Lucent/releases/latest',ALL='https://github.com/Yuan0-o/Lucent/releases';
+  const RK='lucent-releases-v2',ALL='https://github.com/Yuan0-o/Lucent/releases';
+  const LANG_LABELS={zh:'简体中文',ja:'日本語',ko:'한국어'};
+  const pageLang=(h.lang||'').toLowerCase().startsWith('zh')?'zh':
+                 (h.lang||'').toLowerCase().startsWith('ja')?'ja':
+                 (h.lang||'').toLowerCase().startsWith('ko')?'ko':
+                 (/\/(zh|ja|ko)(\/|$)/.exec(location.pathname)?.[1]||'en');
   const el=(tag,cls,txt)=>{const n=d.createElement(tag);if(cls)n.className=cls;if(txt!=null)n.textContent=txt;return n};
   const fmt=iso=>{try{return new Intl.DateTimeFormat(h.lang||undefined,{year:'numeric',month:'short',day:'numeric'}).format(new Date(iso))}catch(e){return String(iso||'').slice(0,10)}};
   const isPre=r=>!!r.prerelease||/^p/i.test(r.tag_name||'');
+  const parseRelease=(body,lang)=>{
+    const text=String(body||'').replace(/\r/g,'');
+    const firstDet=text.indexOf('<details>');
+    const enBody=(firstDet!==-1?text.slice(0,firstDet):text).trim();
+    if(lang==='en')return {title:null,body:enBody};
+    const lbl=LANG_LABELS[lang];
+    if(lbl){
+      const re=new RegExp('<details>\\s*<summary>\\s*'+lbl+'\\s*<\\/summary>([\\s\\S]*?)<\\/details>','i');
+      const m=text.match(re);
+      if(m){
+        const content=m[1].trim();
+        const tm=content.match(/^#{1,6}\s+(.*)$/m);
+        return {title:tm?tm[1].trim():null,body:content};
+      }
+    }
+    return {title:null,body:enBody};
+  };
   const mirrorFor=async tag=>{
     try{
       const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),3000);
@@ -305,7 +327,7 @@ if(cl){
     const f=d.createDocumentFragment();let ul=null,para=null;
     String(md||'').replace(/\r/g,'').replace(/<!--[\s\S]*?-->/g,'').replace(/!\[[^\]]*\]\([^)]*\)/g,'').split('\n').forEach(raw=>{
       const line=raw.trim();let m;
-      if(!line){ul=null;para=null;return}
+      if(!line||line==='---'){ul=null;para=null;return}
       if((m=line.match(/^#{1,6}\s+(.*)$/))){ul=null;para=null;const e=el('h4');inline(m[1],e);f.append(e);return}
       if((m=line.match(/^[-*+]\s+(.*)$/))){para=null;if(!ul){ul=el('ul');f.append(ul)}const li=el('li');inline(m[1],li);ul.append(li);return}
       ul=null;if(!para){para=el('p');f.append(para)}else para.append(' ');inline(line,para);
@@ -323,16 +345,17 @@ if(cl){
     }
     status.hidden=true;
     let latest=true;
-    rows.forEach((r,i)=>{
-      const det=el('details','release glass');if(i===0)det.open=true;
+    rows.forEach(r=>{
+      const det=el('details','release glass');
       const sum=el('summary');
-      sum.append(el('span','rel-title',r.name||r.tag_name));
+      const parsed=parseRelease(r.body,pageLang);
+      sum.append(el('span','rel-title',parsed.title||r.name||r.tag_name));
       if(isPre(r))sum.append(el('span','rel-badge',L.lPreview));
       else if(latest){sum.append(el('span','rel-badge',L.lLatest));latest=false}
       sum.append(el('span','rel-meta',[r.tag_name,r.published_at?fmt(r.published_at):''].filter(Boolean).join(' · ')));
       det.append(sum);
       const body=el('div','rel-body prose');
-      const n=notes(r.body);
+      const n=notes(parsed.body);
       if(n.childNodes.length)body.append(n);else body.append(el('p',0,L.lNoNotes));
       if(r._dl&&(r._dl.android||r._dl.windows)){
         const dl=el('div','rel-dl');
@@ -369,32 +392,47 @@ if(cl){
   prev.addEventListener('change',()=>{if(cl._rel)draw()});
   (async()=>{
     status.hidden=false;status.textContent=L.lLoading;
-    let data=read(sessionStorage,15*60*1000),raw=null;
+    let data=read(sessionStorage,15*60*1000);
     if(!data){
-      const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),7000);
+      const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),12000);
       try{
-        const [res,lres]=await Promise.all([
-          fetch(API,{headers:{Accept:'application/vnd.github+json'},signal:ac.signal}),
-          fetch(LATEST,{headers:{Accept:'application/vnd.github+json'},signal:ac.signal}).catch(()=>null)
-        ]);
-        clearTimeout(tm);if(!res.ok)throw new Error(res.status);
-        raw=await res.json();if(!Array.isArray(raw))throw new Error('shape');
-        data=raw.map(r=>({tag_name:r.tag_name,name:r.name,body:r.body,html_url:r.html_url,published_at:r.published_at,prerelease:r.prerelease,draft:r.draft,assets:null}));
-        if(lres&&lres.ok){
-          try{
-            const l=await lres.json();
-            if(l&&l.tag_name&&!data.some(r=>r.tag_name===l.tag_name)){
-              data.push({tag_name:l.tag_name,name:l.name,body:l.body,html_url:l.html_url,published_at:l.published_at,prerelease:l.prerelease,draft:l.draft,assets:(l.assets||[]).map(a=>({name:a.name,browser_download_url:a.browser_download_url}))});
-            }
-          }catch(e){}
+        let nextUrl='https://api.github.com/repos/Yuan0-o/Lucent/releases?per_page=100';
+        const raw=[];
+        while(nextUrl){
+          const res=await fetch(nextUrl,{headers:{Accept:'application/vnd.github+json'},signal:ac.signal});
+          if(!res.ok)throw new Error(res.status);
+          const chunk=await res.json();
+          if(!Array.isArray(chunk))throw new Error('shape');
+          raw.push(...chunk);
+          const link=res.headers.get('link');
+          const m=link&&link.match(/<([^>]+)>;\s*rel="next"/i);
+          if(m){
+            nextUrl=m[1];
+          }else if(chunk.length===100){
+            const u=new URL(nextUrl);
+            const p=parseInt(u.searchParams.get('page')||'1',10);
+            u.searchParams.set('page',p+1);
+            nextUrl=u.toString();
+          }else{
+            nextUrl=null;
+          }
         }
-        const first=data.find(r=>!r.draft&&!isPre(r));
-        if(first&&!first.assets){
-          const full=raw.find(j=>j.tag_name===first.tag_name);
-          first.assets=((full&&full.assets)||[]).map(a=>({name:a.name,browser_download_url:a.browser_download_url}));
-        }
+        clearTimeout(tm);
+        data=raw.map(r=>({
+          tag_name:r.tag_name,
+          name:r.name,
+          body:r.body,
+          html_url:r.html_url,
+          published_at:r.published_at,
+          prerelease:r.prerelease,
+          draft:r.draft,
+          assets:(r.assets||[]).map(a=>({name:a.name,browser_download_url:a.browser_download_url}))
+        }));
         save(data);
-      }catch(e){clearTimeout(tm);data=read(localStorage,6*60*60*1000)}
+      }catch(e){
+        clearTimeout(tm);
+        data=read(localStorage,6*60*60*1000);
+      }
     }
     if(!data){fail();return}
     cl._rel=data;
