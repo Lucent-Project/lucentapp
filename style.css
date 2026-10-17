@@ -303,3 +303,372 @@ html.js:not(.rv-ready) .rv:not(.on){animation:rv-failsafe .5s ease 2.5s forwards
 @media(max-width:720px){.policy-toc ul{columns:1}.prose p,.prose li{font-size:15.5px}.policy{margin-top:48px}}
 
 @media(prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1}}
+
+/* ==========================================================================
+   Website Phase 2: Beautification Pass
+   Additive enhancements — typography rhythm, gallery framing, hover/focus states
+   ========================================================================== */
+
+/* 1. Long-form typography & layout rhythm (Privacy, Terms, Changelog) */
+.panel.prose,
+.prose {
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.panel.prose > :first-child {
+  margin-top: 0;
+}
+.prose h2 {
+  font-size: clamp(22px, 3vw, 28px);
+  margin-top: 44px;
+  margin-bottom: 12px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.prose h2.policy-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.prose h3 {
+  font-size: clamp(19px, 2.5vw, 23px);
+  margin-top: 36px;
+  margin-bottom: 10px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.prose h4 {
+  font-size: clamp(16px, 2vw, 18px);
+  margin-top: 28px;
+  margin-bottom: 8px;
+}
+.prose p {
+  margin: 14px 0;
+  line-height: 1.82;
+}
+.prose ul,
+.prose ol {
+  margin: 14px 0 16px 1.4em;
+}
+.prose li {
+  margin: 8px 0;
+  line-height: 1.78;
+}
+.prose li::marker {
+  color: var(--accent);
+}
+.prose strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Terms section separation */
+.panel.prose h2:not(:first-of-type) {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--edge);
+}
+
+/* Policy Table of Contents polish */
+.policy-toc {
+  background: linear-gradient(145deg, var(--glass-hi), var(--glass));
+  border: 1px solid var(--rim-lo);
+  box-shadow: 0 10px 32px var(--shadow), inset 0 1px 0 var(--rim-lo);
+  padding: 22px 26px;
+  margin: 24px 0 12px;
+}
+.policy-toc .toc-label {
+  color: var(--accent);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.policy-toc a {
+  padding: 6px 10px;
+  margin: 2px -10px;
+  border-radius: 10px;
+  transition: color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
+}
+@media(hover:hover) and (pointer:fine) {
+  .policy-toc a:hover {
+    color: var(--ink);
+    background: var(--glass-hi);
+    transform: translateX(3px);
+  }
+}
+
+/* Table styling in prose (e.g. Android permissions table in policy) */
+.prose .table-wrap {
+  background: var(--glass);
+  border: 1px solid var(--edge);
+  box-shadow: 0 8px 30px var(--shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  margin: 24px 0;
+}
+.prose table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.prose th {
+  background: var(--glass-hi);
+  font-size: 13.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--rim-lo);
+  padding: 14px 18px;
+}
+.prose td {
+  padding: 14px 18px;
+  transition: background-color 0.15s ease;
+}
+.prose tr:hover td {
+  background: var(--glass);
+}
+.prose blockquote {
+  border-left: 3px solid var(--accent);
+  background: var(--glass);
+  padding: 12px 18px;
+  border-radius: 0 12px 12px 0;
+  margin: 20px 0;
+}
+
+/* Changelog polish */
+.cl-tools {
+  padding: 16px 22px;
+  background: var(--glass);
+  border: 1px solid var(--edge);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px var(--shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  margin-bottom: 24px;
+}
+.cl-status {
+  padding: 18px 22px;
+  border-radius: 16px;
+  background: var(--glass);
+  border: 1px solid var(--edge);
+  margin: 24px 0;
+}
+.release {
+  border: 1px solid var(--edge);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  overflow: hidden;
+}
+.release:hover {
+  border-color: var(--rim-lo);
+}
+.release summary {
+  user-select: none;
+  transition: background-color 0.2s ease;
+}
+@media(hover:hover) and (pointer:fine) {
+  .release summary:hover {
+    background: var(--glass-hi);
+  }
+}
+.release[open] summary {
+  border-bottom: 1px solid var(--edge);
+  background: var(--glass-hi);
+}
+.rel-badge {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.rel-body {
+  padding: 18px clamp(20px, 3.4vw, 32px) 28px;
+}
+.rel-body h4 {
+  font-size: 16.5px;
+  margin: 22px 0 8px;
+  color: var(--ink);
+}
+.rel-body ul {
+  margin: 10px 0 14px 1.25em;
+}
+.rel-body li {
+  margin: 6px 0;
+  color: var(--muted);
+}
+.rel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--edge);
+  background: var(--glass);
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+@media(hover:hover) and (pointer:fine) {
+  .rel-link:hover {
+    background: var(--glass-hi);
+    color: var(--ink);
+    transform: translateX(2px);
+  }
+}
+
+/* 2. Screenshot gallery framing (guaranteed hidden until real images exist) */
+[data-shots][hidden],
+.shots[hidden],
+.shot[hidden] {
+  display: none !important;
+}
+
+.shots {
+  perspective: 1200px;
+  gap: 28px;
+}
+.shot {
+  position: relative;
+  background: linear-gradient(145deg, var(--glass-hi), var(--glass));
+  border: 1px solid var(--rim-lo);
+  box-shadow: 0 20px 60px var(--shadow), inset 0 1px 0 var(--rim);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+}
+.shot[data-device="android"] {
+  border-radius: 40px;
+  padding: 14px;
+  box-shadow: 0 24px 64px var(--shadow), inset 0 0 0 1px var(--edge), inset 0 2px 0 var(--rim);
+}
+.shot[data-device="android"] img {
+  border-radius: 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+.shot[data-device="windows"] {
+  border-radius: 20px;
+  padding: 12px 14px 14px;
+  box-shadow: 0 24px 64px var(--shadow), inset 0 0 0 1px var(--edge), inset 0 1px 0 var(--rim);
+}
+.shot[data-device="windows"] img {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+.shot figcaption {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  padding: 12px 6px 4px;
+}
+@media(hover:hover) and (pointer:fine) {
+  .shot:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 30px 70px var(--shadow), inset 0 1px 0 var(--rim);
+  }
+}
+
+/* 3. Consistent hover & focus states across nav, buttons, cards, links */
+:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 3px !important;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 35%, transparent) !important;
+}
+nav .links a:focus-visible {
+  border-radius: 999px;
+  outline-offset: 2px !important;
+}
+.logo:focus-visible {
+  border-radius: 8px;
+  outline-offset: 4px !important;
+}
+.theme:focus-visible,
+.burger:focus-visible,
+.lang summary:focus-visible {
+  border-radius: 999px;
+  outline-offset: 2px !important;
+}
+.lang .menu a:focus-visible {
+  outline-offset: -2px !important;
+  background: var(--glass-hi);
+}
+.release summary:focus-visible {
+  outline-offset: -2px !important;
+  border-radius: var(--radius);
+}
+.cl-tools input[type="checkbox"]:focus-visible {
+  outline-offset: 2px !important;
+  border-radius: 4px;
+}
+.contact-card:focus-visible,
+.prose a:focus-visible,
+footer a:focus-visible,
+.legal-note a:focus-visible,
+.policy-toc a:focus-visible,
+.rel-link:focus-visible {
+  border-radius: 6px;
+  outline-offset: 2px !important;
+}
+
+@media(hover:hover) and (pointer:fine) {
+  .dl-card,
+  .step,
+  .point {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  }
+  .dl-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 56px var(--shadow), inset 0 1px 0 var(--rim-lo);
+  }
+  .step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 48px var(--shadow), inset 0 1px 0 var(--rim-lo);
+  }
+  .point:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px var(--shadow), inset 0 1px 0 var(--rim-lo);
+  }
+  .btn.ghost:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px var(--shadow), inset 0 0 0 1px var(--rim-lo);
+  }
+  .cl-tools label:hover {
+    color: var(--ink);
+  }
+  .cl-tools .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px var(--shadow);
+  }
+  .repo-strip {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .repo-strip:hover {
+    box-shadow: 0 18px 48px var(--shadow), inset 0 1px 0 var(--rim-lo);
+  }
+  .prose a:hover,
+  .legal-note a:hover,
+  .dl-card .ver a:hover {
+    color: var(--accent);
+  }
+}
+
+/* 4. Preservation of commit 778cb4f (stats locked to 3 columns on mobile) */
+@media(max-width:720px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* 5. Reduced motion support */
+@media(prefers-reduced-motion:reduce) {
+  .shot,
+  .dl-card,
+  .step,
+  .point,
+  .repo-strip,
+  .release,
+  .policy-toc a,
+  .rel-link {
+    transition: none !important;
+    transform: none !important;
+  }
+}
