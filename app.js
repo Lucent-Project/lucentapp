@@ -46,6 +46,7 @@ matchMedia('(prefers-color-scheme: light)').addEventListener?.('change',e=>{
 const setMenu=o=>{nav.classList.toggle('open',o);burger?.setAttribute('aria-expanded',o)};
 burger?.addEventListener('click',()=>{setMenu(!nav.classList.contains('open'));if(lg)lg.open=false});
 lg?.addEventListener('toggle',()=>{if(lg.open)setMenu(false)});
+$$('.lang .menu a').forEach(a=>a.addEventListener('click',()=>{try{var hl=(a.getAttribute('hreflang')||'en').toLowerCase();localStorage.setItem('lucent-lang',hl.indexOf('zh')===0?'zh':hl.indexOf('ja')===0?'ja':hl.indexOf('ko')===0?'ko':'en')}catch(e){}}));
 d.addEventListener('click',e=>{
   if(lg?.open&&!lg.contains(e.target))lg.open=false;
   if(!nav.contains(e.target))setMenu(false);
