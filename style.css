@@ -801,7 +801,9 @@ section#donate {
   }
 }
 
-.rel-pager{display:flex;align-items:center;justify-content:center;gap:36px;margin:26px 0 8px}
+.rel-pager{display:flex;align-items:center;justify-content:center;gap:36px;margin:26px 0 8px;
+  position:static;z-index:auto;isolation:auto;width:auto;border-radius:0;box-shadow:none}
+.rel-pager::before{display:none}
 .rel-pager[hidden]{display:none}
 .rel-pagelink{background:none;border:0;padding:6px 4px;font:inherit;font-size:16px;color:var(--accent);cursor:pointer}
 .rel-pagelink[disabled]{color:var(--faint);cursor:default}
