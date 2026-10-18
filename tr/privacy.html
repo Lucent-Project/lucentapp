@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<script>(function(){try{var K='lucent-lang',p=location.pathname;var LOCALES=['en','zh','zh-Hant','es','ar','fr','pt','ru','de','ja','tr','ko','it','nl'];var m=p.match(/\/(zh-Hant|zh|ja|ko|es|fr|de|pt|ru|it|nl|ar|tr)(\/|$)/);var cur=m?m[1]:'en';var s=null;try{s=localStorage.getItem(K)}catch(e){}var base=p.replace(/\/(zh-Hant|zh|ja|ko|es|fr|de|pt|ru|it|nl|ar|tr)(\/|$)/,'$2');var go=function(t){if(LOCALES.indexOf(t)===-1)t='en';if(t===cur)return;var np=t==='en'?base:base.replace(/\/([^\/]*)$/,'/'+t+'/$1');location.replace(np+location.search+location.hash)};if(s){go(s);return}if(m){try{localStorage.setItem(K,cur)}catch(e){}return}var l=(navigator.language||navigator.userLanguage||'').toLowerCase();if(l){var t='en';if(l.indexOf('zh-hant')===0||l.indexOf('zh-tw')===0||l.indexOf('zh-hk')===0||l.indexOf('zh-mo')===0)t='zh-Hant';else if(l.indexOf('zh')===0)t='zh';else if(l.indexOf('es')===0)t='es';else if(l.indexOf('ar')===0)t='ar';else if(l.indexOf('fr')===0)t='fr';else if(l.indexOf('pt')===0)t='pt';else if(l.indexOf('ru')===0)t='ru';else if(l.indexOf('de')===0)t='de';else if(l.indexOf('ja')===0)t='ja';else if(l.indexOf('tr')===0)t='tr';else if(l.indexOf('ko')===0)t='ko';else if(l.indexOf('it')===0)t='it';else if(l.indexOf('nl')===0)t='nl';go(t);return}var ac=new AbortController(),tm=setTimeout(function(){ac.abort()},3000);fetch('https://ipapi.co/country/',{signal:ac.signal}).then(function(r){clearTimeout(tm);return r.text()}).then(function(c){c=(c||'').trim().toUpperCase();go(c==='CN'||c==='HK'||c==='MO'||c==='TW'?'zh':c==='JP'?'ja':c==='KR'?'ko':'en')}).catch(function(){clearTimeout(tm)})}catch(e){}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#080b16">
+<script>(function(){var h=document.documentElement,t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';try{var s=localStorage.getItem('lucent-theme');if(s==='light'||s==='dark')t=s}catch(e){}h.dataset.theme=t;h.classList.add('js');var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light'?'#eef2fb':'#080b16'})()</script>
+<title>Gizlilik — Lucent</title>
+<meta name="description" content="Lucent gizliliği: cihazınızdan asla ayrılmayan şifrelenmiş bir veritabanı, kaba kuvvet korumalı uygulama kilidi ve taşınabilir parola korumalı yedekler. Vaatler değil, yapısal gizlilik.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://lucent-project.github.io/lucentapp/tr/privacy.html">
+<link rel="alternate" hreflang="en" href="https://lucent-project.github.io/lucentapp/privacy.html">
+<link rel="alternate" hreflang="zh-CN" href="https://lucent-project.github.io/lucentapp/zh/privacy.html">
+<link rel="alternate" hreflang="ja" href="https://lucent-project.github.io/lucentapp/ja/privacy.html">
+<link rel="alternate" hreflang="ko" href="https://lucent-project.github.io/lucentapp/ko/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://lucent-project.github.io/lucentapp/privacy.html">
+<meta property="og:site_name" content="Lucent">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gizlilik — Lucent">
+<meta property="og:description" content="Lucent gizliliği: cihazınızdan asla ayrılmayan şifrelenmiş bir veritabanı, kaba kuvvet korumalı uygulama kilidi ve taşınabilir parola korumalı yedekler. Vaatler değil, yapısal gizlilik.">
+<meta property="og:url" content="https://lucent-project.github.io/lucentapp/tr/privacy.html">
+<meta property="og:image" content="https://lucent-project.github.io/lucentapp/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Buzlu cam arka plan üzerinde Lucent logosu ve yazı işareti: Android · Windows · Açık kaynak">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gizlilik — Lucent">
+<meta name="twitter:description" content="Lucent gizliliği: cihazınızdan asla ayrılmayan şifrelenmiş bir veritabanı, kaba kuvvet korumalı uygulama kilidi ve taşınabilir parola korumalı yedekler. Vaatler değil, yapısal gizlilik.">
+<meta name="twitter:image" content="https://lucent-project.github.io/lucentapp/assets/og-image.png">
+<meta name="twitter:image:alt" content="Buzlu cam arka plan üzerinde Lucent logosu ve yazı işareti: Android · Windows · Açık kaynak">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i class="orb a"></i><i class="orb b"></i><i class="orb c"></i><i class="orb d"></i></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="index.html">Lucent</a>
+    <div class="links" id="menu">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="features.html">Özellikler</a>
+      <a href="download.html">İndir</a>
+      <a href="privacy.html" class="active" aria-current="page">Gizlilik</a>
+      <a href="about.html">İletişim</a>
+    </div>
+    <div class="tools">
+      <details class="lang"><summary aria-label="Dil"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg><span>TR</span></summary><div class="menu"><a href="../privacy.html" lang="en" hreflang="en">English</a><a href="../zh/privacy.html" lang="zh-CN" hreflang="zh-CN">简体中文</a><a href="../zh-Hant/privacy.html" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a><a href="../es/privacy.html" lang="es" hreflang="es">Español</a><a href="../ar/privacy.html" lang="ar" hreflang="ar">العربية</a><a href="../pt/privacy.html" lang="pt" hreflang="pt">Português</a><a href="../fr/privacy.html" lang="fr" hreflang="fr">Français</a><a href="../ru/privacy.html" lang="ru" hreflang="ru">Русский</a><a href="../de/privacy.html" lang="de" hreflang="de">Deutsch</a><a href="../ja/privacy.html" lang="ja" hreflang="ja">日本語</a><a href="privacy.html" lang="tr" hreflang="tr" class="cur" aria-current="true">Türkçe</a><a href="../ko/privacy.html" lang="ko" hreflang="ko">한국어</a><a href="../it/privacy.html" lang="it" hreflang="it">Italiano</a><a href="../nl/privacy.html" lang="nl" hreflang="nl">Nederlands</a></div></details>
+      <button class="theme" type="button" aria-label="Açık / koyu temayı değiştir"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg></button>
+      <button class="burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="kicker rv">GİZLİLİK</div>
+    <h1 class="rv" style="font-size:clamp(44px,7vw,76px)">Yapısal,<br>sadece sözde değil</h1>
+    <p class="sub rv">Gizlilik konusunda herkes <em>söz verebilir</em>. Lucent, gizliliği ihlal etmenin çaba gerektireceği şekilde inşa edilmiştir — mimaride verilerinizin gidebileceği hiçbir yer yoktur.</p>
+  </div>
+</div>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+
+    <div class="panel glass rv center" style="margin-top:0">
+      <p class="lead" style="font-size:clamp(20px,3vw,28px);color:var(--ink);max-width:780px;margin:0 auto;line-height:1.7">Siz dışa aktarmadıkça veya bir modele bakması için bir neden vermedikçe cihazdan hiçbir şey ayrılmaz. <span class="grad-text" style="font-weight:700">Bu kısa özettir — politikanın tam metni aşağıdadır ve kod bununla birebir örtüşmektedir.</span></p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">01 — DURAĞAN HALDE ŞİFRELİ</div>
+      <h2>Veritabanı <span class="grad-text">zırh</span> kuşanır</h2>
+      <p class="body">Notlarınız <strong>SQLCipher ile şifrelenmiş bir veritabanında</strong> yaşar; ekler tek tek şifrelenir. Kritik yollar — PBKDF2 anahtar türetimi ve AES-256-GCM — JNI aracılığıyla Rust içinde çalışır ve uygulamanın yerel bir kütüphaneye asla rehin kalmaması için birebir aynı Kotlin yedeklerine sahiptir. Kilidi açık telefonunuzu birinin elinde tutması ayrı bir şeydir; birinin <em>dosyalarınızı</em> ele geçirmesi ise anlamsız gürültüden başka bir şey vermez.</p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">02 — UYGULAMA KİLİDİ</div>
+      <h2>Hataları <span class="grad-text">sayan</span> bir kilit</h2>
+      <p class="body">Bu kibar bir rica değil, gerçek bir kaba kuvvet koruma politikasıdır: <strong>kademeli olarak artan bekleme süreleri, yeniden başlatmalardan sonra da korunan kalıcı bir sayaç</strong>, isteğe bağlı bir güvenlik sorusu, isteğe bağlı kendi kendini imha — ve tüm bekleme süresi boyunca devre dışı kalan Android parmak izi ile masaüstü Windows Hello doğrulaması. Çok fazla yanlış tahminde bulunursanız, uygulama pazarlık yapmayı tamamen bırakır.</p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">03 — SİZİNLE BİRLİKTE AYRILAN YEDEKLER</div>
+      <h2>Tek dosya. Cebiniz. <span class="grad-text">Parolanız.</span></h2>
+      <p class="body">Yedekler; notları, görevleri, geçmişi, sohbetleri, ekleri ve ayarları cihazlar arasında taşıyan tek bir <strong>.lcb dosyasıdır</strong> — tek bir öğe bile değiştirilmeden önce önizlenir, otomatik çalışacak şekilde ayarlanabilir ve parola ile korunabilir. Kimsenin okuyamadığı bir yedek, bir yedekten ziyade bir hatıradır; bu nedenle bu dosya dışarı çıkarken de içeri girerken de kontrol edilir.</p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">04 — VARSAYILAN OLARAK KAPALI</div>
+      <h2>Önce <span class="grad-text">sormayız bile</span></h2>
+      <p class="body">Paylaşım menüsü entegrasyonu: <strong>kapalı</strong>. Tanılama: <strong>kapalı</strong> ve açıldığında yerel olarak tutulur. Bağlayacağınız asistan servisleri tamamen sizin seçiminizdir. Bulut yansıtma, WebDAV üzerinden kendinizin yapılandırdığı bir modüldür — sizin sunucunuz, sizin kurallarınız. Bu uygulamada "varsayılan olarak etkinleştirilmiş, üç menü derine gömülmüş" hiçbir şey yoktur.</p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">05 — MODELİNİZ, VERİLERİNİZ</div>
+      <h2>Asistan yalnızca <span class="grad-text">gösterdiğiniz şeyi</span> görür</h2>
+      <p class="body">Bulut modelleri yalnızca önlerine koyduğunuz şeyi görür — arka planda hiçbir şey senkronize edilmez, dizine eklenmez veya "iyileştirilmez". Tam bir inziva modunu mu tercih ediyorsunuz? Yerel olarak bir .gguf çalıştırın; ağ bağlantısı tamamen kapalı kalabilir. Şifrelemenin bilinçli tek istisnası Markdown, Word, PDF veya Excel'e <strong>dışa aktarmadır</strong> — başka herhangi bir yerde açabileceğiniz bir dosya elde etmek, zaten dışa aktarmanın asıl amacıdır.</p>
+      <div class="cta" style="justify-content:flex-start">
+        <a class="btn ghost" data-policy-link href="#policy">Gizlilik politikasının tamamını okuyun ↓</a>
+      </div>
+    </div>
+
+    <!--policy:start-->
+<div class="policy" id="policy">
+<div class="panel glass prose">
+<div class="kicker">POLİTİKANIN TAM METNİ</div>
+<h2 class="policy-title">Lucent Gizlilik Politikası</h2>
+<p>Lucent, Android ve Windows için bir not ve görev uygulamasıdır. Bu politika, uygulamanın neleri sakladığını, cihazınızın dışına neleri gönderdiğini ve her ikisini nasıl kontrol ettiğinizi açıklar. Lucent'i bu depoda derlendiği haliyle tanımlar.</p>
+<p class="meta"><strong>Son güncelleme: 25 Eylül 2026</strong></p>
+<nav class="policy-toc" aria-label="İçindekiler"><p class="toc-label">İçindekiler</p><ul><li><a href="#policy-1">1. Kısa özet</a></li><li><a href="#policy-2">2. Bu politikanın kaynağı</a></li><li><a href="#policy-3">3. Lucent cihazınızda neleri saklar</a></li><li><a href="#policy-4">4. Cihazınızdan asla ayrılmayanlar</a></li><li><a href="#policy-5">5. Verilerin cihazınızdan ayrıldığı durumlar</a></li><li><a href="#policy-6">6. Yedekler</a></li><li><a href="#policy-7">7. Cihaz entegrasyonu</a></li><li><a href="#policy-8">8. Lucent'in talep ettiği izinler</a></li><li><a href="#policy-9">9. Elinizdeki denetimler</a></li><li><a href="#policy-10">10. Saklama ve silme</a></li><li><a href="#policy-11">11. Çocuklar</a></li><li><a href="#policy-12">12. Bu politikadaki değişiklikler</a></li><li><a href="#policy-13">13. İletişim</a></li></ul></nav>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-1">1. Kısa özet</h3>
+<ul><li>Lucent'te hesap yoktur, kaydolma yoktur ve geliştirici tarafından işletilen bir sunucu yoktur. Geliştiricinin notlarınızı, görevlerinizi, dosyalarınızı veya kullanım verilerinizi alabileceği hiçbir mekanizma bulunmamaktadır.</li><li>Notlar, görevler, not defterleri, kontrol listeleri, sürüm geçmişi, asistan sohbetleri, ekler, API anahtarları ve ayarlar cihazınızda saklanır ve durağan halde şifrelenir.</li><li>Uygulama hiçbir analiz, reklam veya telemetri içermez.</li><li>Ağ kullanan her özellik isteğe bağlıdır ve varsayılan olarak kapalıdır: bulut asistanı, web araması, anlamsal arama, bulut yedekleme ve otomatik güncelleme kontrolleri.</li><li>Bulut asistanını kullandığınızda mesajınız, doğrudan cihazınızdan API anahtarını sağladığınız sağlayıcıya gider. Lucent üzerinden geçmez.</li><li>İsteğe bağlı cihaz içi model tamamen cihazınızda yanıt verir ve hiçbir yere hiçbir şey göndermez.</li></ul>
+<p>Bu belgenin geri kalanı, sınırlamalar da dahil olmak üzere bu maddelerin her birini ayrıntılı olarak açıklamaktadır.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-2">2. Bu politikanın kaynağı</h3>
+<p>Lucent, Jessica Martinez tarafından geliştirilmiştir. Bu politika veya uygulamanın verileri işlemesiyle ilgili sorular <strong>yuan47578@gmail.com</strong> adresine iletilebilir.</p>
+<p>Lucent, MIT Lisansı altında yayınlanan özgür bir yazılımdır. Geliştirici, kullanıcı verilerini toplayan veya depolayan hiçbir hizmet işletmemektedir ve uygulamanın hiçbir sunucu bileşeni yoktur.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-3">3. Lucent cihazınızda neleri saklar</h3>
+<p>Lucent'te oluşturduğunuz her şey uygulamanın cihazdaki kendi özel depolama alanında bulunur. Bu depolama alanı diğer sıradan uygulamalar tarafından okunamaz ve uygulamayı kaldırdığınızda veya verilerini temizlediğinizde silinir.</p>
+<p>Saklanan materyaller şunları içerir:</p>
+<ul><li>notlar (metinleri, biçimlendirmeleri, etiketleri, renkleri, sabitleme ve arşiv durumları, kontrol listeleri, çizimler, bağlantılar ve sürüm geçmişi dahil);</li><li>görevler (alt görevler, öncelikler, bitiş tarihleri, tekrar kuralları, hatırlatıcılar, notlar ve sürüm geçmişi dahil);</li><li>not defterleri ve bunların altında dosyalanan öğeler;</li><li>asistan sohbetleri ve mesajları (modelin döndürdüğü akıl yürütme izleri dahil);</li><li>bir nota veya göreve eklediğiniz ekler ve asistana gönderdiğiniz dosyalar;</li><li>içe aktarılan yazı tipleri ve içe aktarılan yerel model dosyaları;</li><li>ayarlar (seçtiğiniz sağlayıcı, temel URL, model adı, API anahtarları, yedekleme parolası, uygulama kilidi kimlik bilgileri ve bulut yedekleme kimlik bilgileri dahil);</li><li>tanılama günlük kaydını açtıysanız tanılama kayıtları.</li></ul>
+<h4 id="policy-3-1">3.1 Durağan halde şifreleme</h4>
+<p>Veritabanı SQLCipher ile şifrelenir. Android'de uygulama SQLCipher üzerinde Room kullanır; Windows'ta SQLCipher şifresi ve aynı tür 256 bit anahtarla yapılandırılmış paketlenmiş JDBC sürücüsü aracılığıyla SQLite kullanır. Notlar, görevler, sohbetler, geçmiş ve ayarlar bu veritabanının içindedir.</p>
+<p>Ekler ayrı olarak şifrelenir. Her dosya diske yazılmadan önce 64 KiB'lık parçalar halinde kimlik doğrulamalı bir AES-256-GCM kapsayıcısında saklanır. Diskteki dosya adı uygulamada gördüğünüz ad değil, rastgele bir tanımlayıcıdır.</p>
+<p>Yedekler de her zaman şifrelenir; bkz. Bölüm 6.</p>
+<h4 id="policy-3-2">3.2 Anahtarlar ve sırlar</h4>
+<p>Veritabanı anahtarı ve ek anahtarı, cihazınızda oluşturulan rastgele 256 bitlik değerlerdir. Yazdığınız hiçbir şeyden türetilmezler ve diske düz metin olarak yazılmazlar. Android'de cihazın sağladığı donanım destekli (Keystore kullanılamadığında makineye özel yedek korumalı) Android Keystore tarafından tutulan bir anahtarla sarmalanırlar. Keystore ile ilgili bir sorunun verilerinizi yok etmemesi için her anahtarın bir kurtarma kopyası tutulur.</p>
+<p>API anahtarları, WebDAV parolaları, yedekleme parolası ve uygulama kilidi kimlik bilgileriniz düz metin olarak değil, aynı şifrelenmiş gizli yol üzerinden saklanır. Uygulama kilidi parolanız ve güvenlik sorusu cevabınız asla kaydedilmez: yalnızca tuzlanmış bir karma (salted hash) tutulur ve parolanın kendisi bundan kurtarılamaz.</p>
+<h4 id="policy-3-3">3.3 Şifrelemenin yapabilecekleri ve yapamayacakları</h4>
+<p>Buradaki şifreleme durağan verileri korur: veritabanının bir kopyası, bir ek dosyası veya cihazdan alınan bir yedek anahtar olmadan okunamaz. Ancak işletim sistemi hesabınızla kilidi açık cihazınızı kullanan birine karşı koruma sağlamaz ve uygulama açıkken verileri koruyamaz; çünkü şifresi çözülen içerik görüntülenirken veya düzenlenirken zorunlu olarak cihazın belleğinde bulunur.</p>
+<p>Lucent bu konuda dürüsttür. Şifreleme kütüphanesi yüklenemezse veya bir veritabanı şifrelenemez ya da açılamazsa, uygulama başarı iddia etmek yerine durumu kaydeder ve bildirir; Ayarlar, değerlerin mühürlendiğini ve doğru şekilde açıldığını doğrulayan bir şifreleme kontrolü sunar. Bir veritabanının şifresi saklanan anahtarla çözülemezse, Lucent onu silmek yerine kenara ayırır ve yedekten geri yükleyebilmeniz için size haber verir.</p>
+<p>Android'deki ana ekran widget'ları, başlatıcınızda not veya görev başlıklarını gösterir. Bir widget'ın gösterdiği her şey, o ekranı görebilen herkes tarafından görülebilir. Widget'lar isteğe bağlıdır ve kaldırılabilir.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-4">4. Cihazınızdan asla ayrılmayanlar</h3>
+<p>Varsayılan olarak hiçbir şey ayrılmaz. Lucent; notlar, görevler, hatırlatıcılar, geçmiş, ekler, yerel arama veya cihaz içi asistan için ağ bağlantısı gerektirmez.</p>
+<p>Özellikle, Lucent hiçbir analiz SDK'sı, reklam SDK'sı, kilitlenme bildirme hizmeti veya izleme tanımlayıcısı içermez. Hiçbir yere gönderilen bir hesap sistemi veya cihaz parmak izi yoktur. Kilitlenme Kalkanı (Crash Shield) açıldığında yakalanan hataları cihazdaki yerel bir günlük dosyasına yazar ve iletmez. Tanılama günlükleri de aynı şekilde çalışır: varsayılan olarak kapalıdır, yerel olarak yazar ve yalnızca siz dışa aktarıp dosyayı paylaşmayı seçerseniz herhangi bir yere gönderilir.</p>
+<p>Lucent sunucusu olmadığı için, geliştiricinin verilerinizi okuma ve sizin için kurtarma imkânı yoktur.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-5">5. Verilerin cihazınızdan ayrıldığı durumlar</h3>
+<p>Aşağıdakilerin her biri isteğe bağlıdır, varsayılan olarak kapalıdır ve sizin denetiminizdedir. Bunlardan biri etkin olduğunda veriler, uygulamadan doğrudan yapılandırdığınız üçüncü tarafa gider; hiçbir Lucent hizmetinden geçmez, çünkü böyle bir hizmet mevcut değildir.</p>
+<h4 id="policy-5-1">5.1 Bulut asistanı (kendi anahtarınızı getirin)</h4>
+<p>Bulut modundaki asistan, sağladığınız bir API anahtarını ve seçtiğiniz bir sağlayıcıyı kullanır. Lucent; OpenAI uyumlu, Anthropic uyumlu ve Google uyumlu uç noktaların istek formatlarını akıcı bir şekilde konuşur; DeepSeek ve kendi barındırdığınız ağ geçitleri dahil her OpenAI uyumlu adres çalışır. Birden fazla sağlayıcı profili tutabilir ve aralarında geçiş yapabilirsiniz.</p>
+<p>Bir mesaj gönderdiğinizde Lucent, cihazınızdan yapılandırdığınız temel URL'ye bir HTTPS isteğinde bulunur. Bu istek şunları içerir:</p>
+<ul><li>mesaj metniniz;</li><li>mevcut hafıza ayarının dahil ettiği sohbet geçmişi;</li><li>asistanın davranışını tanımlayan sistem talimatları;</li><li>mesaja eklediğiniz tüm dosyalar;</li><li>asistanın yanıt vermek için ihtiyaç duyduğu not, görev, not defteri veya arama bağlamı ile asistanın çağırmasına izin verilen araçların sonuçları.</li></ul>
+<p>API anahtarınız ilgili sağlayıcıya isteğin kimlik doğrulama başlığı olarak gönderilir. Başka hiçbir yere gönderilmez. Aldığı metinle ne yaptığını anlamak için seçilen sağlayıcının kendi gizlilik politikasını okuyun; bu koşullar siz ve o sağlayıcı arasındadır ve Lucent'in bunlar üzerinde hiçbir görünürlüğü veya kontrolü yoktur.</p>
+<p>Asistan verilerinizi sessizce değiştiremez. Herhangi bir şey yazmadan önce ne yapmayı planladığını size gösterir ve bu onay adımı varsayılan olarak açıktır. Araçlar isteğe bağlıdır: yerel modelin kendi araç anahtarı vardır ve bulut asistanının araç erişimi kapatabileceğiniz bir ayardır. Herhangi birini kapatmak modelin sohbet edebileceği ancak notlarınızı ve görevlerinizi okuyup değiştiremeyeceği anlamına gelir.</p>
+<h4 id="policy-5-2">5.2 Web araması</h4>
+<p>Web araması varsayılan olarak kapalıdır. Açtığınızda ve asistan bir arama yapılması gerektiğine karar verdiğinde, Lucent arama sorgusunu herkese açık bir arama motoruna gönderir. Hangi motorun kullanılacağını siz seçebilir veya biri yanıt verene kadar sırayla deneyen Otomatik modda bırakabilirsiniz: Bing, DuckDuckGo, Google, Brave, Mojeek, Yandex, Baidu, Sogou, 360 Search ve Wikipedia arama API'si. Hiçbir arama API anahtarı kullanılmaz ve hiçbir hesap oluşturulmaz. Sorgu metni cihazınızdan ayrılır; sonuçlar asistana geri döner ve yanıtına dahil edilir. Yanıt veren motor sorguyu ve IP adresinizi görür. Web araması ajan modunu ve yerel modelde araç anahtarını gerektirir; Karartma Modu (Blackout Mode) aramayı tamamen engeller.</p>
+<h4 id="policy-5-3">5.3 Anlamsal arama</h4>
+<p>Lucent'in anlamsal araması kullandığınız asistanı takip eder, bu yüzden ekstra bir seçim yapmanız gerekmez. Yerel model aktif asistan iken indeksleme cihazda kalır ve mevcut derlemede uygulanmadığı için dışarı hiçbir şey çıkmaz. Bulut modeli aktifken indekslenen metin, her bir vektörü üretmek için yapılandırılmış yapay zekâ sağlayıcınızın embeddings uç noktasına gönderilir; bu da not metninin cihazınızdan ayrıldığı anlamına gelir. İki model arasında geçiş yapmak bu davranışı da beraberinde değiştirir.</p>
+<h4 id="policy-5-4">5.4 Bulut yedekleme</h4>
+<p>Bulut yedekleme varsayılan olarak kapalıdır. Açarsanız, halihazırda bir hesabınızın bulunduğu WebDAV uyumlu bir hizmetin (Nutstore, Nextcloud, Koofr veya başka herhangi bir WebDAV sunucusu) adresini, kullanıcı adını ve parolasını sağlarsınız. Lucent, <code>.lcb</code> yedekleme dosyalarınızı o sunucuda belirttiğiniz klasöre yükler ve geri yükleme için bunları listeleyip indirebilir. Dosyalar yüklenmeden önce şifrelenir; hizmet şifrelenmiş dosyayı depolar ve girdiğiniz kimlik bilgileri kimlik doğrulaması için o hizmete gönderilir. Otomatik bulut yüklemesi ayrı bir anahtardır ve o da varsayılan olarak kapalıdır.</p>
+<h4 id="policy-5-5">5.5 Güncelleme kontrolleri</h4>
+<p>Otomatik güncelleme denetimi varsayılan olarak kapalıdır. Açtığınızda veya Lucent'ten kontrol etmesini istediğinizde uygulama, bu depo için herkese açık GitHub releases API'sinden en son sürüm bilgilerini ister ve sürüm numaralarını karşılaştırır. İstek, herhangi bir HTTPS isteğinin taşıdığı IP adresiniz ve Lucent adını taşıyan kullanıcı aracısı (User-Agent) gibi standart bilgiler dışında hiçbir kişisel veri içermez. Daha yeni bir sürüm varsa Lucent bunu önerir; yükleyici veya APK yalnızca siz güncellemeyi seçerseniz GitHub'dan indirilir.</p>
+</div>
+<div class="panel glass prose">
+<h4 id="policy-5-6">5.6 Paylaşım ve dışa aktarmalar</h4>
+<p>Lucent kendi kendine dışarı hiçbir şey göndermez. İki özellik verileri diğer uygulamalara aktarır ve her ikisi de sizin denetiminizdedir:</p>
+<ul><li><strong>Dışa aktarma.</strong> Bir notu veya görevi Markdown, Word, PDF veya Excel'e aktarmak ya da bir yedeği dışa aktarmak, konumunu sizin belirlediğiniz bir dosya yazar. Dışa aktarılan belgeler bilinçli olarak şifrelenmez; çünkü dışa aktarmanın amacı başka bir yerde okunabilmesidir. O dosyayı edinen herkes okuyabilir. Uygun gördüğünüz bir yerde saklayın.</li><li><strong>Paylaşım sayfası entegrasyonu.</strong> Lucent'i bir paylaşım hedefi yapmak varsayılan olarak kapalıdır. Açtığınızda metin ve dosyaların Lucent'e aktarılabilmesi için diğer uygulamaların paylaşım sayfalarında görünür ve sisteminizin paylaşım sayfasında bir hedef olarak yer alır. Lucent'e paylaşılan içerik, diğer her şey gibi aynı şifreli veritabanında saklanır. Lucent yine de kendiliğinden dışarı hiçbir şey göndermez.</li></ul>
+<h4 id="policy-5-7">5.7 Cihaz içi model</h4>
+<p>Bir GGUF modelini içe aktarırsanız, asistan bunu doğrudan cihaz üzerinde llama.cpp ile çalıştırabilir. Bu modda hiçbir yere hiçbir şey gönderilmez: yanıt üretilmesinde hiçbir hesap, hiçbir API anahtarı ve hiçbir ağ isteği yer almaz. Model dosyası cihazınızda kalır ve uygulamadan çıktığınızda model bellekten kaldırılır. Yerel araçlar ayrı bir anahtardır ve varsayılan olarak kapalıdır. GPU hızlandırması isteğe bağlıdır ve kapatılabilir.</p>
+<h4 id="policy-5-8">5.8 Ajan araç seti</h4>
+<p>Notların ve görevlerin ötesinde asistana gerçek bir araç seti verilebilir: okuyup yazabileceği bir çalışma alanı klasörü, kabuk komutları, belgeler, eklentiler ve dış hizmetlere bağlantılar. Bunların her biri Ayarlar → Gelişmiş → Araç Seti bölümünde ayrı birer anahtardır ve cihazınızın dışına uzanan kısımlar yalnızca siz açtığınızda çalışır ve varsayılan olarak önce size sorar.</p>
+<ul><li><strong>Çalışma alanı.</strong> Tek bir klasör seçersiniz. Asistanın okuduğu veya yazdığı her şey onun içinde kalır. "Çalışma alanı dışı" iznini vermediğiniz sürece dışarıdaki dosyalar reddedilir ve dışarıdaki hiçbir şeye asla yazılamaz.</li><li><strong>Komutlar.</strong> Bir kabuk komutu çalıştırmak, siz bu izni değiştirmedikçe önce size sorar. Komutlar çalışma dizini çalışma alanının içinde olacak şekilde, belirlediğiniz bir zaman aşımıyla makinenizde çalışır ve her biri etkinlik günlüğüne yazılır.</li><li><strong>Belgeler.</strong> Word, Excel ve PowerPoint dosyaları Lucent'in kendi kodu tarafından cihazınızda okunur ve yazılır. Hiçbir noktada bir dosyayı dönüştürmek veya oluşturmak için dışarıya hiçbir şey yüklenmez.</li><li><strong>Eklentiler.</strong> İsteğe bağlı araçlar — bir Linux kullanıcı alanı, belge kütüphanelerine sahip Python, LibreOffice, Node.js, medya ve OCR araçları — yalnızca siz talep ettiğinizde, ana projeden veya herkese açık bir yansıdan doğrudan kendi depolama alanınıza indirilir. Lucent bunlar hakkında hiçbir telemetri göndermez.</li><li><strong>Bağlantılar.</strong> GitHub, Notion, Slack, Google Drive, OneDrive, GitLab, Jira, Linear, WebDAV ve eklediğiniz herhangi bir MCP sunucusuna sağladığınız bir belirteçle (token) doğrudan cihazınızdan erişilir. Yalnızca talep ettiğiniz istek gönderilir ve yalnızca yapılandırdığınız hizmete gider. Lucent'in arada kendine ait bir sunucusu yoktur ve belirteçleri cihazınızda şifreli olarak saklar.</li><li><strong>Belirteçler ve ayrıcalıklı kabuk.</strong> GitHub erişim belirteçleri şifrelenmiş olarak saklanır ve bir kez kaydedildikten sonra asla tekrar gösterilmez; beş taneye kadar tutabilirsiniz. Android'de asistana Shizuku izni vermek varsayılan olarak kapalı olan bağımsız bir anahtardır ve ancak o zaman bir komut bu ayrıcalıklarla çalışabilir.</li><li><strong>Alt ajan raporları.</strong> Manuel olarak kaydettiğiniz bir alt ajan raporu, cihazınızdaki çalışma alanının <code>sub-agents</code> klasöründe bir Markdown dosyası olarak yazılır ve hiçbir yere hiçbir şey gönderilmez.</li><li><strong>Cihaz kontrolü (Android).</strong> Etkinleştirip erişilebilirlik hizmetini açarsanız asistan ekranı okuyabilir, dokunabilir, yazabilir, ekran görüntüsü alabilir, uygulamaları listeleyip açabilir, bildirimleri okuyabilir, panoyu ve sensörleri kullanabilir. Ekran okuma cihazda gerçekleşir; yalnızca onu içeren bir araç sonucu seçtiğiniz asistan sağlayıcısına giderse cihazdan çıkar; bu da gönderdiğiniz diğer tüm mesajlarla aynı kanaldır.</li><li><strong>Yerelde kalanlar.</strong> Çalışma alanı, bir dosya değiştirilmeden önce alınan anlık görüntüler, etkinlik günlüğü, hatırlanan gerçekler ve beceri dosyalarının tümü cihazınızda kalır. Etkinlik günlüğü araç adını, bağımsız değişkenleri (300 karaktere kısaltılmış) ve sonucu kaydeder; şifreli olarak saklanır ve aynı ayarlar sayfasından herhangi bir zamanda temizlenebilir.</li></ul>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-6">6. Yedekler</h3>
+<p>Yedek, sizin oluşturduğunuz tek bir <code>.lcb</code> dosyasıdır. Notları, görevleri, sürüm geçmişini, not defterlerini, sohbetleri, ekleri, ayarları ve API anahtarlarını, isteğe bağlı olarak içe aktarılan yazı tiplerini ve yerel model dosyalarını içerebilir. Bunlardan hangilerinin dahil edileceğini ve dosyanın nereye yazılacağını siz seçersiniz.</p>
+<p>Her <code>.lcb</code> dosyası her zaman şifrelenir. İki mod vardır:</p>
+<ul><li><strong>Parolasız.</strong> Dosya uygulamanın yerleşik anahtarıyla şifrelenir. Lucent yüklü herhangi bir cihazda yalnızca dosya ile geri yüklenir; bu kullanışlıdır ancak dosyayı ve uygulamanın bir kopyasını elinde bulunduran herkesin okuyabileceği anlamına da gelir.</li><li><strong>Parolalı.</strong> Anahtar, parolanızdan 210.000 yineleme üzerinden PBKDF2-HMAC-SHA256 ile türetilir ve başka hiçbir yerde bulunmaz. Bu daha güçlüdür ve olağan dengesi vardır: dosyayı geri yüklemek için aynı parola gerekir, hiçbir yerde saklanmaz ve unutulan bir parola geliştirici dahil hiç kimse tarafından kurtarılamaz.</li></ul>
+<p>Parola korumalı bir yedek, parolanın daha sonra kurtarılabilmesi için isteğe bağlı olarak bir güvenlik sorusu ve cevabı taşıyabilir. Bu seçenek varsayılan olarak kapalıdır ve yedeği yalnızca parola ve cevaptan daha zayıf olanı kadar güçlü kılar; bu nedenle cevabını başka kimsenin bilmediği bir soru seçin.</p>
+<p>Otomatik yedeklemeler etkinleştirdiğinizde seçtiğiniz bir klasöre yazar, belirlediğiniz sayıda kopyayı saklar ve yapılandırılmış WebDAV klasörünüze de yükleyebilir. Yedekleme dosyasının kendisi her durumda aynı şifreli kapsayıcıdır. Yedekleme dosyalarınızın nerede bulunacağı ve kaç kopya olacağı tamamen sizin kararınızdır; bunları silmek de öyle.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-7">7. Cihaz entegrasyonu</h3>
+<p>Lucent'in ayrıcalıklı kabuk entegrasyonu isteğe bağlıdır, varsayılan olarak kapalıdır ve Lucent dışındaki yazılımları ve izinleri gerektirir.</p>
+<p>Android'de uygulama, Shizuku'yu yüklediğinizde, hizmetini başlattığınızda ve sistemde Lucent'e izin verdiğinizde ayrıcalıklı işlemleri çalıştırmak için Shizuku'yu kullanabilir. Bu, indirdiğiniz bir uygulama güncellemesini yüklemek gibi sıradan uygulamaların kendi başlarına gerçekleştiremeyeceği açıkça talep ettiğiniz işlemleri gerçekleştirmek için vardır. Lucent Shizuku'yu başlatamaz, kendine izin veremez ve siz entegrasyonu etkinleştirip izni vermediğiniz sürece bu yol üzerinden hiçbir şey yapmaz. İzni istediğiniz zaman Shizuku'da veya Android'in ayarlarında iptal edebilir ve entegrasyonu Lucent'te kapatabilirsiniz. Elde edilen ayrıcalıklı kimliğin gerçekte ne olduğu, elde ettiği uid değerini gösteren uygulama içinde doğrulanabilir.</p>
+<p>Lucent ayrıca her biri belirtilen bir amaç için ihtiyaç duyduğu sıradan Android izinlerini de bildirir; bkz. Bölüm 8.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-8">8. Lucent'in talep ettiği izinler</h3>
+<div class="table-wrap"><table><thead><tr><th>İzin</th><th>Lucent bunu neden ister</th></tr></thead><tbody><tr><td>Ağ erişimi (Android <code>INTERNET</code>)</td><td>Yapılandırdığınız asistan sağlayıcısına mesaj gönderme, etkinleştirdiğinizde web araması, etkinleştirdiğinizde WebDAV yedeklemesi ve etkinleştirdiğinizde güncelleme kontrolleri. Bunlardan biri aktif olmadan hiçbir şey gönderilmez.</td></tr><tr><td>Bildirimler (Android <code>POST_NOTIFICATIONS</code>)</td><td>Görev hatırlatıcılarını gösterme ve başlattığınız bir indirme, yedekleme veya oluşturma işleminin ilerlemesini bildirme.</td></tr><tr><td>Kesin alarmlar (Android <code>SCHEDULE_EXACT_ALARM</code>)</td><td>Görev hatırlatıcılarını yaklaşık olarak değil, tam olarak belirlediğiniz saatte tetikleme.</td></tr><tr><td>Başlangıçta çalıştırma (Android <code>RECEIVE_BOOT_COMPLETED</code>)</td><td>Cihaz yeniden başladıktan sonra hatırlatıcılarınızı yeniden kaydetme; böylece yarına kurulan bir hatırlatıcı yeniden başlatmadan sağ çıkar.</td></tr><tr><td>Ön plan hizmeti (Android <code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_DATA_SYNC</code>)</td><td>Uygulama ön planda değilken yedekleme, indirme veya model oluşturma işlemlerinin yarıda kesilmesini önleyerek çalışır durumda tutma.</td></tr><tr><td>Biyometrik kilit açma (Android <code>USE_BIOMETRIC</code>; Windows'ta Windows Hello)</td><td>Uygulama kilidi parolasını yazmak yerine parmak izi veya yüz ile kilidi açmanızı sağlama. İsteğe bağlıdır, varsayılan olarak kapalıdır ve yalnızca yerel kilit açma için kullanılır.</td></tr><tr><td>Titreşim (Android <code>VIBRATE</code>)</td><td>Yazma hissi ve dokunsal geri bildirim.</td></tr><tr><td>Paket yükleme (Android <code>REQUEST_INSTALL_PACKAGES</code>)</td><td>İndirmeyi seçtiğiniz bir güncellemeyi sistem yükleyicisini kullanarak kurma.</td></tr><tr><td>Shizuku hizmet izni (Android <code>moe.shizuku.manager.permission.API_V23</code>)</td><td>Bölüm 7'de açıklanan isteğe bağlı ayrıcalıklı entegrasyon. Yalnızca Shizuku'nun kullanılabilmesi için tanımlanmıştır; Shizuku'yu kurup izin vermediğiniz sürece hiçbir etkisi yoktur.</td></tr><tr><td>Tüm dosyalara erişim (Android <code>MANAGE_EXTERNAL_STORAGE</code>)</td><td>İsteğe bağlıdır, siz vermedikçe kapalıdır ve yalnızca seçtiğiniz çalışma alanı klasörünün sıradan dosyalar gibi okunup yazılabilmesi için kullanılır. Bu olmadan Lucent çalışma alanını kendi depolama alanında tutar.</td></tr><tr><td>Konum (Android <code>ACCESS_COARSE_LOCATION</code>, <code>ACCESS_FINE_LOCATION</code>)</td><td>Yalnızca asistan konum aracını çağırdığında okunur; bu da yalnızca cihaz kontrolü etkinleştirildiğinde ve izni verdiğinizde gerçekleşir. Lucent sizi asla arka planda izlemez.</td></tr></tbody></table></div>
+<p>Ajan araç setini açıp bir çalışma alanı klasörüne yönlendirmediğiniz sürece Lucent, dosyalarınıza veya depolama alanınıza geniş erişim istemez; bu durumda tüm dosyalara erişim, o tek klasörün sıradan dosyalar gibi okunup yazılmasını sağlayan şeydir; bunu reddedebilir ve çalışma alanını Lucent'in kendi depolama alanı içinde tutabilirsiniz. Diğer durumlarda dosyalar ve klasörler sistemin kendi belge seçicisi aracılığıyla sizin tarafınızdan seçilir ve Lucent yalnızca seçtiğiniz belirli öğeyi alır. Yazı tipleri ve model dosyaları da aynıdır: siz seçersiniz ve bunlar uygulamanın kendi depolama alanına kopyalanır.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-9">9. Elinizdeki denetimler</h3>
+<p>Lucent'te gizlilik, tümü sizin elinizde ve tümü Ayarlar'da bulunan bir dizi anahtardan oluşur. Başlıcaları şunlardır:</p>
+<ul><li><strong>Uygulama kilidi.</strong> Ayarlar → Güvenlik. Bir parola seçin ve unutulan bir parolanın sıfırlanabilmesi için isteğe bağlı olarak bir güvenlik sorusu belirleyin. Yalnızca tuzlanmış bir karma saklanır.</li><li><strong>Kilit açma deneme sınırları.</strong> Uygulama kilidinin yanında yer alır. İlk turda ve sonraki turlarda kaç denemeye izin verileceğini ayarlayın; hatalar yeniden başlatmalar boyunca hatırlanan kademeli bekleme sürelerini tetikler.</li><li><strong>Tekrarlanan hatalardan sonra silme.</strong> Yine uygulama kilidinin yanında, varsayılan olarak kapalıdır. Belirlediğiniz sayıda yanlış paroladan sonra her şey silinir. Bu kalıcıdır ve hiç kimse tarafından geri alınamaz.</li><li><strong>Biyometrik kilit açma.</strong> İsteğe bağlıdır, varsayılan olarak kapalıdır.</li><li><strong>Karartma Modu (Blackout Mode).</strong> Ayarlar → Gizlilik. Açık olduğu sürece cihazdan hiçbir şey ayrılmaz: bulut asistanı, web araması ve ağ özellikleri engellenir, bulut yüzeyleri dondurulur, uygulama son uygulamalar ekranından gizlenir ve ekran görüntüsü alınamaz, paylaşım hedefi kaldırılır ve her geri döndüğünüzde parola gerekir. Diğer tüm ayarları geçersiz kılar ve kapatıldığında önceki ayarlarınızı geri yükler.</li><li><strong>Tanılama günlük kaydı.</strong> Ayarlar → Gizlilik; varsayılan olarak kapalıdır ve açık onay gerektirir. Yerel olarak yazar, asistana yazdığınız metinleri içerebilir, sizin tarafınızdan dışa aktarılabilir ve istenildiği zaman temizlenip kapatılabilir. Kilitlenme Kalkanı etkinleştirildiğinde yakalanan hataların kaydedilmesi için açık tutulur.</li><li><strong>Kilitlenme Kalkanı (Crash Shield).</strong> Ayarlar → Gizlilik; varsayılan olarak kapalıdır. Uygulamanın kapanmak yerine açık kalması için uygulama içindeki hataları yakalar ve bunları yerel olarak kaydeder. Neleri yakalayamayacağını açıkça belirtir: cihaz içi model motoru içindeki bir kilitlenme, sistemin belleği boşaltmak için uygulamayı kapatması veya yanıt vermediği için sistemin uygulamayı sonlandırması.</li><li><strong>Sistem entegrasyonu.</strong> Ayarlar → Gizlilik; varsayılan olarak kapalıdır. Lucent'in diğer uygulamaların paylaşım sayfalarında görünüp görünmeyeceğini denetler.</li><li><strong>Sürüm geçmişi.</strong> Ayarlar → Gizlilik. Not geçmişi ve görev geçmişi ayrı ayrı kapatılabilir; bu da yeni anlık görüntülerin tutulmasını durdurur.</li><li><strong>Asistan sağlayıcısı ve hafıza.</strong> Ayarlar → Asistan, ardından Bulut modeli veya Yerel model. Sağlayıcıyı seçin veya hiç ağ kullanmadan yerel bir model içe aktarın. Her model, her istekte geçmiş sohbetin ne kadarının yer alacağını kontrol eden kendi hafıza ayarını tutar; daha düşük hafıza, cihazdan daha az metnin ayrılması demektir.</li><li><strong>Web araması.</strong> Ayarlar → Asistan → Kişiselleştirme. Varsayılan olarak kapalı olan tek bir anahtar ve yanında arama motoru bulunur. Yerel model ajan modu olmadan çalışırken gizlenir, çünkü o zaman hiçbir şey onu kullanamaz; ve tam bıraktığınız gibi geri döner.</li><li><strong>Anlamsal arama.</strong> Ayarlar → Asistan. Aktif modeli takip eder: yerel model indekslemeyi cihazda tutar, bulut modeli metni sağlayıcınıza gönderir. Davranışı değiştirmek için modelleri değiştirin veya asistanı tamamen kapalı bırakın.</li><li><strong>Yedekleme içeriği ve parola.</strong> Ayarlar → Veri. Bir yedeğin neleri içereceğini ve parola korumalı olup olmayacağını seçin. Otomatik yedekleme, klasörü, aralığı ve kaç kopya tutulacağı tamamen sizin tarafınızdan belirlenir ve varsayılan olarak kapalıdır.</li><li><strong>Bulut yedekleme.</strong> Ayarlar → Veri; varsayılan olarak kapalıdır. WebDAV kimlik bilgilerinizi istediğiniz zaman yapılandırın veya temizleyin.</li><li><strong>Şifreleme kontrolü.</strong> Ayarlar → Güvenlik. Depolanan değerlerin mühürlendiğini ve doğru şekilde açıldığını isteğe bağlı olarak doğrular.</li><li><strong>Tüm verileri temizle.</strong> Ayarlar → Veri. Bkz. Bölüm 10.</li></ul>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-10">10. Saklama ve silme</h3>
+<p>Lucent siz silene kadar verilerinizi cihazınızda tutar. Sildiğiniz notlar ve görevler önce çöp kutusuna gider ve siz çöp kutusunu boşaltmadıkça veya tüm verileri daha önce silmedikçe 30 gün sonra kalıcı olarak kaldırılır. Sürüm geçmişi yalnızca ilgili geçmiş ayarı açık olduğu sürece tutulur ve ait olduğu not veya görevle birlikte kaldırılır.</p>
+<p>Her şeyi silmek için:</p>
+<ul><li><strong>Ayarlar → Veri → Tüm verileri temizle</strong> her notu, görevi ve sohbeti siler, ekleri kaldırır, geçmişi temizler, API anahtarınız dahil ayarları sıfırlar, içe aktarılan modelleri ve yazı tiplerini siler, yerel tanılama günlüğünü temizler ve günlük kaydını kapatır ve uygulamanın önbelleğini boşaltır. Geri alınamaz. Ayrıca yalnızca notları, yalnızca görevleri veya yalnızca sohbet geçmişini temizlemek için daha dar kapsamlı denetimler de vardır.</li><li>Android veya Windows'un sistem ayarlarında <strong>uygulamanın verilerini temizlemek</strong>, uygulamanın depolama alanını aynı şekilde kaldırır.</li><li><strong>Lucent'i kaldırmak</strong> uygulamayı ve özel depolama alanını siler.</li></ul>
+<p>Üç şey Lucent'in erişim alanı dışındadır ve uygulama bunları sizin yerinize silemez:</p>
+<ul><li>bir klasöre, başka bir cihaza veya bir bulut hizmetine aktardığınız yedekleme dosyaları;</li><li>WebDAV hizmetinize zaten yüklenmiş olan yedekler;</li><li>asistan aracılığıyla bir yapay zekâ sağlayıcısına gönderdiğiniz veya bir arama hizmetine ilettiğiniz ve ilgili sağlayıcının kendi saklama politikasına tabi olan her türlü veri.</li></ul>
+<p>Bunların da silinmesini istiyorsanız dosyaları silin ve sağlayıcının kendi silme denetimlerini kullanın.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-11">11. Çocuklar</h3>
+<p>Lucent genel amaçlı bir not ve görev uygulamasıdır. Çocuklara yönelik değildir, hiçbir hesap sistemi, reklamı veya sosyal özelliği yoktur ve geliştirici çocuklar dahil hiç kimseden kişisel bilgi toplamaz. Uygulamanın verileri, onu kullanan kişinin cihazında kalır.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-12">12. Bu politikadaki değişiklikler</h3>
+<p>Lucent'in gelecekteki bir sürümü verilerin nasıl işlendiğini değiştirirse, bu politika güncellenecek ve en üstteki tarih değişecektir. Cihazınızdan nelerin ayrıldığını etkileyen önemli değişiklikler, bunları getiren sürümün sürüm notlarında açıklanacaktır. Sizin için geçerli olan politika sürümü, çalıştırdığınız Lucent sürümüyle birlikte gelen sürümdür ve geçmişi deponun taahhüt (commit) geçmişinde görülebilir.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-13">13. İletişim</h3>
+<p>Lucent'te gizlilikle ilgili sorular, düzeltmeler ve endişeler <strong>yuan47578@gmail.com</strong> adresine gönderilebilir.</p>
+<hr>
+<p>Geliştirici: Jessica Martinez</p>
+<p>Copyright © 2026-2027 Jessica Martinez.</p>
+</div>
+</div>
+<!--policy:end-->
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div class="brand">
+        <a class="logo" href="index.html" style="display:inline-block;margin-bottom:12px">Lucent</a>
+        <p>Notlar, görevler ve gerçekten iş bitiren bir yapay zekâ asistanı. MIT Lisansı altında ücretsiz ve açık kaynak.</p>
+      </div>
+      <div>
+        <h4>Sayfalar</h4>
+        <a href="index.html">Ana Sayfa</a><a href="features.html">Özellikler</a><a href="download.html">İndir</a><a href="changelog.html">Değişiklik Günlüğü</a><a href="about.html">İletişim</a><a href="support.html">Destek</a>
+      </div>
+      <div>
+        <h4>Yasal</h4>
+        <a href="privacy.html">Gizlilik</a><a href="terms.html">Kullanım Koşulları</a><a href="../license.html" target="_blank" rel="noopener">MIT Lisansı</a>
+      </div>
+      <div>
+        <h4>Geliştirici</h4>
+        <a href="https://github.com/Yuan0-o" target="_blank" rel="noopener">GitHub profili</a>
+        <a href="https://github.com/Lucent-Project/Lucent" target="_blank" rel="noopener">Lucent deposu</a>
+        <a href="https://github.com/Lucent-Project/Lucent/issues" target="_blank" rel="noopener">Sorun bildir</a>
+        <a href="about.html">İletişim</a>
+        <a href="mailto:yuan47578@gmail.com">yuan47578@gmail.com</a>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Jessica Martinez · MIT Lisansı</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

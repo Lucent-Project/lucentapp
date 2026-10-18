@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<script>(function(){try{var K='lucent-lang',p=location.pathname;var LOCALES=['en','zh','zh-Hant','es','ar','fr','pt','ru','de','ja','tr','ko','it','nl'];var m=p.match(/\/(zh-Hant|zh|ja|ko|es|fr|de|pt|ru|it|nl|ar|tr)(\/|$)/);var cur=m?m[1]:'en';var s=null;try{s=localStorage.getItem(K)}catch(e){}var base=p.replace(/\/(zh-Hant|zh|ja|ko|es|fr|de|pt|ru|it|nl|ar|tr)(\/|$)/,'$2');var go=function(t){if(LOCALES.indexOf(t)===-1)t='en';if(t===cur)return;var np=t==='en'?base:base.replace(/\/([^\/]*)$/,'/'+t+'/$1');location.replace(np+location.search+location.hash)};if(s){go(s);return}if(m){try{localStorage.setItem(K,cur)}catch(e){}return}var l=(navigator.language||navigator.userLanguage||'').toLowerCase();if(l){var t='en';if(l.indexOf('zh-hant')===0||l.indexOf('zh-tw')===0||l.indexOf('zh-hk')===0||l.indexOf('zh-mo')===0)t='zh-Hant';else if(l.indexOf('zh')===0)t='zh';else if(l.indexOf('es')===0)t='es';else if(l.indexOf('ar')===0)t='ar';else if(l.indexOf('fr')===0)t='fr';else if(l.indexOf('pt')===0)t='pt';else if(l.indexOf('ru')===0)t='ru';else if(l.indexOf('de')===0)t='de';else if(l.indexOf('ja')===0)t='ja';else if(l.indexOf('tr')===0)t='tr';else if(l.indexOf('ko')===0)t='ko';else if(l.indexOf('it')===0)t='it';else if(l.indexOf('nl')===0)t='nl';go(t);return}var ac=new AbortController(),tm=setTimeout(function(){ac.abort()},3000);fetch('https://ipapi.co/country/',{signal:ac.signal}).then(function(r){clearTimeout(tm);return r.text()}).then(function(c){c=(c||'').trim().toUpperCase();go(c==='CN'||c==='HK'||c==='MO'||c==='TW'?'zh':c==='JP'?'ja':c==='KR'?'ko':'en')}).catch(function(){clearTimeout(tm)})}catch(e){}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#080b16">
+<script>(function(){var h=document.documentElement,t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';try{var s=localStorage.getItem('lucent-theme');if(s==='light'||s==='dark')t=s}catch(e){}h.dataset.theme=t;h.classList.add('js');var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light'?'#eef2fb':'#080b16'})()</script>
+<title>隱私 — Lucent</title>
+<meta name="description" content="Lucent 的隱私：加密資料庫永不離機，防暴力破解的應用程式鎖，可隨身攜帶的密碼備份。結構性的隱私，不是口號。">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://lucent-project.github.io/lucentapp/zh-Hant/privacy.html">
+<link rel="alternate" hreflang="en" href="https://lucent-project.github.io/lucentapp/privacy.html">
+<link rel="alternate" hreflang="zh-CN" href="https://lucent-project.github.io/lucentapp/zh/privacy.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://lucent-project.github.io/lucentapp/zh-Hant/privacy.html">
+<link rel="alternate" hreflang="ja" href="https://lucent-project.github.io/lucentapp/ja/privacy.html">
+<link rel="alternate" hreflang="ko" href="https://lucent-project.github.io/lucentapp/ko/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://lucent-project.github.io/lucentapp/privacy.html">
+<meta property="og:site_name" content="Lucent">
+<meta property="og:type" content="website">
+<meta property="og:title" content="隱私 — Lucent">
+<meta property="og:description" content="Lucent 的隱私：加密資料庫永不離機，防暴力破解的應用程式鎖，可隨身攜帶的密碼備份。結構性的隱私，不是口號。">
+<meta property="og:url" content="https://lucent-project.github.io/lucentapp/zh-Hant/privacy.html">
+<meta property="og:image" content="https://lucent-project.github.io/lucentapp/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Lucent 標誌與字標，毛玻璃背景，下方文字：Android · Windows · Open source">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:locale:alternate" content="zh_HK">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="隱私 — Lucent">
+<meta name="twitter:description" content="Lucent 的隱私：加密資料庫永不離機，防暴力破解的應用程式鎖，可隨身攜帶的密碼備份。結構性的隱私，不是口號。">
+<meta name="twitter:image" content="https://lucent-project.github.io/lucentapp/assets/og-image.png">
+<meta name="twitter:image:alt" content="Lucent 標誌與字標，毛玻璃背景，下方文字：Android · Windows · Open source">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i class="orb a"></i><i class="orb b"></i><i class="orb c"></i><i class="orb d"></i></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="index.html">Lucent</a>
+    <div class="links" id="menu">
+      <a href="index.html">首頁</a>
+      <a href="features.html">功能</a>
+      <a href="download.html">下載</a>
+      <a href="privacy.html" class="active" aria-current="page">隱私</a>
+      <a href="about.html">聯絡</a>
+    </div>
+    <div class="tools">
+      <details class="lang"><summary aria-label="語言"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg><span>繁中</span></summary><div class="menu"><a href="../privacy.html" lang="en" hreflang="en">English</a><a href="../zh/privacy.html" lang="zh-CN" hreflang="zh-CN">简体中文</a><a href="privacy.html" lang="zh-Hant" hreflang="zh-Hant" class="cur" aria-current="true">繁體中文</a><a href="../es/privacy.html" lang="es" hreflang="es">Español</a><a href="../ar/privacy.html" lang="ar" hreflang="ar">العربية</a><a href="../pt/privacy.html" lang="pt" hreflang="pt">Português</a><a href="../fr/privacy.html" lang="fr" hreflang="fr">Français</a><a href="../ru/privacy.html" lang="ru" hreflang="ru">Русский</a><a href="../de/privacy.html" lang="de" hreflang="de">Deutsch</a><a href="../ja/privacy.html" lang="ja" hreflang="ja">日本語</a><a href="../tr/privacy.html" lang="tr" hreflang="tr">Türkçe</a><a href="../ko/privacy.html" lang="ko" hreflang="ko">한국어</a><a href="../it/privacy.html" lang="it" hreflang="it">Italiano</a><a href="../nl/privacy.html" lang="nl" hreflang="nl">Nederlands</a></div></details>
+      <button class="theme" type="button" aria-label="切換淺色 / 深色模式"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg></button>
+      <button class="burger" type="button" aria-label="選單" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="kicker rv">隱私</div>
+    <h1 class="rv" style="font-size:clamp(44px,7vw,76px)">結構性的，<br>不是許諾的</h1>
+    <p class="sub rv">許諾隱私，誰都會。Lucent 的作法是讓侵犯隱私變成一件費力且不可行的事——架構裡根本就沒有給你的資料準備出口。</p>
+  </div>
+</div>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+
+    <div class="panel glass rv center" style="margin-top:0">
+      <p class="lead" style="font-size:clamp(20px,3vw,28px);color:var(--ink);max-width:780px;margin:0 auto;line-height:1.7">在你匯出、或讓模型看之前，沒有任何東西離開裝置。<span class="grad-text" style="font-weight:700">這是簡短版本；完整政策請透過下方按鈕閱讀，程式碼也這麼認為。</span></p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">01 — 靜態加密</div>
+      <h2>資料庫穿著<span class="grad-text">盔甲</span></h2>
+      <p class="body">你的筆記住在 <strong>SQLCipher 加密資料庫</strong>裡，附件逐個上鎖。最燙的兩條路——PBKDF2 金鑰衍生與 AES-256-GCM——用 Rust 經 JNI 跑，另有完全一致的 Kotlin 兜底，應用程式永遠不會被一個原生函式庫綁架。拿到你解鎖的手機是一回事；拿到你的<em>檔案</em>的人，得到的只是一堆雜訊。</p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">02 — 應用程式鎖</div>
+      <h2>會<span class="grad-text">數數</span>的鎖</h2>
+      <p class="body">這是真正的暴力破解防禦策略，不是一句客氣的請求：<strong>逐級延長的冷卻時間、重啟也清不掉的計數器</strong>，選用的安全問題，選用的自我銷毀——指紋（Android）與 Windows Hello 在整個冷卻期內禮貌地告假。猜錯太多次，應用程式真的會停止談判。</p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">03 — 隨身備份</div>
+      <h2>一個檔案，揣進口袋，<span class="grad-text">設上密碼。</span></h2>
+      <p class="body">備份是單個 <strong>.lcb 檔案</strong>，帶著筆記、任務、歷史、對話、附件和設定跨裝置走——還原前可預覽，可定時自動跑，並能設密碼。沒人能讀的備份是紀念品不是備份，所以它出去讀一遍，回來再讀一遍。</p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">04 — 預設關閉</div>
+      <h2>連「先問你一句」都<span class="grad-text">省了</span></h2>
+      <p class="body">分享選單整合：<strong>關</strong>。診斷：<strong>關</strong>，開了也只存本機。你接的助手服務全憑你自己選。雲端同步是你自己設定的模組，走 WebDAV——你的伺服器，你的規矩。這個應用程式裡沒有任何「預設開啟、藏在三級選單裡讓你關」的東西。</p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">05 — 你的模型，你的資料</div>
+      <h2>助手只看<span class="grad-text">你給它看的</span></h2>
+      <p class="body">雲端模型看到的，恰好是你擺在它面前的東西——沒有任何後台同步、索引或「改進」。想當徹底的隱士？在本機跑一個 .gguf，網路可以一直關著。加密唯一的例外是<strong>匯出</strong>為 Markdown、Word、PDF 或 Excel——那是一份你在別處也能開啟的檔案，這正是匯出的意義。</p>
+      <div class="cta" style="justify-content:flex-start">
+        <a class="btn ghost" data-policy-link href="#policy">閱讀完整隱私政策 ↓</a>
+      </div>
+    </div>
+
+    <!--policy:start-->
+<div class="policy" id="policy">
+<div class="panel glass prose">
+<div class="kicker">完整政策</div>
+<h2 class="policy-title">Lucent 隱私政策</h2>
+<p>Lucent 是一款面向 Android 與 Windows 的筆記與任務應用程式。本政策說明這款應用程式會在自訂儲存空間保存什麼、會把什麼發送到裝置之外，以及你如何控制這兩件事。這裡描述的是本儲存庫中建置出的 Lucent 本身。</p>
+<p class="meta"><strong>最後更新：2026 年 9 月 25 日</strong></p>
+<nav class="policy-toc" aria-label="目錄"><p class="toc-label">目錄</p><ul><li><a href="#policy-1">1. 概要</a></li><li><a href="#policy-2">2. 本政策的來源</a></li><li><a href="#policy-3">3. Lucent 會在你的裝置上保存什麼</a></li><li><a href="#policy-4">4. 什麼永遠不會離開你的裝置</a></li><li><a href="#policy-5">5. 什麼情況下資料會離開裝置</a></li><li><a href="#policy-6">6. 備份</a></li><li><a href="#policy-7">7. 裝置整合</a></li><li><a href="#policy-8">8. Lucent 申請的權限</a></li><li><a href="#policy-9">9. 你手中的控制項</a></li><li><a href="#policy-10">10. 保留與刪除</a></li><li><a href="#policy-11">11. 兒童</a></li><li><a href="#policy-12">12. 本政策的變更</a></li><li><a href="#policy-13">13. 聯絡方式</a></li></ul></nav>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-1">1. 概要</h3>
+<ul><li>Lucent 沒有帳號、沒有註冊，也沒有由開發者營運的伺服器。開發者沒有任何途徑可以拿到你的筆記、任務、檔案或使用情況。</li><li>筆記、任務、筆記本、清單、版本歷史、助手對話、附件、API 金鑰和各項設定都保存在你的裝置上，並且靜態加密。</li><li>應用程式內沒有統計分析、沒有廣告，也沒有遙測。</li><li>所有需要連網的功能都是選用的，並且預設關閉：雲端助手、網路搜尋、語意搜尋、雲端備份和自動檢查更新。</li><li>當你使用雲端助手時，訊息會從你的裝置直接發往你所填 API 金鑰對應的服務商，不經過 Lucent。</li><li>選用的本機模型完全在你的裝置上作答，不會向任何地方發送內容。</li></ul>
+<p>下文逐條展開這些說明，也包括它們的邊界。</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-2">2. 本政策的來源</h3>
+<p>Lucent 由 Jessica Martinez 開發。關於本政策或應用程式資料處理方式的問題，可發送至 <strong>yuan47578@gmail.com</strong>。</p>
+<p>Lucent 是以 MIT 授權條款發布的自由軟體。開發者不營運任何收集或儲存使用者資料的服務，本應用程式亦無伺服器端元件。</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-3">3. Lucent 會在你的裝置上保存什麼</h3>
+<p>你在 Lucent 裡建立的一切都存放在裝置上應用程式自己的私人儲存空間中。該儲存空間對其他普通應用程式不可讀，解除安裝應用程式或清除應用程式資料時會一併刪除。</p>
+<p>保存的內容包括：</p>
+<ul><li>筆記，包括內文、格式、標籤、顏色、置頂與封存狀態、清單、塗鴉、連結和版本歷史；</li><li>任務，包括子任務、優先級、截止時間、重複規則、提醒、備註和版本歷史；</li><li>筆記本及其封存的專案；</li><li>助手對話與訊息，包括模型傳回的思考過程；</li><li>你新增到筆記或任務中的附件，以及你發給助手的附件；</li><li>你匯入的字型和本機模型檔案；</li><li>設定，包括你選擇的服務商、Base URL、模型名稱、API 金鑰、備份密碼、應用程式鎖憑證和雲端備份憑證；</li><li>診斷記錄——前提是你已經開啟診斷記錄。</li></ul>
+<h4 id="policy-3-1">3.1 靜態加密</h4>
+<p>資料庫由 SQLCipher 加密。在 Android 上，應用程式透過 Room 搭配 SQLCipher 使用資料庫；在 Windows 上，則透過隨應用程式附帶的 JDBC 驅動程式，以 SQLCipher 加密方式和同樣類型的 256 位元金鑰存取 SQLite。筆記、任務、對話、歷史與設定都在這個資料庫裡。</p>
+<p>附件單獨加密。每個檔案在寫入磁碟之前，都會放進一個帶認證的 AES-256-GCM 容器，按 64 KiB 分塊處理。磁碟上的檔名是隨機識別碼，而不是你在應用程式裡看到的名字。</p>
+<p>備份同樣始終加密，見第 6 節。</p>
+<h4 id="policy-3-2">3.2 金鑰與機密資訊</h4>
+<p>資料庫金鑰和附件金鑰都是在你的裝置上隨機產生的 256 位元值。它們不來自你輸入的任何內容，亦不會以純文字寫入磁碟。在 Android 上，它們由 Android Keystore 中的金鑰封裝保護——裝置支援時該金鑰由硬體保護；Keystore 不可用時則退回本機加密方案。每把金鑰都會保留一份復原複本，以免 Keystore 出問題就損毀你的資料。</p>
+<p>API 金鑰、WebDAV 密碼、備份密碼和應用程式鎖憑證都經過同一條加密路徑保存，不是純文字。應用程式鎖的密碼和安全問題答案則完全不保存：只保留加鹽雜湊，無法從雜湊還原出密碼本身。</p>
+<h4 id="policy-3-3">3.3 加密能做什麼，不能做什麼</h4>
+<p>這裡的加密保護的是靜態資料：一份被帶離裝置的資料庫、附件檔案或備份，沒有金鑰就無法讀取。它不能防範有人拿著已解鎖的裝置、以你的系統帳號直接使用；亦無法保護應用程式開啟期間的資料——內容正在顯示或編輯時，解密後的文字必然存在於裝置記憶體中。</p>
+<p>Lucent 不會在這件事上含糊。如果加密函式庫無法載入，或者某個資料庫無法加密、無法解鎖，應用程式會記錄並如實回報，而不是假裝一切正常；設定裡提供了加密檢查，用於確認儲存的值確實被封裝並能正確解開。如果資料庫無法用已儲存的金鑰解密，Lucent 會把它擱置到一旁而不是刪除，並明確告知你，以便你從備份復原。</p>
+<p>Android 上的桌面小工具會在啟動器上顯示筆記標題或任務標題。凡是小工具顯示的內容，能看到那塊螢幕的人都能看到。小工具是選用的，亦可隨時移除。</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-4">4. 什麼永遠不會離開你的裝置</h3>
+<p>預設情況下，什麼都不會。筆記、任務、提醒、歷史、附件、本機搜尋和本機助手都不需要連網。</p>
+<p>具體來說，Lucent 不包含統計分析 SDK、廣告 SDK、當機回報服務和追蹤識別碼。它沒有帳號體系，亦不會向任何地方發送裝置指紋。當機防護罩在你開啟後，只會把擷取到的錯誤寫入裝置上的本機記錄檔，不會上傳。診斷記錄同理：預設關閉，只在本機寫入，只有你主動匯出並選擇分享時才會離開裝置。</p>
+<p>由於 Lucent 沒有伺服器，開發者既無法讀取你的資料，亦無法替你復原資料。</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-5">5. 什麼情況下資料會離開裝置</h3>
+<p>下面每一項都是選用的、預設關閉的，並且由你掌控。啟用其中任何一項時，資料都是從應用程式直接發往你設定的第三方，不經過任何 Lucent 服務——因為並不存在這樣的服務。</p>
+<h4 id="policy-5-1">5.1 雲端助手（自備 API 金鑰）</h4>
+<p>雲端模式下的助手使用你自己提供的 API 金鑰和你自己選擇的服務商。Lucent 能使用 OpenAI 相容、Anthropic 相容和 Google 相容的請求格式；任何 OpenAI 相容端點都可以，包括 DeepSeek 和自建閘道。你可以儲存多個服務商設定並隨時切換。</p>
+<p>你發送訊息時，Lucent 會從你的裝置向設定的 Base URL 發出 HTTPS 請求，其中包含：</p>
+<ul><li>你的訊息文字；</li><li>目前記憶檔位所包含的歷史對話；</li><li>定義助手行為的系統指令；</li><li>你隨訊息附上的檔案；</li><li>助手為作答所需的筆記、任務、筆記本或搜尋情境，以及助手被允許呼叫的工具傳回的結果。</li></ul>
+<p>你的 API 金鑰會作為該請求的身分驗證標頭發往這家服務商，不會發往其他任何地方。服務商如何處理收到的文字，請閱讀它自己的隱私政策；那屬於你和該服務商之間的約定，Lucent 既看不到亦無法控制。</p>
+<p>助手不會悄悄改動你的資料。在寫入任何內容之前，它會先展示打算做什麼，而且這個確認步驟預設開啟。工具是選用的：本機模型有自己的工具開關，雲端助手的工具權限亦可關閉。任何一個關掉之後，模型仍然可以對話，但無法讀取或修改你的筆記與任務。</p>
+<h4 id="policy-5-2">5.2 網路搜尋</h4>
+<p>網路搜尋預設關閉。當你開啟它、且助手判斷需要搜尋時，Lucent 會把搜尋關鍵字發送到公開的搜尋引擎。引擎由你選擇，亦可保持「自動」：自動會依序嘗試，直到有一個傳回結果——Bing、DuckDuckGo、Google、Brave、Mojeek、Yandex、Baidu、Sogou、360 搜尋，以及 Wikipedia 搜尋 API。全程不使用搜尋 API 金鑰，亦不需要帳號。關鍵字會離開你的裝置，傳回的結果會交給助手並納入回答。給出結果的那個引擎能看到關鍵字和你的 IP 位址。網路搜尋需要開啟 Agent 模式；在本機模型上還需要開啟工具開關；隱跡模式會完全阻斷它。</p>
+<h4 id="policy-5-3">5.3 語意搜尋</h4>
+<p>Lucent 的語意搜尋跟隨你正在使用的助手，無需額外選擇。使用本機模型時，索引全部留在裝置上，但在目前建置中尚未實作，因此不會有任何內容離開裝置。使用雲端模型時，為了產生每個向量，被索引的文字會發送到你設定的 AI 服務商的 embeddings 介面，也就是說筆記文字會離開裝置。切換兩種模型，行為亦隨之切換。</p>
+<h4 id="policy-5-4">5.4 雲端備份</h4>
+<p>雲端備份預設關閉。開啟後，你需要填寫自己已有的 WebDAV 相容服務的位址、使用者名稱和密碼，例如 Nextcloud、Koofr、堅果雲，或任何其他 WebDAV 伺服器。Lucent 會把 <code>.lcb</code> 備份檔案上傳到你指定的資料夾，亦可列出並下載它們以進行還原。檔案在上傳前已經加密；服務商保存到的是加密檔案，而你填寫的憑據會發送給該服務用於身分驗證。自動上傳是另一個開關，同樣預設關閉。</p>
+<h4 id="policy-5-5">5.5 檢查更新</h4>
+<p>自動檢查更新預設關閉。當你開啟它，或主動讓 Lucent 檢查時，應用程式會向本儲存庫公開的 GitHub releases API 請求最新版本資訊並比較版本號。該請求除了一次 HTTPS 請求本身攜帶的內容（例如你的 IP 位址和標註為 Lucent 的 User-Agent）之外，不包含任何個人資訊。如果有更新的版本，Lucent 會提示你；只有在你選擇更新時，才會從 GitHub 下載 APK 或安裝程式。</p>
+<h4 id="policy-5-6">5.6 分享與匯出</h4>
+<p>Lucent 不會自行向外發送內容。有兩個功能會把資料交給其他應用程式，而它們都由你控制：</p>
+<ul><li><strong>匯出。</strong>把筆記或任務匯出為 Markdown、Word、PDF 或 Excel，或匯出備份，都會寫出一個由你選擇位置的檔案。匯出的文件刻意不做加密，因為匯出的意義就是在別處開啟；任何拿到該檔案的人都能讀到內容。請把它放在你認為合適的地方。</li><li><strong>分享面板整合。</strong>讓 Lucent 成為分享目標是預設關閉的。開啟後，Lucent 會出現在其他應用程式的分享面板中，你可以把文字和檔案分享進來，它亦會作為分享目標出現在系統分享面板裡。分享進來的內容和其他所有內容一樣，存進同一個加密資料庫。Lucent 依然不會自行向外發送任何東西。</li></ul>
+<h4 id="policy-5-7">5.7 本機模型</h4>
+<p>如果你匯入 GGUF 模型，助手就可以用 llama.cpp 直接在裝置上執行它。這種模式下不會向任何地方發送內容：產生回覆不涉及帳號、API 金鑰或網路請求。模型檔案留在你的裝置上，離開應用程式時模型會被卸載。本機工具是獨立開關，預設關閉。GPU 加速是選用項目，亦可關閉。</p>
+</div>
+<div class="panel glass prose">
+<h4 id="policy-5-8">5.8 工具箱</h4>
+<p>除筆記與任務之外，你還可以給助手一套真正的工具箱：一個可以讀寫的工作區資料夾、終端機指令、文件處理、外掛程式，以及對外部服務的連線。每一項都在「設定 → 進階 → 工具箱」裡單獨開關，凡是會離開裝置的能力，只有在你打開開關、並且預設情況下先徵得你同意之後才會動作。</p>
+<ul><li><strong>工作區。</strong>由你指定一個資料夾，助手讀取和寫入的一切都在其中。除非你允許「工作區之外」權限，否則工作區以外的檔案一律拒絕讀取，且永遠無法寫入。</li><li><strong>指令。</strong>執行終端機指令預設需要你確認。指令在本機執行，工作目錄限定在工作區內，逾時時間由你設定，每一條都會寫入操作記錄。</li><li><strong>文件。</strong>Word、Excel、PowerPoint 檔案全部由 Lucent 自己的程式碼在本機產生和讀取，任何一步都不會上傳到伺服器轉換。</li><li><strong>外掛程式。</strong>選用工具（Linux 環境、帶文件函式庫的 Python、LibreOffice、Node.js、媒體與 OCR 工具）只在你主動下載時，從專案官方位址或公共鏡像直接下載到你的儲存空間中。Lucent 不會就此發送任何遙測資料。</li><li><strong>連線。</strong>GitHub、Notion、Slack、Google Drive、OneDrive、GitLab、Jira、Linear、WebDAV 以及你新增的任何 MCP 伺服器，都由本機使用你提供的權杖直接存取。只發送你要求的那次請求，只發往你設定的服務；中間沒有 Lucent 的伺服器，權杖在裝置上加密保存。</li><li><strong>權杖與特權終端機。</strong>GitHub 存取權杖加密保存，保存後不再回顯；最多可以保存五個。Android 上「給予助手 Shizuku 權限」是一個獨立開關，預設關閉，只有打開後指令才可能以該權限執行。</li><li><strong>子代理報告。</strong>由你手動儲存的子代理報告，會寫成 Markdown 檔案放進工作區的 sub-agents 資料夾，只留在你的裝置上。</li><li><strong>裝置控制（Android）。</strong>在你打開該功能並啟用協助工具服務後，助手可以讀螢幕、點擊、輸入、截圖、列出並開啟應用程式、讀取通知，以及使用剪貼簿和感測器。讀螢幕在裝置上進行；只有當包含螢幕內容的工具結果被發往你選擇的模型服務商時才會離開裝置，這與發送任何一條訊息走的是同一條通道。</li><li><strong>留在本機的內容。</strong>工作區、改動前儲存的快照、操作記錄、記住的事實和技能檔案都留在你的裝置上。操作記錄包含工具名稱、參數（截斷到 300 字元）和結果，加密保存，隨時可在同一設定頁清除。</li></ul>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-6">6. 備份</h3>
+<p>備份是你自己建立的單個 <code>.lcb</code> 檔案。它可以包含筆記、任務、版本歷史、筆記本、對話、附件、設定和 API 金鑰，並可選地包含匯入的字型和本機模型檔案。包含哪些內容、寫到哪個位置，都由你決定。</p>
+<p>每個 <code>.lcb</code> 檔案都經過加密，有兩種模式：</p>
+<ul><li><strong>不設密碼。</strong>檔案用應用程式內建金鑰加密，只要有 Lucent 和這個檔案，任何裝置都能復原。這很方便，亦意味著任何同時拿到檔案和一份應用程式複本的人都能讀取它。</li><li><strong>設定密碼。</strong>金鑰透過 PBKDF2-HMAC-SHA256 迭代 210,000 次從你的密碼衍生，除此之外不存在於任何地方。這種方式更安全，代價亦照舊：復原時必須輸入同一個密碼，它不被儲存到任何地方，忘了密碼也沒有任何人能找回，包括開發者。</li></ul>
+<p>帶密碼的備份可以附加一個安全問題和答案，以便日後找回密碼。該選項預設關閉，並且它會讓備份的強度只等於密碼和答案中較弱的那一個，所以要選一個答案只有你自己知道的問題。</p>
+<p>自動備份在你啟用後，會寫入你選擇的資料夾，按你設定的數量保留複本，亦可同時上傳到你設定的 WebDAV 資料夾。無論哪種情況，備份檔案都是同一個加密容器。備份檔案放在哪裡、留幾份，完全由你決定；刪除它們同樣由你決定。</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-7">7. 裝置整合</h3>
+<p>Lucent 的特權 shell 整合是選用項目，預設關閉，並且需要 Lucent 之外的程式和授權。</p>
+<p>在 Android 上，當你安裝 Shizuku、啟動其服務並在系統中向 Lucent 授予權限後，應用程式可以透過 Shizuku 執行特權操作。它的用途是完成你明確要求的、普通應用程式自己做不到的事情，例如安裝你下載的應用程式更新。Lucent 無法自行啟動 Shizuku，亦無法給自己授權；除非你啟用了該整合並授予了權限，它不會透過這條路徑做任何事。你可以隨時在 Shizuku 或 Android 設定中撤銷權限，亦可在 Lucent 裡關閉該整合。應用程式會顯示實際獲得的 uid，以便你確認所取得的是何種身分。</p>
+<p>Lucent 還宣告了所需的普通 Android 權限，每項都有明確用途，見第 8 節。</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-8">8. Lucent 申請的權限</h3>
+<div class="table-wrap"><table><thead><tr><th>權限</th><th>Lucent 為什麼需要它</th></tr></thead><tbody><tr><td>網路存取（Android <code>INTERNET</code>）</td><td>向你設定的助手服務商發送訊息、在你開啟後執行網路搜尋、在你開啟後上傳 WebDAV 備份，以及在你開啟後檢查更新。上述任何一項沒有啟用時，不會有資料被送出。</td></tr><tr><td>通知（Android <code>POST_NOTIFICATIONS</code>）</td><td>顯示任務提醒，以及你啟動的下載、備份或生成任務的進度。</td></tr><tr><td>精確鬧鐘（Android <code>SCHEDULE_EXACT_ALARM</code>）</td><td>讓任務提醒在你設定的時間觸發，而不是大約在那個時間。</td></tr><tr><td>開機啟動（Android <code>RECEIVE_BOOT_COMPLETED</code>）</td><td>裝置重啟後重新註冊提醒，使明天到期的提醒能挺過一次重啟。</td></tr><tr><td>前台服務（Android <code>FOREGROUND_SERVICE</code>、<code>FOREGROUND_SERVICE_DATA_SYNC</code>）</td><td>在應用程式不處於前台時繼續完成備份、下載或模型生成，避免中途被系統終止。</td></tr><tr><td>生物辨識解鎖（Android <code>USE_BIOMETRIC</code>；Windows 上為 Windows Hello）</td><td>讓你有指紋或面容解鎖應用程式，而不必每次輸入應用程式鎖密碼。選用、預設關閉，且只用於本機解鎖。</td></tr><tr><td>震動（Android <code>VIBRATE</code>）</td><td>輸入觸感和觸覺回饋。</td></tr><tr><td>安裝應用程式套件（Android <code>REQUEST_INSTALL_PACKAGES</code>）</td><td>透過系統安裝程式安裝你選擇下載的更新。</td></tr><tr><td>Shizuku 服務權限（Android <code>moe.shizuku.manager.permission.API_V23</code>）</td><td>第 7 節所述的選用特權整合。宣告它只是為了讓 Shizuku 能夠運作；除非你安裝 Shizuku 並授予權限，它不產生任何效果。</td></tr></tbody></table></div>
+<p>Lucent 不申請對檔案或儲存空間的廣泛存取權限。檔案和資料夾都由你透過系統自帶的檔案選擇器挑選，Lucent 只會拿到你選中的那一個項目。字型和模型檔案亦是如此：由你挑選，然後複製進應用程式自己的儲存空間中。</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-9">9. 你手中的控制項</h3>
+<p>在 Lucent 裡，隱私是一組開關，全部由你掌握，亦全部位於設定中。主要包括：</p>
+<ul><li><strong>應用程式鎖。</strong>設定 → 安全性。設定一個密碼，並可選地設定一個安全問題，以便忘記密碼時重設。儲存的只有加鹽雜湊。</li><li><strong>解鎖嘗試次數限制。</strong>與應用程式鎖在同一頁。可設定第一輪和之後每輪允許的嘗試次數；失敗會觸發逐級延長的冷卻時間，並且跨重啟保留。</li><li><strong>連續失敗後清除資料。</strong>同樣在應用程式鎖一頁，預設關閉。在你設定的錯誤密碼次數之後，一切都會被清除。這是永久性的，任何人都無法復原。</li><li><strong>生物辨識解鎖。</strong>選用，預設關閉。</li><li><strong>隱跡模式。</strong>設定 → 隱私。開啟期間，任何資料都不會離開裝置：雲端助手、網路搜尋和連網功能被阻斷，雲端相關介面被凍結，應用程式從最近任務列表中隱藏且無法截圖，分享目標被移除，每次返回都需要輸入密碼。它優先於其他所有設定；關閉後會還原你之前的設定。</li><li><strong>診斷記錄。</strong>設定 → 隱私，預設關閉且需要你明確同意。它只在本機寫入，可能包含你輸入給助手的文字，你可以匯出，亦可隨時清除並關閉。當機防護罩開啟時會把它鎖定為開啟，以保證被擷取到的錯誤有記錄。</li><li><strong>當機防護罩。</strong>設定 → 隱私，預設關閉。它攔截應用程式內部的錯誤，使應用程式保持開啟而不是直接退出，並把錯誤記錄在本機。它亦明確寫出攔不住的情況：本機模型引擎內部的當機、系統為釋放記憶體而關閉應用程式，以及系統因應用程式無回應而將其終止。</li><li><strong>系統整合。</strong>設定 → 隱私，預設關閉。控制 Lucent 是否可以出現在其他應用程式的分享面板中。</li><li><strong>版本歷史。</strong>設定 → 隱私。筆記歷史和任務歷史可以分別關閉，關閉後不再保留新的快照。</li><li><strong>助手服務商與記憶。</strong>設定 → 助手，再進入雲端模型或本機模型。選擇服務商，或匯入並使用完全不需要網路的本機模型。兩個模型各自保存自己的記憶檔位，它決定每次請求包含多少歷史對話；檔位越低，離開裝置的文字越少。</li><li><strong>網路搜尋。</strong>設定 → 助手 → 個人化。一個開關，預設關閉，旁邊選擇搜尋引擎。當本機模型未開啟 Agent 模式時它會隱藏（那時沒有東西能用它），之後會原樣還原。</li><li><strong>語意搜尋。</strong>設定 → 助手。它跟隨目前使用的模型：本機模型把索引留在裝置上，雲端模型會把文字發送給你的服務商。切換模型即切換行為，亦可乾脆不用助手。</li><li><strong>備份內容與密碼。</strong>設定 → 資料。選擇備份包含哪些內容，以及是否用密碼保護。自動備份、它的資料夾、間隔和保留份數都由你設定，預設關閉。</li><li><strong>雲端備份。</strong>設定 → 資料，預設關閉。你可以隨時填寫或清除 WebDAV 憑據。</li><li><strong>加密檢查。</strong>設定 → 安全性。依需求確認儲存的值確實被封裝並能正確解開。</li><li><strong>清除全部資料。</strong>設定 → 資料，見第 10 節。</li></ul>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-10">10. 保留與刪除</h3>
+<p>Lucent 會一直把你的資料保存在裝置上，直到你刪除它。刪除的筆記和任務會先進入垃圾桶，除非你提前清空垃圾桶或清除全部資料，否則 30 天後會被永久移除。版本歷史只在對應的歷史開關開啟期間保留，並會隨所屬的筆記或任務一起移除。</p>
+<p>要刪除全部內容：</p>
+<ul><li><strong>設定 → 資料 → 清除全部資料</strong> 會刪除所有筆記、任務和對話，移除附件，清除歷史，重設包括 API 金鑰在內的全部設定，刪除匯入的模型和字型，清除本機診斷記錄並關閉記錄功能，同時清空應用程式快取。此操作無法復原。此外還有只清除筆記、只清除任務或只清除聊天記錄的分項控制。</li><li>在 Android 或 Windows 的系統設定中<strong>清除應用程式資料</strong>，會以同樣方式移除應用程式的儲存內容。</li><li><strong>解除安裝 Lucent</strong> 會移除應用程式及其私有儲存空間。</li></ul>
+<p>有三樣東西在 Lucent 的能力範圍之外，應用程式無法替你刪除：</p>
+<ul><li>你匯出到某個資料夾、另一台裝置或雲端服務上的備份檔案；</li><li>已經上傳到你 WebDAV 服務的備份；</li><li>你透過助手發送給 AI 服務商的內容，或提交給搜尋服務的內容——這些適用該服務商自己的保留政策。</li></ul>
+<p>如果這些也要一併清除，請刪除相應檔案，並使用服務商提供的刪除功能。</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-11">11. 兒童</h3>
+<p>Lucent 是一款通用的筆記與任務應用程式，並非面向兒童，亦無帳號體系、廣告和社群功能。開發者不從任何人（包括兒童）收集個人資訊。應用程式的資料始終留在使用者自己的裝置上。</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-12">12. 本政策的變更</h3>
+<p>如果未來的 Lucent 版本改變了資料處理方式，本政策會隨之更新，頂部的日期亦會變更。實質性變更——即影響哪些資料會離開你裝置的變更——會在引入該變更的版本更新說明中寫明。對你適用的政策版本，就是你正在執行的 Lucent 所附帶的那一版，它的歷史記錄可以在儲存庫的提交歷史中查到。</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-13">13. 聯絡方式</h3>
+<p>關於 Lucent 隱私方面的問題、更正和建議，可發送至 <strong>yuan47578@gmail.com</strong>。</p>
+<hr>
+<p>開發者：Jessica Martinez</p>
+<p>Copyright © 2026-2027 Jessica Martinez。</p>
+</div>
+</div>
+<!--policy:end-->
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div class="brand">
+        <a class="logo" href="index.html" style="display:inline-block;margin-bottom:12px">Lucent</a>
+        <p>筆記、任務，和一位真正能動手的 AI 助手。開源免費，MIT 協議。</p>
+      </div>
+      <div>
+        <h4>頁面</h4>
+        <a href="index.html">首頁</a><a href="features.html">功能</a><a href="download.html">下載</a><a href="changelog.html">更新日誌</a><a href="about.html">聯絡</a><a href="support.html">支援</a>
+      </div>
+      <div>
+        <h4>法律</h4>
+        <a href="privacy.html">隱私</a><a href="terms.html">使用條款</a><a href="../license.html" target="_blank" rel="noopener">MIT 協議</a>
+      </div>
+      <div>
+        <h4>開發者</h4>
+        <a href="https://github.com/Yuan0-o" target="_blank" rel="noopener">GitHub 首頁</a>
+        <a href="https://github.com/Lucent-Project/Lucent" target="_blank" rel="noopener">Lucent 儲存庫</a>
+        <a href="https://github.com/Lucent-Project/Lucent/issues" target="_blank" rel="noopener">問題回報</a>
+        <a href="about.html">聯絡</a>
+        <a href="mailto:yuan47578@gmail.com">yuan47578@gmail.com</a>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Jessica Martinez · 採用 MIT 協議</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

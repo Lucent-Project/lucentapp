@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script>(function(){try{var K='lucent-lang',p=location.pathname;var LOCALES=['en','zh','zh-Hant','es','ar','fr','pt','ru','de','ja','tr','ko','it','nl'];var m=p.match(/\/(zh-Hant|zh|ja|ko|es|fr|de|pt|ru|it|nl|ar|tr)(\/|$)/);var cur=m?m[1]:'en';var s=null;try{s=localStorage.getItem(K)}catch(e){}var base=p.replace(/\/(zh-Hant|zh|ja|ko|es|fr|de|pt|ru|it|nl|ar|tr)(\/|$)/,'$2');var go=function(t){if(LOCALES.indexOf(t)===-1)t='en';if(t===cur)return;var np=t==='en'?base:base.replace(/\/([^\/]*)$/,'/'+t+'/$1');location.replace(np+location.search+location.hash)};if(s){go(s);return}if(m){try{localStorage.setItem(K,cur)}catch(e){}return}var l=(navigator.language||navigator.userLanguage||'').toLowerCase();if(l){var t='en';if(l.indexOf('zh-hant')===0||l.indexOf('zh-tw')===0||l.indexOf('zh-hk')===0||l.indexOf('zh-mo')===0)t='zh-Hant';else if(l.indexOf('zh')===0)t='zh';else if(l.indexOf('es')===0)t='es';else if(l.indexOf('ar')===0)t='ar';else if(l.indexOf('fr')===0)t='fr';else if(l.indexOf('pt')===0)t='pt';else if(l.indexOf('ru')===0)t='ru';else if(l.indexOf('de')===0)t='de';else if(l.indexOf('ja')===0)t='ja';else if(l.indexOf('tr')===0)t='tr';else if(l.indexOf('ko')===0)t='ko';else if(l.indexOf('it')===0)t='it';else if(l.indexOf('nl')===0)t='nl';go(t);return}var ac=new AbortController(),tm=setTimeout(function(){ac.abort()},3000);fetch('https://ipapi.co/country/',{signal:ac.signal}).then(function(r){clearTimeout(tm);return r.text()}).then(function(c){c=(c||'').trim().toUpperCase();go(c==='CN'||c==='HK'||c==='MO'||c==='TW'?'zh':c==='JP'?'ja':c==='KR'?'ko':'en')}).catch(function(){clearTimeout(tm)})}catch(e){}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#080b16">
+<script>(function(){var h=document.documentElement,t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';try{var s=localStorage.getItem('lucent-theme');if(s==='light'||s==='dark')t=s}catch(e){}h.dataset.theme=t;h.classList.add('js');var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light'?'#eef2fb':'#080b16'})()</script>
+<title>Datenschutz — Lucent</title>
+<meta name="description" content="Datenschutz bei Lucent: Notizen und Aufgaben sind auf dem Gerät verschlüsselt. Keine Telemetrie, kein Konto, Cloud-Modelle sehen nur, was Sie senden.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://lucent-project.github.io/lucentapp/de/privacy.html">
+<link rel="alternate" hreflang="en" href="https://lucent-project.github.io/lucentapp/privacy.html">
+<link rel="alternate" hreflang="zh-CN" href="https://lucent-project.github.io/lucentapp/zh/privacy.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://lucent-project.github.io/lucentapp/zh-Hant/privacy.html">
+<link rel="alternate" hreflang="es" href="https://lucent-project.github.io/lucentapp/es/privacy.html">
+<link rel="alternate" hreflang="ar" href="https://lucent-project.github.io/lucentapp/ar/privacy.html">
+<link rel="alternate" hreflang="pt" href="https://lucent-project.github.io/lucentapp/pt/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://lucent-project.github.io/lucentapp/fr/privacy.html">
+<link rel="alternate" hreflang="ru" href="https://lucent-project.github.io/lucentapp/ru/privacy.html">
+<link rel="alternate" hreflang="de" href="https://lucent-project.github.io/lucentapp/de/privacy.html">
+<link rel="alternate" hreflang="ja" href="https://lucent-project.github.io/lucentapp/ja/privacy.html">
+<link rel="alternate" hreflang="tr" href="https://lucent-project.github.io/lucentapp/tr/privacy.html">
+<link rel="alternate" hreflang="ko" href="https://lucent-project.github.io/lucentapp/ko/privacy.html">
+<link rel="alternate" hreflang="it" href="https://lucent-project.github.io/lucentapp/it/privacy.html">
+<link rel="alternate" hreflang="nl" href="https://lucent-project.github.io/lucentapp/nl/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://lucent-project.github.io/lucentapp/privacy.html">
+<meta property="og:site_name" content="Lucent">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Datenschutz — Lucent">
+<meta property="og:description" content="Datenschutz bei Lucent: Notizen und Aufgaben sind auf dem Gerät verschlüsselt. Keine Telemetrie, kein Konto, Cloud-Modelle sehen nur, was Sie senden.">
+<meta property="og:url" content="https://lucent-project.github.io/lucentapp/de/privacy.html">
+<meta property="og:image" content="https://lucent-project.github.io/lucentapp/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Der Lucent-Schriftzug und das Logo auf mattiertem Glas: Android · Windows · Open Source">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Datenschutz — Lucent">
+<meta name="twitter:description" content="Datenschutz bei Lucent: Notizen und Aufgaben sind auf dem Gerät verschlüsselt. Keine Telemetrie, kein Konto, Cloud-Modelle sehen nur, was Sie senden.">
+<meta name="twitter:image" content="https://lucent-project.github.io/lucentapp/assets/og-image.png">
+<meta name="twitter:image:alt" content="Der Lucent-Schriftzug und das Logo auf mattiertem Glas: Android · Windows · Open Source">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i class="orb a"></i><i class="orb b"></i><i class="orb c"></i><i class="orb d"></i></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="index.html">Lucent</a>
+    <div class="links" id="menu">
+      <a href="index.html">Startseite</a>
+      <a href="features.html">Funktionen</a>
+      <a href="download.html">Download</a>
+      <a href="privacy.html" class="active" aria-current="page">Datenschutz</a>
+      <a href="about.html">Kontakt</a>
+    </div>
+    <div class="tools">
+      <details class="lang"><summary aria-label="Sprache"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg><span>DE</span></summary><div class="menu"><a href="../privacy.html" lang="en" hreflang="en">English</a><a href="../zh/privacy.html" lang="zh-CN" hreflang="zh-CN">简体中文</a><a href="../zh-Hant/privacy.html" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a><a href="../es/privacy.html" lang="es" hreflang="es">Español</a><a href="../ar/privacy.html" lang="ar" hreflang="ar">العربية</a><a href="../pt/privacy.html" lang="pt" hreflang="pt">Português</a><a href="../fr/privacy.html" lang="fr" hreflang="fr">Français</a><a href="../ru/privacy.html" lang="ru" hreflang="ru">Русский</a><a href="privacy.html" lang="de" hreflang="de" class="cur" aria-current="true">Deutsch</a><a href="../ja/privacy.html" lang="ja" hreflang="ja">日本語</a><a href="../tr/privacy.html" lang="tr" hreflang="tr">Türkçe</a><a href="../ko/privacy.html" lang="ko" hreflang="ko">한국어</a><a href="../it/privacy.html" lang="it" hreflang="it">Italiano</a><a href="../nl/privacy.html" lang="nl" hreflang="nl">Nederlands</a></div></details>
+      <button class="theme" type="button" aria-label="Helles / dunkles Design umschalten"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg></button>
+      <button class="burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="kicker rv">DATENSCHUTZ</div>
+    <h1 class="rv" style="font-size:clamp(44px,7vw,76px)">Strukturell,<br>nicht versprochen</h1>
+    <p class="sub rv">Datenschutz <em>versprechen</em> kann jeder. Lucent ist so gebaut, dass ein Verstoß echten Aufwand erfordern würde – die Architektur bietet Ihren Daten schlicht keinen Ort, an den sie abfließen könnten.</p>
+  </div>
+</div>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+
+    <div class="panel glass rv center" style="margin-top:0">
+      <p class="lead" style="font-size:clamp(20px,3vw,28px);color:var(--ink);max-width:780px;margin:0 auto;line-height:1.7">Nichts verlässt das Gerät, bis Sie es exportieren oder einem Modell einen Anlass geben, hineinzusehen. <span class="grad-text" style="font-weight:700">Das ist die Kurzfassung – die vollständige Richtlinie folgt unten, und der Code hält sich daran.</span></p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">01 — IM RUHEZUSTAND VERSCHLÜSSELT</div>
+      <h2>Die Datenbank trägt <span class="grad-text">eine Rüstung</span></h2>
+      <p class="body">Ihre Notizen liegen in einer <strong>mit SQLCipher verschlüsselten Datenbank</strong>; Anhänge sind einzeln verschlüsselt. Die leistungskritischen Pfade – PBKDF2-Schlüsselableitung und AES-256-GCM – laufen in Rust über JNI, mit identischen Kotlin-Fallbacks, damit die App niemals von einer nativen Bibliothek abhängig wird. Wenn jemand Ihr entsperrtes Telefon in der Hand hält, ist das eine Sache; wer jedoch nur Ihre <em>Dateien</em> erbeutet, sieht nichts als Rauschen.</p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">02 — DIE APP-SPERRE</div>
+      <h2>Ein Schloss, das <span class="grad-text">mitzählt</span></h2>
+      <p class="body">Dies ist ein echter Brute-Force-Schutz, keine höfliche Bitte: <strong>stufenweise ansteigende Abkühlzeiten, ein persistenter Zähler, der Neustarts übersteht</strong>, eine optionale Sicherheitsfrage, eine optionale Selbstzerstörung – und Fingerabdruck unter Android bzw. Windows Hello auf dem Desktop, die während der gesamten Sperrzeit höflich pausieren. Raten Sie zu oft falsch, bricht die App die Verhandlungen endgültig ab.</p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">03 — BACKUPS FÜR UNTERWEGS</div>
+      <h2>Eine Datei. Ihre Tasche. <span class="grad-text">Ihr Passwort.</span></h2>
+      <p class="body">Backups bestehen aus einer einzigen <strong>.lcb-Datei</strong>, die Notizen, Aufgaben, Historie, Chats, Anhänge und Einstellungen über Geräte hinweg transportiert – mit Vorschau, bevor auch nur ein einzelnes Element geändert wird, vorbereitet für automatische Ausführung und passwortschützbar. Ein Backup, das niemand lesen kann, ist eher ein Souvenir als eine Datensicherung; daher wird diese Datei beim Erstellen und beim Einlesen vollständig geprüft.</p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">04 — STANDARDMÄSSIG DEAKTIVIERT</div>
+      <h2>Wir fragen nicht einmal <span class="grad-text">zuerst</span></h2>
+      <p class="body">Teilen-Menü-Integration: <strong>aus</strong>. Diagnose: <strong>aus</strong>, und wenn aktiviert, nur lokal gespeichert. Welche Assistentendienste Sie verbinden, ist allein Ihre Entscheidung. Cloud-Spiegelung ist ein Modul, das Sie selbst über WebDAV konfigurieren – Ihr Server, Ihre Regeln. Es gibt in dieser gesamten App kein „standardmäßig aktiviert, drei Menüebenen tief versteckt“.</p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">05 — IHR MODELL, IHRE DATEN</div>
+      <h2>Der Assistent sieht nur, was <span class="grad-text">Sie ihm zeigen</span></h2>
+      <p class="body">Cloud-Modelle sehen genau das, was Sie ihnen vorlegen – im Hintergrund wird nichts synchronisiert, indexiert oder „verbessert“. Bevorzugen Sie den absoluten Einsiedlermodus? Führen Sie eine .gguf-Datei lokal aus, und das Netzwerk kann komplett ausgeschaltet bleiben. Die einzige bewusste Ausnahme von der Verschlüsselung ist der <strong>Export</strong> nach Markdown, Word, PDF oder Excel – eine Datei, die Sie überall öffnen können, was schließlich der Sinn der Sache ist.</p>
+      <div class="cta" style="justify-content:flex-start">
+        <a class="btn ghost" data-policy-link href="#policy">Datenschutzrichtlinie vollständig lesen ↓</a>
+      </div>
+    </div>
+
+    <!--policy:start-->
+<div class="policy" id="policy">
+<div class="panel glass prose">
+<div class="kicker">DIE VOLLSTÄNDIGE RICHTLINIE</div>
+<h2 class="policy-title">Lucent-Datenschutzrichtlinie</h2>
+<p>Lucent ist eine Notizen- und Aufgaben-App für Android und Windows. Diese Richtlinie beschreibt, was die App speichert, was sie von Ihrem Gerät sendet und wie Sie beides steuern. Sie beschreibt Lucent so, wie es in diesem Repository erstellt wird.</p>
+<p class="meta"><strong>Stand: 25. September 2026</strong></p>
+<nav class="policy-toc" aria-label="Inhalt"><p class="toc-label">Inhalt</p><ul><li><a href="#policy-1">1. Die Kurzfassung</a></li><li><a href="#policy-2">2. Von wem diese Richtlinie stammt</a></li><li><a href="#policy-3">3. Was Lucent auf Ihrem Gerät speichert</a></li><li><a href="#policy-4">4. Was Ihr Gerät niemals verlässt</a></li><li><a href="#policy-5">5. Wann Daten Ihr Gerät verlassen</a></li><li><a href="#policy-6">6. Backups</a></li><li><a href="#policy-7">7. Geräte-Integration</a></li><li><a href="#policy-8">8. Berechtigungen, die Lucent anfordert</a></li><li><a href="#policy-9">9. Die Kontrollen in Ihrer Hand</a></li><li><a href="#policy-10">10. Aufbewahrung und Löschung</a></li><li><a href="#policy-11">11. Kinder</a></li><li><a href="#policy-12">12. Änderungen dieser Richtlinie</a></li><li><a href="#policy-13">13. Kontakt</a></li></ul></nav>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-1">1. Die Kurzfassung</h3>
+<ul><li>Lucent hat kein Konto, keine Registrierung und keinen von der Entwicklerin betriebenen Server. Es gibt keinen Mechanismus, über den die Entwicklerin Ihre Notizen, Aufgaben, Dateien oder Nutzungsdaten erhalten könnte.</li><li>Notizen, Aufgaben, Notizbücher, Checklisten, Versionsverläufe, Assistenten-Unterhaltungen, Anhänge, API-Schlüssel und Einstellungen werden auf Ihrem Gerät gespeichert und im Ruhezustand verschlüsselt.</li><li>Die App enthält keinerlei Analyse-Tools, keine Werbung und keine Telemetrie.</li><li>Jede Funktion, die das Netzwerk nutzt, ist optional und standardmäßig deaktiviert: der Cloud-Assistent, die Websuche, die semantische Suche, das Cloud-Backup und automatische Update-Prüfungen.</li><li>Wenn Sie den Cloud-Assistenten nutzen, gelangt Ihre Nachricht direkt von Ihrem Gerät an den Anbieter, dessen API-Schlüssel Sie hinterlegt haben. Sie wird zu keinem Zeitpunkt über Lucent geleitet.</li><li>Das optionale Modell auf dem Gerät antwortet vollständig auf Ihrem Gerät und sendet keinerlei Daten irgendwohin.</li></ul>
+<p>Der Rest dieses Dokuments erläutert jede dieser Aussagen im Detail, einschließlich der Grenzen.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-2">2. Von wem diese Richtlinie stammt</h3>
+<p>Lucent wird von Jessica Martinez entwickelt. Fragen zu dieser Richtlinie oder zum Umgang der App mit Daten können an <strong>yuan47578@gmail.com</strong> gesendet werden.</p>
+<p>Lucent ist freie Software, die unter der MIT-Lizenz veröffentlicht wird. Die Entwicklerin betreibt keinen Dienst, der Benutzerdaten erfasst oder speichert, und die Anwendung besitzt keine Serverkomponente.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-3">3. Was Lucent auf Ihrem Gerät speichert</h3>
+<p>Alles, was Sie in Lucent erstellen, verbleibt im privaten Anwendungsspeicher der App auf dem Gerät. Dieser Speicherbereich kann von anderen gewöhnlichen Anwendungen nicht gelesen werden und wird entfernt, wenn Sie die App deinstallieren oder deren Daten löschen.</p>
+<p>Zu den gespeicherten Inhalten gehören:</p>
+<ul><li>Notizen, einschließlich deren Text, Formatierung, Tags, Farben, Anheft- und Archivierungsstatus, Checklisten, Skizzen, Links und Versionsverlauf;</li><li>Aufgaben, einschließlich Unteraufgaben, Prioritäten, Fälligkeiten, Wiederholungsregeln, Erinnerungen, Notizen und Versionsverlauf;</li><li>Notizbücher und die darin abgelegten Einträge;</li><li>Assistenten-Unterhaltungen und -Nachrichten, einschließlich eventueller vom Modell zurückgegebener Denkprozess-Spuren (Reasoning Traces);</li><li>Anhänge, die Sie einer Notiz oder Aufgabe hinzufügen, sowie Anhänge, die Sie an den Assistenten senden;</li><li>importierte Schriftarten und importierte lokale Modelldateien;</li><li>Einstellungen, einschließlich des gewählten Anbieters, der Basis-URL, des Modellnamens, der API-Schlüssel, des Backup-Passworts, der App-Sperrdaten und der Cloud-Backup-Zugangsdaten;</li><li>Diagnosedaten, falls Sie die Protokollierung für Diagnosen aktiviert haben.</li></ul>
+<h4 id="policy-3-1">3.1 Verschlüsselung im Ruhezustand</h4>
+<p>Die Datenbank wird mit SQLCipher verschlüsselt. Unter Android verwendet die App Room über SQLCipher; unter Windows verwendet sie SQLite über den mitgelieferten JDBC-Treiber, der mit der SQLCipher-Verschlüsselung und derselben Art von 256-Bit-Schlüssel konfiguriert ist. Notizen, Aufgaben, Unterhaltungen, Versionsverläufe und Einstellungen befinden sich ausnahmslos in dieser Datenbank.</p>
+<p>Anhänge werden separat verschlüsselt. Jede Datei wird in Blöcken von 64 KiB in einem authentifizierten AES-256-GCM-Container geschrieben, bevor sie die Festplatte erreicht. Der Dateiname auf dem Datenträger ist eine zufällige Kennung und nicht der Name, den Sie in der App sehen.</p>
+<p>Backups sind ebenfalls stets verschlüsselt; siehe Abschnitt 6.</p>
+<h4 id="policy-3-2">3.2 Schlüssel und Geheimnisse</h4>
+<p>Der Datenbankschlüssel und der Anhangsschlüssel sind zufällige 256-Bit-Werte, die auf Ihrem Gerät generiert werden. Sie werden nicht aus Eingaben von Ihnen abgeleitet und niemals im Klartext auf den Datenträger geschrieben. Unter Android werden sie durch einen Schlüssel geschützt, der im Android Keystore verwahrt wird (hardwaregestützt, sofern vom Gerät unterstützt), mit einem maschinenlokalen Fallback, falls der Keystore nicht verfügbar ist. Eine Wiederherstellungskopie jedes Schlüssels wird aufbewahrt, damit ein Keystore-Problem Ihre Daten nicht zerstört.</p>
+<p>API-Schlüssel, WebDAV-Passwörter, das Backup-Passwort und Ihre Zugangsdaten für die App-Sperre werden über denselben Pfad für verschlüsselte Geheimnisse gespeichert, nicht als Klartext. Ihr Passwort für die App-Sperre und die Sicherheitsantwort werden überhaupt nicht gespeichert: Es wird lediglich ein gesalzener Hash aufbewahrt, aus dem das Passwort selbst nicht wiederhergestellt werden kann.</p>
+<h4 id="policy-3-3">3.3 Was Verschlüsselung leisten kann und was nicht</h4>
+<p>Die Verschlüsselung schützt Daten im Ruhezustand: Eine Kopie der Datenbank, eine Anhangsdatei oder ein Backup, das vom Gerät entwendet wird, kann ohne den Schlüssel nicht gelesen werden. Sie schützt nicht vor Personen, die Ihr entsperrtes Gerät mit Ihrem Betriebssystemkonto verwenden, und sie schützt Daten nicht, während die App geöffnet ist, da entschlüsselte Inhalte während der Anzeige oder Bearbeitung zwingend im Arbeitsspeicher des Geräts vorliegen müssen.</p>
+<p>Lucent macht sich hierbei nichts vor. Kann die Verschlüsselungsbibliothek nicht geladen oder eine Datenbank nicht verschlüsselt oder entsperrt werden, zeichnet die App diesen Umstand auf und meldet ihn, anstatt einen Erfolg vorzutäuschen; die Einstellungen bieten eine Verschlüsselungsprüfung, die verifiziert, ob Werte ordnungsgemäß versiegelt sind und sich korrekt öffnen lassen. Kann eine Datenbank mit dem gespeicherten Schlüssel nicht entschlüsselt werden, legt Lucent sie beiseite, anstatt sie zu löschen, und benachrichtigt Sie darüber, damit Sie aus einem Backup wiederherstellen können.</p>
+<p>Startbildschirm-Widgets unter Android zeigen Notizentitel oder Aufgabentitel in Ihrem Launcher an. Alles, was ein Widget anzeigt, ist für jeden sichtbar, der diesen Bildschirm sehen kann. Die Widgets sind optional und können entfernt werden.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-4">4. Was Ihr Gerät niemals verlässt</h3>
+<p>Standardmäßig verlässt überhaupt nichts Ihr Gerät. Lucent erfordert keine Netzwerkverbindung für Notizen, Aufgaben, Erinnerungen, Historie, Anhänge, lokale Suche oder den integrierten Assistenten auf dem Gerät.</p>
+<p>Konkret enthält Lucent kein Analyse-SDK, kein Werbe-SDK, keinen Dienst zur Absturzmeldung und keine Tracking-Identifikatoren. Es gibt kein Kontosystem und keinen Gerätefingerabdruck, der irgendwohin übertragen wird. Wenn Crash Shield aktiviert ist, werden abgefangene Fehler in eine lokale Protokolldatei auf dem Gerät geschrieben und nicht übertragen. Die Diagnoseprotokollierung funktioniert auf dieselbe Weise: Sie ist standardmäßig deaktiviert, schreibt lokal und wird nur dann übertragen, wenn Sie sie selbst exportieren und die Datei weitergeben.</p>
+<p>Da es keinen Lucent-Server gibt, hat die Entwicklerin keine Möglichkeit, Ihre Daten einzusehen oder diese für Sie wiederherzustellen.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-5">5. Wann Daten Ihr Gerät verlassen</h3>
+<p>Jeder der folgenden Punkte ist optional, standardmäßig deaktiviert und liegt unter Ihrer Kontrolle. Wenn eine dieser Funktionen aktiv ist, verlassen Daten das Gerät direkt von der App an den von Ihnen konfigurierten Drittanbieter; sie passieren zu keinem Zeitpunkt einen Lucent-Dienst, da schlicht keiner existiert.</p>
+<h4 id="policy-5-1">5.1 Der Cloud-Assistent (Bring Your Own Key)</h4>
+<p>Der Assistent im Cloud-Modus verwendet einen von Ihnen bereitgestellten API-Schlüssel und einen Anbieter Ihrer Wahl. Lucent beherrscht die Anfrageformate von OpenAI-kompatiblen, Anthropic-kompatiblen und Google-kompatiblen Endpunkten; jede OpenAI-kompatible Adresse funktioniert, einschließlich DeepSeek und selbst gehosteter Gateways. Sie können mehrere Anbieterprofile anlegen und zwischen ihnen wechseln.</p>
+<p>Wenn Sie eine Nachricht senden, stellt Lucent eine HTTPS-Anfrage von Ihrem Gerät an die von Ihnen konfigurierte Basis-URL. Diese Anfrage enthält:</p>
+<ul><li>Ihren Nachrichtentext;</li><li>den Gesprächsverlauf, den die aktuelle Speichereinstellung umfasst;</li><li>die Systemanweisungen, die das Verhalten des Assistenten definieren;</li><li>alle Dateien, die Sie der Nachricht angehängt haben;</li><li>den Notizen-, Aufgaben-, Notizbuch- oder Suchkontext, den der Assistent zur Beantwortung benötigt, sowie die Ergebnisse aller Werkzeuge, die der Assistent aufrufen durfte.</li></ul>
+<p>Ihr API-Schlüssel wird als Authentifizierungs-Header der Anfrage an diesen Anbieter gesendet. Er wird an keine andere Stelle übermittelt. Lesen Sie die Datenschutzrichtlinie des gewählten Anbieters, um zu verstehen, wie dieser mit den empfangenen Texten verfährt; diese Bedingungen gelten zwischen Ihnen und diesem Anbieter, und Lucent hat weder Einblick noch Kontrolle darüber.</p>
+<p>Der Assistent kann Ihre Daten nicht unbemerkt verändern. Bevor er etwas schreibt, zeigt er Ihnen genau, was er beabsichtigt, und dieser Bestätigungsschritt ist standardmäßig aktiv. Werkzeuge sind optional: Das lokale Modell hat einen eigenen Schalter für Werkzeuge, und der Werkzeugzugriff des Cloud-Assistenten ist eine Einstellung, die Sie deaktivieren können. Das Deaktivieren bewirkt jeweils, dass das Modell zwar chatten, Ihre Notizen und Aufgaben jedoch weder lesen noch ändern kann.</p>
+<h4 id="policy-5-2">5.2 Websuche</h4>
+<p>Die Websuche ist standardmäßig deaktiviert. Wenn Sie sie einschalten und der Assistent entscheidet, dass eine Suche erforderlich ist, sendet Lucent die Suchanfrage an eine öffentliche Suchmaschine. Sie wählen aus, welche das ist, oder belassen es bei Automatisch, wodurch nacheinander versucht wird, wer antwortet: Bing, DuckDuckGo, Google, Brave, Mojeek, Yandex, Baidu, Sogou, 360 Search und die Wikipedia-Such-API. Es wird kein Such-API-Schlüssel verwendet und kein Konto erstellt. Der Abfragetext verlässt Ihr Gerät; die Ergebnisse kehren zum Assistenten zurück und fließen in dessen Antwort ein. Die antwortende Suchmaschine sieht die Suchanfrage und Ihre IP-Adresse. Die Websuche erfordert den Agentenmodus und beim lokalen Modell den Werkzeugschalter; der Blackout-Modus blockiert sie vollständig.</p>
+<h4 id="policy-5-3">5.3 Semantische Suche</h4>
+<p>Die semantische Suche von Lucent richtet sich nach dem gerade aktiven Assistenten, sodass keine zusätzlichen Einstellungen nötig sind. Solange das lokale Modell der aktive Assistent ist, verbleibt die Indexierung auf dem Gerät und ist im aktuellen Build nicht implementiert, sodass keine Daten abfließen. Solange das Cloud-Modell aktiv ist, wird der zu indexierende Text an den Embeddings-Endpunkt Ihres konfigurierten KI-Anbieters gesendet, um die Vektoren zu erzeugen; das bedeutet, dass Notizentexte Ihr Gerät verlassen. Ein Wechsel zwischen den beiden Modellen wechselt auch dieses Verhalten.</p>
+<h4 id="policy-5-4">5.4 Cloud-Backup</h4>
+<p>Das Cloud-Backup ist standardmäßig deaktiviert. Wenn Sie es aktivieren, hinterlegen Sie Adresse, Benutzername und Passwort eines WebDAV-kompatiblen Dienstes, bei dem Sie bereits ein Konto besitzen – etwa Nutstore, Nextcloud, Koofr oder ein beliebiger anderer WebDAV-Server. Lucent lädt Ihre <code>.lcb</code>-Backup-Dateien in den von Ihnen angegebenen Ordner auf diesem Server hoch und kann sie für eine Wiederherstellung auflisten und wieder herunterladen. Die Dateien werden vor dem Hochladen verschlüsselt; der Dienst speichert die verschlüsselte Datei, und Ihre Zugangsdaten werden zur Authentifizierung an diesen Dienst übermittelt. Der automatische Cloud-Upload ist ein separater Schalter und ebenfalls standardmäßig aus.</p>
+</div>
+<div class="panel glass prose">
+<h4 id="policy-5-5">5.5 Update-Prüfungen</h4>
+<p>Die automatische Suche nach Updates ist standardmäßig deaktiviert. Wenn Sie sie aktivieren oder Lucent manuell prüfen lassen, fordert die App über die öffentliche GitHub-Releases-API für dieses Repository die neuesten Versionsinformationen an und vergleicht die Versionsnummern. Die Anfrage enthält keine personenbezogenen Daten außer denen, die jede HTTPS-Anfrage übermittelt (wie Ihre IP-Adresse und ein User-Agent mit dem Namen Lucent). Existiert ein neueres Release, bietet Lucent dieses an; der Installer oder die APK wird nur dann von GitHub heruntergeladen, wenn Sie sich für die Aktualisierung entscheiden.</p>
+<h4 id="policy-5-6">5.6 Teilen und Exporte</h4>
+<p>Lucent sendet von sich aus keinerlei Daten nach außen. Zwei Funktionen übergeben Daten an andere Anwendungen, und beide stehen unter Ihrer Kontrolle:</p>
+<ul><li><strong>Exportieren.</strong> Wenn Sie eine Notiz oder Aufgabe nach Markdown, Word, PDF oder Excel exportieren oder ein Backup ausgeben, wird eine Datei an einem von Ihnen gewählten Ort gespeichert. Exportierte Dokumente sind bewusst nicht verschlüsselt, da der Zweck eines Exports darin besteht, andernorts lesbar zu sein; jeder, der diese Datei erhält, kann sie lesen. Bewahren Sie sie an einem Ort auf, den Sie für angemessen erachten.</li><li><strong>Teilen-Menü-Integration.</strong> Dass Lucent als Freigabeziel erscheint, ist standardmäßig deaktiviert. Wenn Sie es einschalten, wird Lucent im Freigabemenü anderer Apps aufgeführt, sodass Texte und Dateien hineingeteilt werden können, und erscheint in Ihrem System als Ziel. Inhalte, die in Lucent geteilt werden, landen in derselben verschlüsselten Datenbank wie alles andere. Lucent sendet auch hierbei von sich aus nichts nach außen.</li></ul>
+<h4 id="policy-5-7">5.7 Das Modell auf dem Gerät</h4>
+<p>Wenn Sie ein GGUF-Modell importieren, kann der Assistent dieses mit llama.cpp direkt auf dem Gerät ausführen. In diesem Modus wird keinerlei Information irgendwohin gesendet: Weder ein Konto noch ein API-Schlüssel oder eine Netzwerkanfrage sind an der Generierung einer Antwort beteiligt. Die Modelldatei bleibt auf Ihrem Gerät, und das Modell wird entladen, wenn Sie die App verlassen. Lokale Werkzeuge sind ein separater Schalter und standardmäßig deaktiviert. Die GPU-Beschleunigung ist optional und kann abgeschaltet werden.</p>
+</div>
+<div class="panel glass prose">
+<h4 id="policy-5-8">5.8 Das Agenten-Toolkit</h4>
+<p>Über Notizen und Aufgaben hinaus kann dem Assistenten ein echtes Toolkit an die Hand gegeben werden: ein Arbeitsbereichsordner (Workspace), den er lesen und beschreiben darf, Shell-Befehle, Dokumente, Plugins und Verbindungen zu externen Diensten. Jeder dieser Punkte ist ein eigener Schalter unter Einstellungen → Erweitert → Toolkit, und die Teile, die über Ihr Gerät hinausreichen, tun nur dann etwas, wenn Sie sie einschalten und standardmäßig vorher um Erlaubnis gefragt werden.</p>
+<ul><li><strong>Arbeitsbereich (Workspace).</strong> Sie wählen genau einen Ordner aus. Alles, was der Assistent liest oder schreibt, befindet sich darin. Dateien außerhalb werden abgelehnt, es sei denn, Sie erteilen die Berechtigung „außerhalb des Arbeitsbereichs“, und außerhalb darf niemals etwas geschrieben werden.</li><li><strong>Befehle.</strong> Das Ausführen eines Shell-Befehls fragt Sie vorher, es sei denn, Sie ändern diese Berechtigung. Befehle laufen auf Ihrer Maschine mit dem Arbeitsverzeichnis innerhalb des Arbeitsbereichs, mit einem von Ihnen festgelegten Timeout, und jeder Befehl wird im Aktivitätsprotokoll verzeichnet.</li><li><strong>Dokumente.</strong> Word-, Excel- und PowerPoint-Dateien werden direkt durch Lucents eigenen Code auf Ihrem Gerät gelesen und geschrieben. Zu keinem Zeitpunkt wird etwas hochgeladen, um eine Datei zu konvertieren oder zu erstellen.</li><li><strong>Plugins.</strong> Optionale Werkzeuge – ein Linux-Userland, Python mit Dokumentbibliotheken, LibreOffice, Node.js, Medien- und OCR-Werkzeuge – werden erst dann heruntergeladen, wenn Sie sie anfordern, und zwar direkt vom Upstream-Projekt oder einem öffentlichen Mirror in Ihren eigenen Speicher. Lucent sendet dazu keinerlei Telemetrie.</li><li><strong>Verbindungen.</strong> GitHub, Notion, Slack, Google Drive, OneDrive, GitLab, Jira, Linear, WebDAV und jeder hinzugefügte MCP-Server werden direkt von Ihrem Gerät mit einem von Ihnen bereitgestellten Token kontaktiert. Es wird nur die von Ihnen angeforderte Anfrage an den von Ihnen konfigurierten Dienst gesendet. Lucent schaltet keinen eigenen Server dazwischen und speichert die Tokens verschlüsselt auf Ihrem Gerät.</li><li><strong>Tokens und privilegierte Shell.</strong> GitHub-Zugriffstokens werden verschlüsselt gespeichert und nach dem Speichern nie wieder angezeigt; Sie können bis zu fünf hinterlegen. Unter Android ist die Erteilung der Shizuku-Berechtigung an den Assistenten ein eigener Schalter, der standardmäßig deaktiviert ist, und erst dann kann ein Befehl mit diesen Rechten ausgeführt werden.</li><li><strong>Berichte von Unter-Agenten.</strong> Ein von Hand gespeicherter Bericht eines Unter-Agenten wird als Markdown-Datei im Ordner <code>sub-agents</code> des Arbeitsbereichs auf Ihrem Gerät abgelegt; nichts wird übertragen.</li><li><strong>Gerätesteuerung (Android).</strong> Wenn Sie diese aktivieren und den Bedienungshilfen-Dienst einschalten, kann der Assistent den Bildschirm lesen, tippen, wischen, Screenshots erstellen, Apps auflisten und öffnen, Benachrichtigungen lesen sowie die Zwischenablage und Sensoren nutzen. Das Lesen des Bildschirms erfolgt auf dem Gerät; es wird nur dann übertragen, wenn ein Werkzeugergebnis an den von Ihnen gewählten KI-Anbieter übermittelt wird – auf demselben Kanal wie jede andere Nachricht.</li><li><strong>Was lokal bleibt.</strong> Der Arbeitsbereich, vor Dateiänderungen erstellte Snapshots, das Aktivitätsprotokoll, gemerkte Fakten und Skill-Dateien verbleiben ausnahmslos auf Ihrem Gerät. Das Aktivitätsprotokoll erfasst den Werkzeugnamen, die Argumente (gekürzt auf 300 Zeichen) und das Ergebnis; es wird verschlüsselt gespeichert und kann jederzeit auf derselben Einstellungsseite geleert werden.</li></ul>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-6">6. Backups</h3>
+<p>Ein Backup ist eine einzelne <code>.lcb</code>-Datei, die Sie erstellen. Es kann Notizen, Aufgaben, Versionsverläufe, Notizbücher, Unterhaltungen, Anhänge, Einstellungen und API-Schlüssel sowie optional importierte Schriftarten und lokale Modelldateien enthalten. Sie entscheiden, was davon aufgenommen wird und wo die Datei gespeichert wird.</p>
+<p>Jede <code>.lcb</code>-Datei ist verschlüsselt. Es gibt zwei Modi:</p>
+<ul><li><strong>Ohne Passwort.</strong> Die Datei wird mit dem integrierten Schlüssel der App verschlüsselt. Sie lässt sich auf jedem Gerät mit Lucent allein mithilfe dieser Datei wiederherstellen, was bequem ist, aber auch bedeutet, dass jeder, der die Datei und eine Kopie der App besitzt, sie lesen kann.</li><li><strong>Mit Passwort.</strong> Der Schlüssel wird aus Ihrem Passwort mittels PBKDF2-HMAC-SHA256 über 210.000 Iterationen abgeleitet und existiert nirgendwo sonst. Dies ist sicherer, bringt aber den üblichen Kompromiss mit sich: Dasselbe Passwort ist zur Wiederherstellung erforderlich, es wird nirgendwo gespeichert, und ein vergessenes Passwort kann von niemandem wiederhergestellt werden, auch nicht von der Entwicklerin.</li></ul>
+<p>Ein passwortgeschütztes Backup kann optional eine Sicherheitsfrage und -antwort enthalten, damit das Passwort später zurückgesetzt werden kann. Diese Option ist standardmäßig deaktiviert und macht das Backup nur so sicher wie das schwächere Glied aus Passwort und Antwort; wählen Sie daher eine Frage, deren Antwort niemand sonst kennt.</p>
+<p>Automatische Backups schreiben bei Aktivierung in einen von Ihnen gewählten Ordner, bewahren die von Ihnen festgelegte Anzahl von Kopien auf und können zudem in Ihren konfigurierten WebDAV-Ordner hochgeladen werden. Die Backup-Datei selbst ist in jedem Fall derselbe verschlüsselte Container. Wo Ihre Backup-Dateien liegen und wie viele Kopien existieren, ist allein Ihre Entscheidung – ebenso wie deren Löschung.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-7">7. Geräte-Integration</h3>
+<p>Lucents Integration einer privilegierten Shell ist optional, standardmäßig deaktiviert und erfordert Software und Berechtigungen außerhalb von Lucent.</p>
+<p>Unter Android kann die App Shizuku nutzen, um privilegierte Operationen auszuführen, wenn Sie Shizuku installiert, dessen Dienst gestartet und Lucent die Berechtigung im System erteilt haben. Dies dient dazu, von Ihnen ausdrücklich angeforderte Aktionen durchzuführen, die normale Apps nicht eigenständig bewältigen können, wie etwa die Installation eines heruntergeladenen App-Updates. Lucent kann Shizuku nicht starten, sich die Berechtigung nicht selbst erteilen und führt über diesen Pfad nichts aus, es sei denn, Sie haben die Integration aktiviert und die Berechtigung erteilt. Sie können sie jederzeit in Shizuku oder in den Android-Einstellungen widerrufen und die Integration in Lucent abschalten. Eine Überprüfung der tatsächlichen privilegierten Identität ist in der App sichtbar, die die erhaltene UID anzeigt.</p>
+<p>Lucent deklariert außerdem die regulären Android-Berechtigungen, die es für festgelegte Zwecke benötigt; siehe Abschnitt 8.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-8">8. Berechtigungen, die Lucent anfordert</h3>
+<div class="table-wrap"><table><thead><tr><th>Berechtigung</th><th>Warum Lucent danach fragt</th></tr></thead><tbody><tr><td>Netzwerkzugriff (Android <code>INTERNET</code>)</td><td>Senden von Nachrichten an Ihren konfigurierten Assistentenanbieter, Websuche bei Aktivierung, WebDAV-Backup bei Aktivierung und Update-Prüfungen bei Aktivierung. Ohne eine dieser aktiven Funktionen wird nichts gesendet.</td></tr><tr><td>Benachrichtigungen (Android <code>POST_NOTIFICATIONS</code>)</td><td>Anzeigen von Aufgabenerinnerungen sowie des Fortschritts von Downloads, Backups oder Generierungen, die Sie gestartet haben.</td></tr><tr><td>Genaue Wecker (Android <code>SCHEDULE_EXACT_ALARM</code>)</td><td>Auslösen von Aufgabenerinnerungen exakt zur festgelegten Zeit statt nur näherungsweise.</td></tr><tr><td>Beim Start ausführen (Android <code>RECEIVE_BOOT_COMPLETED</code>)</td><td>Erneutes Registrieren Ihrer Erinnerungen nach dem Neustart des Geräts, damit eine Erinnerung für morgen den Neustart übersteht.</td></tr><tr><td>Vordergrunddienst (Android <code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_DATA_SYNC</code>)</td><td>Fortführen eines Backups, Downloads oder einer Modellgenerierung, wenn sich die App nicht im Vordergrund befindet, anstatt mittendrin beendet zu werden.</td></tr><tr><td>Biometrische Entsperrung (Android <code>USE_BIOMETRIC</code>; Windows Hello unter Windows)</td><td>Ermöglicht das Entsperren der App per Fingerabdruck oder Gesichtserkennung statt der Eingabe des App-Sperrpassworts. Optional, standardmäßig aus und nur für die lokale Entsperrung genutzt.</td></tr><tr><td>Vibration (Android <code>VIBRATE</code>)</td><td>Haptisches Feedback beim Tippen.</td></tr><tr><td>Pakete installieren (Android <code>REQUEST_INSTALL_PACKAGES</code>)</td><td>Installieren eines von Ihnen heruntergeladenen Updates über das Installationsprogramm des Systems.</td></tr><tr><td>Shizuku-Dienstberechtigung (Android <code>moe.shizuku.manager.permission.API_V23</code>)</td><td>Die in Abschnitt 7 beschriebene optionale privilegierte Integration. Nur deklariert, damit Shizuku überhaupt genutzt werden kann; bleibt wirkungslos, sofern Sie Shizuku nicht installieren und die Berechtigung erteilen.</td></tr><tr><td>Zugriff auf alle Dateien (Android <code>MANAGE_EXTERNAL_STORAGE</code>)</td><td>Optional, inaktiv bis zur Erteilung, und ausschließlich dafür genutzt, damit der von Ihnen gewählte Arbeitsbereichsordner wie gewöhnliche Dateien gelesen und geschrieben werden kann. Ohne diese Berechtigung verbleibt der Arbeitsbereich im internen Speicher von Lucent.</td></tr><tr><td>Standort (Android <code>ACCESS_COARSE_LOCATION</code>, <code>ACCESS_FINE_LOCATION</code>)</td><td>Wird nur abgefragt, wenn der Assistent sein Standort-Werkzeug aufruft, was wiederum nur bei aktivierter Gerätesteuerung und erteilter Berechtigung geschieht. Lucent trackt Sie niemals im Hintergrund.</td></tr></tbody></table></div>
+<p>Lucent bittet nicht um weitreichenden Zugriff auf Ihre Dateien oder Ihren Speicher, es sei denn, Sie aktivieren das Agenten-Toolkit und verknüpfen es mit einem Arbeitsbereichsordner – in diesem Fall ermöglicht der Vollzugriff auf Dateien, dass dieser eine Ordner wie gewöhnliche Dateien gelesen und beschrieben werden kann. Sie können dies ablehnen und den Arbeitsbereich stattdessen im internen Speicher von Lucent belassen. An anderer Stelle werden Dateien und Ordner von Ihnen über die systemeigene Dateiauswahl ausgewählt, und Lucent erhält ausschließlich das ausgewählte Element. Bei Schriftarten und Modelldateien verhält es sich genauso: Sie wählen sie aus, und sie werden in den anwendungseigenen Speicher kopiert.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-9">9. Die Kontrollen in Ihrer Hand</h3>
+<p>Datenschutz in Lucent besteht aus einer Reihe von Schaltern, die alle in Ihrer Hand liegen und sich in den Einstellungen befinden:</p>
+<ul><li><strong>App-Sperre.</strong> Einstellungen → Sicherheit. Wählen Sie ein Passwort und optional eine Sicherheitsfrage, damit ein vergessenes Passwort zurückgesetzt werden kann. Es wird ausschließlich ein gesalzener Hash gespeichert.</li><li><strong>Begrenzung der Entsperrversuche.</strong> Neben der App-Sperre. Legen Sie fest, wie viele Versuche in der ersten Runde und in späteren Runden erlaubt sind; Fehlversuche lösen stufenweise ansteigende Abkühlzeiten aus, die über Neustarts hinweg erhalten bleiben.</li><li><strong>Löschen nach wiederholten Fehlversuchen.</strong> Ebenfalls neben der App-Sperre, standardmäßig aus. Nach der von Ihnen festgelegten Anzahl falscher Passworteingaben wird alles gelöscht. Dies ist dauerhaft und kann von niemandem rückgängig gemacht werden.</li><li><strong>Biometrische Entsperrung.</strong> Optional, standardmäßig aus.</li><li><strong>Blackout-Modus.</strong> Einstellungen → Datenschutz. Wenn aktiv, verlässt nichts das Gerät: Cloud-Assistent, Websuche und Netzwerkfunktionen sind blockiert, Cloud-Oberflächen eingefroren, die App ist in der Übersicht der letzten Apps verborgen und kann nicht abfotografiert werden (Screenshots blockiert), das Freigabeziel ist entfernt und bei jeder Rückkehr wird das Passwort verlangt. Er überschreibt alle anderen Einstellungen; beim Ausschalten werden Ihre vorherigen Einstellungen wiederhergestellt.</li><li><strong>Diagnoseprotokollierung.</strong> Einstellungen → Datenschutz, standardmäßig aus und erfordert ausdrückliche Zustimmung. Sie schreibt lokal, kann von Ihnen an den Assistenten gesendete Texte enthalten, kann von Ihnen exportiert werden und lässt sich jederzeit leeren und abschalten. Crash Shield hält sie im aktivierten Zustand eingeschaltet, damit abgefangene Fehler protokolliert werden.</li><li><strong>Crash Shield.</strong> Einstellungen → Datenschutz, standardmäßig aus. Fängt Fehler innerhalb der App ab, sodass diese geöffnet bleibt, anstatt abzustürzen, und zeichnet sie lokal auf. Weist klar darauf hin, was nicht abgefangen werden kann: ein Absturz innerhalb der Modell-Engine auf dem Gerät, das Schließen der App durch das System zur Speicherfreigabe oder das Beenden wegen Nichtreagierens.</li><li><strong>Systemintegration.</strong> Einstellungen → Datenschutz, standardmäßig aus. Steuert, ob Lucent im Freigabemenü anderer Anwendungen erscheinen darf.</li><li><strong>Versionsverlauf.</strong> Einstellungen → Datenschutz. Notizen-Historie und Aufgaben-Historie können jeweils separat abgeschaltet werden, wodurch keine neuen Snapshots mehr angelegt werden.</li><li><strong>Assistentenanbieter und Speicher.</strong> Einstellungen → Assistent, dann Cloud-Modell oder Lokales Modell. Wählen Sie den Anbieter oder importieren Sie ein lokales Modell völlig ohne Netzwerk. Jedes Modell besitzt eine eigene Speichereinstellung, die steuert, wie viel des bisherigen Gesprächsverlaufs in jede Anfrage einfließt; weniger Speicher bedeutet, dass weniger Text das Gerät verlässt.</li><li><strong>Websuche.</strong> Einstellungen → Assistent → Personalisierung. Ein Schalter, standardmäßig aus, mit der Suchmaschine daneben. Sie ist ausgeblendet, während das lokale Modell ohne Agentenmodus läuft, da sie dann niemand nutzen kann, und kehrt exakt so zurück, wie Sie sie hinterlassen haben.</li><li><strong>Semantische Suche.</strong> Einstellungen → Assistent. Richtet sich nach dem aktiven Modell: Das lokale Modell indexiert auf dem Gerät, das Cloud-Modell sendet den Text an Ihren Anbieter. Wechseln Sie die Modelle, um das Verhalten anzupassen, oder lassen Sie den Assistenten ganz ausgeschaltet.</li><li><strong>Backup-Inhalt und Passwort.</strong> Einstellungen → Daten. Bestimmen Sie, was ein Backup umfasst und ob es passwortgeschützt ist. Das automatische Backup, dessen Zielordner, Intervall und Anzahl der Kopien liegen ganz bei Ihnen und sind standardmäßig aus.</li><li><strong>Cloud-Backup.</strong> Einstellungen → Daten, standardmäßig aus. Konfigurieren oder löschen Sie Ihre WebDAV-Zugangsdaten jederzeit.</li><li><strong>Verschlüsselungsprüfung.</strong> Einstellungen → Sicherheit. Prüft auf Knopfdruck, ob gespeicherte Werte versiegelt sind und sich fehlerfrei öffnen lassen.</li><li><strong>Alle Daten löschen.</strong> Einstellungen → Daten. Siehe Abschnitt 10.</li></ul>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-10">10. Aufbewahrung und Löschung</h3>
+<p>Lucent speichert Ihre Daten auf Ihrem Gerät, bis Sie diese löschen. Notizen und Aufgaben, die Sie löschen, landen zuerst im Papierkorb und werden nach 30 Tagen endgültig entfernt, es sei denn, Sie leeren den Papierkorb oder löschen alle Daten früher. Der Versionsverlauf bleibt nur erhalten, solange die entsprechende Einstellung aktiv ist, und wird zusammen mit der zugehörigen Notiz oder Aufgabe gelöscht.</p>
+<p>Um alles zu löschen:</p>
+<ul><li><strong>Einstellungen → Daten → Alle Daten löschen</strong> löscht jede Notiz, Aufgabe und Unterhaltung, entfernt Anhänge, leert die Historie, setzt Einstellungen inklusive Ihrer API-Schlüssel zurück, löscht importierte Modelle und Schriftarten, leert das lokale Diagnoseprotokoll und schaltet die Protokollierung ab und leert den Cache der App. Dies kann nicht rückgängig gemacht werden. Es gibt auch gezieltere Optionen, um nur Notizen, nur Aufgaben oder nur den Chat-Verlauf zu löschen.</li><li><strong>Löschen der Anwendungsdaten</strong> in den Systemeinstellungen von Android oder Windows entfernt den Speicher der App auf dieselbe Weise.</li><li><strong>Deinstallation von Lucent</strong> entfernt die Anwendung und deren privaten Speicher vollständig.</li></ul>
+<p>Drei Dinge liegen außerhalb von Lucents Reichweite und können von der App nicht für Sie gelöscht werden:</p>
+<ul><li>Backup-Dateien, die Sie in einen Ordner, auf ein anderes Gerät oder zu einem Cloud-Dienst exportiert haben;</li><li>Backups, die bereits auf Ihren WebDAV-Dienst hochgeladen wurden;</li><li>Alles, was Sie über den Assistenten an einen KI-Anbieter übermittelt oder an einen Suchdienst gesendet haben und was den Aufbewahrungsrichtlinien des jeweiligen Anbieters unterliegt.</li></ul>
+<p>Möchten Sie auch diese Daten entfernen, löschen Sie die entsprechenden Dateien manuell bzw. nutzen Sie die Löschfunktionen des jeweiligen Anbieters.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-11">11. Kinder</h3>
+<p>Lucent ist eine universelle Notizen- und Aufgaben-App. Sie richtet sich nicht an Kinder, besitzt kein Kontosystem, keine Werbung und keine Social-Media-Funktionen, und die Entwicklerin erfasst von niemandem personenbezogene Daten, auch nicht von Kindern. Die Daten der App verbleiben auf dem Gerät der Person, die sie nutzt.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-12">12. Änderungen dieser Richtlinie</h3>
+<p>Sollte eine künftige Version von Lucent die Datenverarbeitung ändern, wird diese Richtlinie aktualisiert und das Datum oben angepasst. Wesentliche Änderungen – also solche, die beeinflussen, was Ihr Gerät verlässt – werden in den Versionshinweisen des entsprechenden Releases beschrieben. Die für Sie geltende Fassung dieser Richtlinie ist diejenige, die mit der von Ihnen verwendeten Version von Lucent ausgeliefert wird; ihr Verlauf ist in den Commits des Repositorys nachvollziehbar.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-13">13. Kontakt</h3>
+<p>Fragen, Korrekturen und Anliegen zum Datenschutz in Lucent können an <strong>yuan47578@gmail.com</strong> gesendet werden.</p>
+<hr>
+<p>Entwicklerin: Jessica Martinez</p>
+<p>Copyright © 2026-2027 Jessica Martinez.</p>
+</div>
+</div>
+<!--policy:end-->
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div class="brand">
+        <a class="logo" href="index.html" style="display:inline-block;margin-bottom:12px">Lucent</a>
+        <p>Notizen, Aufgaben und ein KI-Assistent, der wirklich mit anpackt. Kostenlos und Open Source unter der MIT-Lizenz.</p>
+      </div>
+      <div>
+        <h4>Seiten</h4>
+        <a href="index.html">Startseite</a><a href="features.html">Funktionen</a><a href="download.html">Download</a><a href="changelog.html">Änderungsprotokoll</a><a href="about.html">Kontakt</a><a href="support.html">Unterstützen</a>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <a href="privacy.html">Datenschutz</a><a href="terms.html">Nutzungsbedingungen</a><a href="../license.html" target="_blank" rel="noopener">MIT-Lizenz</a>
+      </div>
+      <div>
+        <h4>Entwickler</h4>
+        <a href="https://github.com/Yuan0-o" target="_blank" rel="noopener">GitHub-Profil</a>
+        <a href="https://github.com/Lucent-Project/Lucent" target="_blank" rel="noopener">Lucent-Repository</a>
+        <a href="https://github.com/Lucent-Project/Lucent/issues" target="_blank" rel="noopener">Problem melden</a>
+        <a href="about.html">Kontakt</a>
+        <a href="mailto:yuan47578@gmail.com">yuan47578@gmail.com</a>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Jessica Martinez · MIT-Lizenz</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../app.js" defer></script>
+</body>
+</html>

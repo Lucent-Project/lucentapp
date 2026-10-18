@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>(function(){try{var K='lucent-lang',p=location.pathname;var LOCALES=['en','zh','zh-Hant','es','ar','fr','pt','ru','de','ja','tr','ko','it','nl'];var m=p.match(/\/(zh-Hant|zh|ja|ko|es|fr|de|pt|ru|it|nl|ar|tr)(\/|$)/);var cur=m?m[1]:'en';var s=null;try{s=localStorage.getItem(K)}catch(e){}var base=p.replace(/\/(zh-Hant|zh|ja|ko|es|fr|de|pt|ru|it|nl|ar|tr)(\/|$)/,'$2');var go=function(t){if(LOCALES.indexOf(t)===-1)t='en';if(t===cur)return;var np=t==='en'?base:base.replace(/\/([^\/]*)$/,'/'+t+'/$1');location.replace(np+location.search+location.hash)};if(s){go(s);return}if(m){try{localStorage.setItem(K,cur)}catch(e){}return}var l=(navigator.language||navigator.userLanguage||'').toLowerCase();if(l){var t='en';if(l.indexOf('zh-hant')===0||l.indexOf('zh-tw')===0||l.indexOf('zh-hk')===0||l.indexOf('zh-mo')===0)t='zh-Hant';else if(l.indexOf('zh')===0)t='zh';else if(l.indexOf('es')===0)t='es';else if(l.indexOf('ar')===0)t='ar';else if(l.indexOf('fr')===0)t='fr';else if(l.indexOf('pt')===0)t='pt';else if(l.indexOf('ru')===0)t='ru';else if(l.indexOf('de')===0)t='de';else if(l.indexOf('ja')===0)t='ja';else if(l.indexOf('tr')===0)t='tr';else if(l.indexOf('ko')===0)t='ko';else if(l.indexOf('it')===0)t='it';else if(l.indexOf('nl')===0)t='nl';go(t);return}var ac=new AbortController(),tm=setTimeout(function(){ac.abort()},3000);fetch('https://ipapi.co/country/',{signal:ac.signal}).then(function(r){clearTimeout(tm);return r.text()}).then(function(c){c=(c||'').trim().toUpperCase();go(c==='CN'||c==='HK'||c==='MO'||c==='TW'?'zh':c==='JP'?'ja':c==='KR'?'ko':'en')}).catch(function(){clearTimeout(tm)})}catch(e){}})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#080b16">
+<script>(function(){var h=document.documentElement,t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';try{var s=localStorage.getItem('lucent-theme');if(s==='light'||s==='dark')t=s}catch(e){}h.dataset.theme=t;h.classList.add('js');var m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='light'?'#eef2fb':'#080b16'})()</script>
+<title>Privacidad — Lucent</title>
+<meta name="description" content="Privacidad en Lucent: una base de datos cifrada que nunca sale de tu dispositivo, un bloqueo contra fuerza bruta y copias de seguridad portátiles con contraseña. Privacidad estructural, no promesas.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="canonical" href="https://lucent-project.github.io/lucentapp/es/privacy.html">
+<link rel="alternate" hreflang="en" href="https://lucent-project.github.io/lucentapp/privacy.html">
+<link rel="alternate" hreflang="zh-CN" href="https://lucent-project.github.io/lucentapp/zh/privacy.html">
+<link rel="alternate" hreflang="ja" href="https://lucent-project.github.io/lucentapp/ja/privacy.html">
+<link rel="alternate" hreflang="ko" href="https://lucent-project.github.io/lucentapp/ko/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://lucent-project.github.io/lucentapp/privacy.html">
+<meta property="og:site_name" content="Lucent">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Privacidad — Lucent">
+<meta property="og:description" content="Privacidad en Lucent: una base de datos cifrada que nunca sale de tu dispositivo, un bloqueo contra fuerza bruta y copias de seguridad portátiles con contraseña. Privacidad estructural, no promesas.">
+<meta property="og:url" content="https://lucent-project.github.io/lucentapp/es/privacy.html">
+<meta property="og:image" content="https://lucent-project.github.io/lucentapp/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="El logotipo y la marca Lucent sobre un fondo de cristal esmerilado: Android · Windows · Código abierto">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacidad — Lucent">
+<meta name="twitter:description" content="Privacidad en Lucent: una base de datos cifrada que nunca sale de tu dispositivo, un bloqueo contra fuerza bruta y copias de seguridad portátiles con contraseña. Privacidad estructural, no promesas.">
+<meta name="twitter:image" content="https://lucent-project.github.io/lucentapp/assets/og-image.png">
+<meta name="twitter:image:alt" content="El logotipo y la marca Lucent sobre un fondo de cristal esmerilado: Android · Windows · Código abierto">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"><i class="orb a"></i><i class="orb b"></i><i class="orb c"></i><i class="orb d"></i></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="index.html">Lucent</a>
+    <div class="links" id="menu">
+      <a href="index.html">Inicio</a>
+      <a href="features.html">Funcionalidades</a>
+      <a href="download.html">Descargar</a>
+      <a href="privacy.html" class="active" aria-current="page">Privacidad</a>
+      <a href="about.html">Contacto</a>
+    </div>
+    <div class="tools">
+      <details class="lang"><summary aria-label="Idioma"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg><span>ES</span></summary><div class="menu"><a href="../privacy.html" lang="en" hreflang="en">English</a><a href="../zh/privacy.html" lang="zh-CN" hreflang="zh-CN">简体中文</a><a href="../zh-Hant/privacy.html" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a><a href="privacy.html" lang="es" hreflang="es" class="cur" aria-current="true">Español</a><a href="../ar/privacy.html" lang="ar" hreflang="ar">العربية</a><a href="../pt/privacy.html" lang="pt" hreflang="pt">Português</a><a href="../fr/privacy.html" lang="fr" hreflang="fr">Français</a><a href="../ru/privacy.html" lang="ru" hreflang="ru">Русский</a><a href="../de/privacy.html" lang="de" hreflang="de">Deutsch</a><a href="../ja/privacy.html" lang="ja" hreflang="ja">日本語</a><a href="../tr/privacy.html" lang="tr" hreflang="tr">Türkçe</a><a href="../ko/privacy.html" lang="ko" hreflang="ko">한국어</a><a href="../it/privacy.html" lang="it" hreflang="it">Italiano</a><a href="../nl/privacy.html" lang="nl" hreflang="nl">Nederlands</a></div></details>
+      <button class="theme" type="button" aria-label="Alternar tema claro / oscuro"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="moon"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg></button>
+      <button class="burger" type="button" aria-label="Menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-head">
+  <div class="wrap">
+    <div class="kicker rv">PRIVACIDAD</div>
+    <h1 class="rv" style="font-size:clamp(44px,7vw,76px)">Estructural,<br>no prometida</h1>
+    <p class="sub rv">Cualquiera puede <em>prometer</em> privacidad. Lucent está construido de modo que violarla requeriría un esfuerzo activo: la arquitectura sencillamente no tiene ningún lugar al que enviar tus datos.</p>
+  </div>
+</div>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+
+    <div class="panel glass rv center" style="margin-top:0">
+      <p class="lead" style="font-size:clamp(20px,3vw,28px);color:var(--ink);max-width:780px;margin:0 auto;line-height:1.7">Nada sale del dispositivo hasta que tú lo exportas o le das a un modelo un motivo para mirar. <span class="grad-text" style="font-weight:700">Esa es la versión corta; la política completa sigue a continuación, y el código coincide con ella.</span></p>
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">01 — CIFRADO EN REPOSO</div>
+      <h2>La base de datos viste <span class="grad-text">armadura</span></h2>
+      <p class="body">Tus notas viven en una <strong>base de datos cifrada con SQLCipher</strong>; los archivos adjuntos se cifran individualmente. Las rutas críticas —la derivación de claves PBKDF2 y AES-256-GCM— se ejecutan en Rust a través de JNI, con alternativas idénticas en Kotlin para que la app nunca dependa exclusivamente de una biblioteca nativa. Que alguien sostenga tu teléfono desbloqueado es una cosa; quien acceda a tus <em>archivos</em> solo encontrará ruido ininteligible.</p>
+
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">02 — EL BLOQUEO DE LA APP</div>
+      <h2>Un cerrojo que <span class="grad-text">cuenta</span></h2>
+      <p class="body">Esta es una política real contra ataques de fuerza bruta, no una petición de cortesía: <strong>tiempos de espera graduales, un contador persistente que sobrevive a los reinicios</strong>, una pregunta de seguridad opcional, una autodestrucción opcional... y la huella digital en Android o Windows Hello en escritorio, que se desactivan cortésmente durante todo el periodo de penalización. Si fallas demasiadas veces, la aplicación deja literalmente de negociar.</p>
+
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">03 — COPIAS QUE VIAJAN CONTIGO</div>
+      <h2>Un archivo. Tu bolsillo. <span class="grad-text">Tu contraseña.</span></h2>
+      <p class="body">Las copias de seguridad son un único <strong>archivo .lcb</strong> que transporta notas, tareas, historial, chats, adjuntos y ajustes entre dispositivos: revisado antes de alterar un solo elemento, preparado para ejecutarse automáticamente y protegible con contraseña. Una copia que nadie puede leer es un adorno antes que un respaldo, por lo que este archivo se verifica al salir y nuevamente al entrar.</p>
+
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">04 — DESACTIVADO POR DEFECTO</div>
+      <h2>Ni siquiera lo preguntamos <span class="grad-text">al principio</span></h2>
+      <p class="body">Integración con el menú de compartir del sistema: <strong>desactivada</strong>. Diagnósticos: <strong>desactivados</strong>, y guardados solo localmente al activarse. Los servicios de asistente que conectes son por completo tu elección. La réplica en la nube es un módulo que configuras tú mismo mediante WebDAV: tu servidor, tus reglas. No hay nada "habilitado por defecto y escondido en tres submenús" en esta aplicación.</p>
+
+    </div>
+
+    <div class="feature-block rv">
+      <div class="num">05 — TU MODELO, TUS DATOS</div>
+      <h2>El asistente solo ve lo que <span class="grad-text">tú le muestras</span></h2>
+      <p class="body">Los modelos en la nube ven con exactitud lo que pones delante de ellos: nada se sincroniza, indexa ni "perfecciona" en segundo plano. ¿Prefieres el modo eremita total? Ejecuta un .gguf localmente y la red puede permanecer apagada por completo. La única excepción deliberada al cifrado es la <strong>exportación</strong> a Markdown, Word, PDF o Excel: un archivo que puedes abrir en cualquier otra parte, que es precisamente de lo que se trata.</p>
+      <div class="cta" style="justify-content:flex-start">
+        <a class="btn ghost" data-policy-link href="#policy">Leer la política de privacidad completa ↓</a>
+      </div>
+    </div>
+
+    <!--policy:start-->
+<div class="policy" id="policy">
+<div class="panel glass prose">
+<div class="kicker">LA POLÍTICA COMPLETA</div>
+<h2 class="policy-title">Política de privacidad de Lucent</h2>
+<p>Lucent es una aplicación de notas y tareas para Android y Windows. Esta política describe qué almacena la app, qué envía fuera de tu dispositivo y cómo controlas ambas cosas. Describe a Lucent tal como se compila en este repositorio.</p>
+<p class="meta"><strong>Última actualización: 25 de septiembre de 2026</strong></p>
+<nav class="policy-toc" aria-label="Contenido"><p class="toc-label">Contenido</p><ul><li><a href="#policy-1">1. La versión corta</a></li><li><a href="#policy-2">2. De quién procede esta política</a></li><li><a href="#policy-3">3. Qué almacena Lucent en tu dispositivo</a></li><li><a href="#policy-4">4. Qué nunca sale de tu dispositivo</a></li><li><a href="#policy-5">5. Cuándo salen datos de tu dispositivo</a></li><li><a href="#policy-6">6. Copias de seguridad</a></li><li><a href="#policy-7">7. Integración con el dispositivo</a></li><li><a href="#policy-8">8. Permisos que solicita Lucent</a></li><li><a href="#policy-9">9. Los controles que tienes en tus manos</a></li><li><a href="#policy-10">10. Conservación y eliminación</a></li><li><a href="#policy-11">11. Menores</a></li><li><a href="#policy-12">12. Cambios en esta política</a></li><li><a href="#policy-13">13. Contacto</a></li></ul></nav>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-1">1. La versión corta</h3>
+<ul><li>Lucent no tiene cuenta, ni registro de usuario ni servidores operados por Lucent. No existe ningún mecanismo mediante el cual la persona desarrolladora reciba tus notas, tareas, archivos o uso.</li><li>Las notas, tareas, cuadernos, listas de verificación, historial de versiones, conversaciones con el asistente, archivos adjuntos, claves de API y ajustes se almacenan en tu dispositivo y están cifrados en reposo.</li><li>La aplicación no contiene herramientas analíticas, ni publicidad ni telemetría.</li><li>Cada función que utiliza la red es opcional y viene desactivada por defecto: el asistente en la nube, la búsqueda web, la búsqueda semántica, la copia de seguridad en la nube y las comprobaciones automáticas de actualizaciones.</li><li>Cuando utilizas el asistente en la nube, tu mensaje viaja directamente desde tu dispositivo hacia el proveedor cuya clave de API hayas introducido. No pasa a través de ningún servidor de Lucent.</li><li>El modelo opcional en el dispositivo responde íntegramente dentro de tu terminal y no envía absolutamente nada a ninguna parte.</li></ul>
+<p>El resto de este documento explica cada una de esas afirmaciones en detalle, incluyendo sus limitaciones.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-2">2. De quién procede esta política</h3>
+<p>Lucent es desarrollado por Jessica Martinez. Cualquier pregunta sobre esta política o sobre el tratamiento de datos por parte de la aplicación puede enviarse a <strong>yuan47578@gmail.com</strong>.</p>
+<p>Lucent es software libre publicado bajo la Licencia MIT. La desarrolladora no opera ningún servicio que recopile o almacene datos de usuario, y la aplicación carece de componentes de servidor.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-3">3. Qué almacena Lucent en tu dispositivo</h3>
+<p>Todo lo que creas en Lucent reside en el almacenamiento privado propio de la aplicación en tu dispositivo. Esa área de almacenamiento no es accesible para otras aplicaciones ordinarias y se elimina cuando desinstalas la app o borras sus datos.</p>
+<p>El material almacenado incluye:</p>
+<ul><li>notas, incluyendo su texto, formato, etiquetas, colores, estado fijado y archivado, listas de verificación, bocetos, enlaces e historial de versiones;</li><li>tareas, incluyendo subtareas, prioridades, fechas de vencimiento, reglas de repetición, recordatorios, notas e historial de versiones;</li><li>cuadernos y los elementos organizados dentro de ellos;</li><li>conversaciones y mensajes con el asistente, incluidos los rastros de razonamiento devueltos por el modelo;</li><li>archivos adjuntos que añades a una nota o tarea, y adjuntos que envías al asistente;</li><li>fuentes tipográficas importadas y archivos de modelos locales importados;</li><li>ajustes, incluyendo tu proveedor seleccionado, URL base, nombre del modelo, claves de API, contraseña de copia de seguridad, credenciales de bloqueo de app y credenciales de respaldo en la nube;</li><li>diagnósticos, si has activado el registro de diagnóstico.</li></ul>
+<h4 id="policy-3-1">3.1 Cifrado en reposo</h4>
+<p>La base de datos está cifrada con SQLCipher. En Android la app utiliza Room sobre SQLCipher; en Windows utiliza SQLite a través del controlador JDBC incluido configurado con el cifrado SQLCipher y el mismo tipo de clave de 256 bits. Notas, tareas, conversaciones, historial y ajustes están todos dentro de esa base de datos.</p>
+<p>Los archivos adjuntos se cifran por separado. Cada archivo se escribe en un contenedor autenticado AES-256-GCM, en bloques de 64 KiB, antes de llegar al disco. El nombre de archivo en disco es un identificador aleatorio en lugar del nombre que ves en la aplicación.</p>
+<p>Las copias de seguridad también están siempre cifradas; consulta la sección 6.</p>
+<h4 id="policy-3-2">3.2 Claves y secretos</h4>
+<p>La clave de la base de datos y la clave de adjuntos son valores aleatorios de 256 bits generados en tu propio dispositivo. No se derivan de nada que escribas y no se guardan en el disco en texto plano. En Android están protegidas por una clave almacenada en el Android Keystore, respaldado por hardware cuando el dispositivo lo proporciona, con un respaldo local en la máquina cuando el Keystore no está disponible. Se mantiene una copia de recuperación de cada clave para que un problema con el Keystore no destruya tus datos.</p>
+<p>Las claves de API, contraseñas de WebDAV, la contraseña de copia de seguridad y tus credenciales de bloqueo de la app se almacenan a través del mismo mecanismo de secretos cifrados, nunca en texto plano. Tu contraseña de bloqueo de la app y la respuesta de seguridad nunca se almacenan: solo se guarda un hash con sal (salt), del cual no es posible recuperar la contraseña original.</p>
+<h4 id="policy-3-3">3.3 Lo que el cifrado puede y no puede hacer</h4>
+<p>El cifrado aquí protege los datos en reposo: una copia de la base de datos, un archivo adjunto o una copia de seguridad extraída del dispositivo no se pueden leer sin la clave correspondiente. No protege contra alguien que esté utilizando tu dispositivo ya desbloqueado con tu cuenta del sistema operativo, ni protege los datos mientras la aplicación está abierta, ya que el contenido descifrado reside necesariamente en la memoria del dispositivo mientras se muestra o se edita.</p>
+<p>Lucent no hace falsas promesas al respecto. Si la biblioteca de cifrado no se puede cargar, o una base de datos no puede ser cifrada o desbloqueada, la aplicación registra el hecho y te informa en lugar de fingir éxito; Ajustes proporciona una verificación de cifrado que comprueba que los valores se sellan y abren correctamente. Si una base de datos no puede descifrarse con la clave almacenada, Lucent la aparta en lugar de borrarla y te lo notifica, de modo que puedas restaurar a partir de una copia de seguridad.</p>
+<p>Los widgets de la pantalla de inicio en Android muestran títulos de notas o de tareas en tu lanzador. Todo lo que muestre un widget es visible para cualquiera que pueda ver esa pantalla. Los widgets son opcionales y se pueden quitar en cualquier momento.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-4">4. Qué nunca sale de tu dispositivo</h3>
+<p>Por defecto, no sale absolutamente nada. Lucent no requiere conexión de red para notas, tareas, recordatorios, historial, archivos adjuntos, búsqueda local ni para el asistente en el dispositivo.</p>
+<p>Específicamente, Lucent no contiene SDK de analítica, ni SDK de publicidad, ni servicio de informes de fallos (crash-reporting), ni identificadores de seguimiento. No hay sistema de cuentas ni huella digital del dispositivo que se envíe a ninguna parte. Crash Shield, cuando lo activas, registra los errores capturados en un archivo de registro local en el dispositivo y no los transmite. El registro de diagnósticos funciona de la misma manera: está desactivado por defecto, escribe localmente y solo se envía a algún sitio si tú mismo lo exportas y decides compartir el archivo.</p>
+<p>Dado que no existe ningún servidor de Lucent, la desarrolladora no tiene forma alguna de leer tus datos ni de recuperarlos en caso de pérdida.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-5">5. Cuándo salen datos de tu dispositivo</h3>
+<p>Cada una de las siguientes opciones es voluntaria, viene desactivada por defecto y permanece bajo tu control. Cuando una de ellas está activa, los datos salen del dispositivo directamente desde la app hacia el tercero que tú hayas configurado; nunca pasan a través de ningún servicio de Lucent, puesto que ninguno existe.</p>
+<h4 id="policy-5-1">5.1 El asistente en la nube (trae tu propia clave)</h4>
+<p>El asistente en modo nube utiliza una clave de API que tú proporcionas y un proveedor que tú eliges. Lucent admite los formatos de petición compatibles con OpenAI, Anthropic y Google, y cualquier dirección compatible con OpenAI funciona, incluyendo DeepSeek y servidores autohospedados. Puedes mantener varios perfiles de proveedores y alternar entre ellos.</p>
+<p>Cuando envías un mensaje, Lucent realiza una petición HTTPS desde tu dispositivo hacia la URL base que hayas configurado. Esa petición contiene:</p>
+<ul><li>el texto de tu mensaje;</li><li>el historial de la conversación que la configuración actual de memoria incluya;</li><li>las instrucciones de sistema que definen el comportamiento del asistente;</li><li>cualquier archivo que hayas adjuntado al mensaje;</li><li>el contexto de nota, tarea, cuaderno o búsqueda que el asistente necesite para responder, y los resultados de cualquier herramienta que el asistente haya tenido permiso de invocar.</li></ul>
+<p>Tu clave de API se envía a dicho proveedor en la cabecera de autenticación de la petición. No se envía a ningún otro lugar. Lee la política de privacidad del proveedor elegido para entender qué hace con el texto recibido; esos términos son entre tú y dicho proveedor, y Lucent no tiene visibilidad ni control sobre ellos.</p>
+<p>El asistente no puede modificar tus datos silenciosamente. Antes de escribir nada, te muestra lo que tiene intención de hacer, y ese paso de confirmación está activado por defecto. Las herramientas son opcionales: el modelo local tiene su propio interruptor de herramientas, y el acceso a herramientas del asistente en la nube es un ajuste que puedes desactivar. Desactivar cualquiera de ellos significa que el modelo puede conversar pero no puede leer ni modificar tus notas ni tus tareas.</p>
+<h4 id="policy-5-2">5.2 Búsqueda web</h4>
+<p>La búsqueda web está desactivada por defecto. Cuando la activas y el asistente decide que se necesita una búsqueda, Lucent envía la consulta a un motor de búsqueda público. Puedes elegir cuál o dejarlo en Automático, que los prueba sucesivamente hasta que uno responde: Bing, DuckDuckGo, Google, Brave, Mojeek, Yandex, Baidu, Sogou, 360 Search y la API de búsqueda de Wikipedia. No se utiliza ninguna clave de API de búsqueda ni se crea ninguna cuenta. El texto de la consulta sale de tu dispositivo; los resultados vuelven al asistente y se incluyen en su respuesta. El motor que responde ve la consulta y tu dirección IP. La búsqueda web requiere el modo agente y, en el modelo local, el interruptor de herramientas; el Modo Blackout la bloquea por completo.</p>
+<h4 id="policy-5-3">5.3 Búsqueda semántica</h4>
+<p>La búsqueda semántica de Lucent sigue al asistente que estés utilizando en cada momento, de modo que no hay nada adicional que configurar. Mientras el modelo local sea el asistente activo, la indexación se mantiene en el dispositivo y no está implementada en la versión actual, por lo que nada sale de él. Mientras el modelo en la nube esté activo, el texto que se indexa se envía al punto final de embeddings de tu proveedor de IA configurado para generar cada vector, lo que implica que el texto de las notas sale de tu dispositivo. Cambiar entre ambos modelos cambia el comportamiento de inmediato.</p>
+<h4 id="policy-5-4">5.4 Copia de seguridad en la nube</h4>
+<p>La copia de seguridad en la nube está desactivada por defecto. Si la activas, proporcionas la dirección, usuario y contraseña de un servicio compatible con WebDAV en el que ya tengas una cuenta, como Nutstore, Nextcloud, Koofr o cualquier otro servidor WebDAV. Lucent sube tus archivos de respaldo <code>.lcb</code> a la carpeta que indiques en ese servidor, y puede listarlos y descargarlos de nuevo para restaurarlos. Los archivos se cifran antes de ser subidos; el servicio almacena el archivo cifrado y las credenciales que introduces se envían a ese servicio para autenticarte. La subida automática a la nube es un interruptor independiente y también está desactivada por defecto.</p>
+<h4 id="policy-5-5">5.5 Comprobación de actualizaciones</h4>
+<p>La comprobación automática de actualizaciones está desactivada por defecto. Cuando la activas, o cuando pides a Lucent que compruebe manualmente, la aplicación solicita la información del último lanzamiento a la API pública de lanzamientos de GitHub para este repositorio y compara los números de versión. La petición no contiene datos personales más allá de los habituales en cualquier petición HTTPS, como tu dirección IP y un agente de usuario que identifica a Lucent. Si existe una versión más reciente, Lucent te la ofrece; el instalador o APK se descarga desde GitHub únicamente si decides actualizar.</p>
+<h4 id="policy-5-6">5.6 Compartición y exportaciones</h4>
+<p>Lucent no envía nada hacia el exterior por iniciativa propia. Dos funciones facilitan datos a otras aplicaciones, y ambas están bajo tu control:</p>
+<ul><li><strong>Exportación.</strong> Exportar una nota o tarea a Markdown, Word, PDF o Excel, o exportar una copia de seguridad, genera un archivo en la ubicación que tú elijas. Los documentos exportados no están cifrados de forma deliberada, ya que el propósito de una exportación es poder leerse en otros programas; cualquiera que obtenga ese archivo podrá leerlo. Guárdalo en un lugar que consideres seguro.</li><li><strong>Integración con el menú compartir.</strong> Hacer que Lucent sea un destino para compartir está desactivado por defecto. Cuando lo activas, Lucent aparece en los paneles para compartir de otras aplicaciones para recibir texto y archivos, y aparece en el menú compartir de tu sistema como destino. El contenido compartido hacia Lucent se almacena en la misma base de datos cifrada que todo lo demás. Lucent sigue sin enviar nada por sí mismo.</li></ul>
+<h4 id="policy-5-7">5.7 El modelo en el dispositivo</h4>
+<p>Si importas un modelo GGUF, el asistente puede ejecutarlo con llama.cpp directamente en el dispositivo. En ese modo no se envía nada a ninguna parte: no hay cuenta, ni clave de API, ni petición de red en la generación de respuestas. El archivo del modelo permanece en tu dispositivo y se descarga de la memoria al salir de la aplicación. Las herramientas locales son un interruptor separado y están desactivadas por defecto. La aceleración por GPU es opcional y puede desactivarse.</p>
+<h4 id="policy-5-8">5.8 El conjunto de herramientas del agente</h4>
+<p>Más allá de notas y tareas, al asistente se le puede dotar de un taller real: una carpeta de espacio de trabajo que puede leer y escribir, comandos de consola, documentos, extensiones y conexiones con servicios externos. Cada uno de ellos es un interruptor independiente en Ajustes → Avanzado → Taller, y las funciones que se comunican con el exterior solo actúan cuando las activas y, por defecto, te piden confirmación previa.</p>
+<ul><li><strong>Espacio de trabajo.</strong> Tú eliges una sola carpeta. Todo lo que el asistente lea o escriba vive dentro de ella. Los archivos fuera de ella son rechazados salvo que autorices el permiso de "fuera del espacio de trabajo", y nunca se podrá escribir nada fuera de ella.</li><li><strong>Comandos.</strong> La ejecución de un comando de terminal te pide confirmación primero, a menos que cambies ese permiso. Los comandos se ejecutan en tu máquina con el directorio de trabajo dentro del espacio de trabajo, con un límite de tiempo que tú fijes, y cada uno se registra en el historial de actividad.</li><li><strong>Documentos.</strong> Los archivos de Word, Excel y PowerPoint se leen y escriben en tu dispositivo mediante el código propio de Lucent. En ningún momento se sube nada a la red para convertir o crear un archivo.</li><li><strong>Extensiones.</strong> Las herramientas opcionales —un entorno de usuario Linux, Python con bibliotecas documentales, LibreOffice, Node.js, herramientas multimedia y de OCR— se descargan únicamente cuando las solicitas, desde el proyecto original o un espejo público, directo a tu almacenamiento local. Lucent no envía telemetría sobre ellas.</li><li><strong>Conexiones.</strong> GitHub, Notion, Slack, Google Drive, OneDrive, GitLab, Jira, Linear, WebDAV y cualquier servidor MCP que añadas se contactan directamente desde tu dispositivo con un token que tú aportes. Solo se envía la petición solicitada y exclusivamente al servicio configurado. Lucent no dispone de servidor intermediario y almacena los tokens cifrados en tu dispositivo.</li><li><strong>Tokens y la consola con privilegios.</strong> Los tokens de acceso de GitHub se guardan cifrados y nunca se vuelven a mostrar una vez guardados; puedes guardar hasta cinco. En Android, otorgar al asistente el permiso de Shizuku es un interruptor específico, desactivado por defecto, y solo entonces puede ejecutarse un comando con dichos privilegios.</li><li><strong>Informes de subagentes.</strong> Un informe de subagente guardado manualmente se escribe como archivo Markdown en la carpeta <code>sub-agents</code> del espacio de trabajo en tu dispositivo, y no se envía a ninguna parte.</li><li><strong>Control del dispositivo (Android).</strong> Si lo habilitas y activas el servicio de accesibilidad, el asistente puede leer la pantalla, tocar, escribir, hacer capturas de pantalla, listar y abrir aplicaciones, leer notificaciones y usar el portapapeles y sensores. La lectura de pantalla ocurre en el dispositivo; solo se enviaría fuera si un resultado de herramienta que la contenga viaja al proveedor de asistente elegido, por el mismo canal que cualquier otro mensaje que envíes.</li><li><strong>Qué permanece local.</strong> El espacio de trabajo, las instantáneas tomadas antes de modificar un archivo, el registro de actividad, los hechos recordados y los archivos de habilidades permanecen en tu dispositivo. El registro de actividad almacena el nombre de la herramienta, los argumentos (resumidos a 300 caracteres) y el resultado; se guarda cifrado y puede borrarse en cualquier momento desde la misma página de ajustes.</li></ul>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-6">6. Copias de seguridad</h3>
+<p>Una copia de seguridad es un único archivo <code>.lcb</code> que tú generas. Puede contener notas, tareas, historial de versiones, cuadernos, conversaciones, archivos adjuntos, ajustes y claves de API, y opcionalmente fuentes importadas y modelos locales. Tú decides qué incluir y dónde se guarda el archivo.</p>
+<p>Cada archivo <code>.lcb</code> está cifrado. Existen dos modalidades:</p>
+<ul><li><strong>Sin contraseña.</strong> El archivo se cifra con la clave integrada de la app. Se restaura en cualquier dispositivo que tenga Lucent, requiriendo solo el archivo, lo cual es cómodo pero significa que cualquiera que posea el archivo y una copia de la app puede leerlo.</li><li><strong>Con contraseña.</strong> La clave se deriva de tu contraseña mediante PBKDF2-HMAC-SHA256 a lo largo de 210.000 iteraciones, y no existe en ningún otro lugar. Esto es mucho más seguro, con la contrapartida habitual: se requiere esa misma contraseña para restaurar el archivo, no se guarda en ningún sitio y nadie, incluida la desarrolladora, puede recuperar una contraseña olvidada.</li></ul>
+<p>Una copia de seguridad protegida con contraseña puede incluir opcionalmente una pregunta y respuesta de seguridad para poder recuperar la contraseña más adelante. Esa opción está desactivada por defecto y hace que la copia sea tan segura como el elemento más débil entre la contraseña y la respuesta; elige una pregunta cuya respuesta nadie más conozca.</p>
+<p>Las copias automáticas, cuando las habilitas, se guardan en la carpeta que elijas, conservan el número de copias que determines y también pueden subirse a tu carpeta configurada de WebDAV. El archivo de copia es el mismo contenedor cifrado en todos los casos. Dónde residen tus copias y cuántas existen es enteramente tu decisión, al igual que su eliminación.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-7">7. Integración con el dispositivo</h3>
+<p>La integración con la consola con privilegios de Lucent es opcional, viene desactivada por defecto y requiere software y permisos externos a Lucent.</p>
+<p>En Android, la app puede usar Shizuku para ejecutar operaciones privilegiadas cuando hayas instalado Shizuku, iniciado su servicio y concedido permiso a Lucent en el sistema. Esto existe para realizar acciones que solicites explícitamente y que las aplicaciones comunes no pueden llevar a cabo por sí solas, como instalar una actualización de la app que hayas descargado. Lucent no puede iniciar Shizuku, no puede auto-concederse el permiso y no realiza nada por esta vía a menos que hayas activado la integración y otorgado el permiso. Puedes revocarlo en cualquier momento en Shizuku o en los ajustes de Android, y desactivar la integración en Lucent. La verificación de la identidad privilegiada real se puede comprobar en la app, que muestra el UID obtenido.</p>
+<p>Lucent también declara los permisos ordinarios de Android que necesita, cada uno para una finalidad concreta; consulta la sección 8.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-8">8. Permisos que solicita Lucent</h3>
+<p>Lucent no solicita acceso general a tus archivos ni a tu almacenamiento a menos que actives el taller del agente y lo vincules a una carpeta de trabajo, en cuyo caso el acceso total es lo que permite que esa carpeta concreta se lea y escriba como archivos corrientes; puedes rechazarlo y conservar el espacio de trabajo dentro del almacenamiento propio de Lucent. En el resto de casos, los archivos y carpetas son seleccionados por ti mediante el selector del sistema, y Lucent solo recibe el elemento exacto que hayas seleccionado. Las fuentes y los modelos funcionan igual: los seleccionas tú y se copian al almacenamiento privado de la app.</p>
+<div class="table-wrap"><table><thead><tr><th>Permiso</th><th>Por qué lo solicita Lucent</th></tr></thead><tbody><tr><td>Acceso a la red (Android <code>INTERNET</code>)</td><td>Enviar mensajes al proveedor de asistente configurado, búsqueda web cuando la activas, copias de seguridad WebDAV cuando las activas y comprobación de actualizaciones cuando las activas. Nada se envía sin que alguna de estas funciones esté activa.</td></tr><tr><td>Notificaciones (Android <code>POST_NOTIFICATIONS</code>)</td><td>Mostrar recordatorios de tareas y el progreso de descargas, copias de seguridad o generaciones que hayas iniciado.</td></tr><tr><td>Alarmas exactas (Android <code>SCHEDULE_EXACT_ALARM</code>)</td><td>Activar recordatorios de tareas en el momento exacto programado y no de forma aproximada.</td></tr><tr><td>Ejecutar al inicio (Android <code>RECEIVE_BOOT_COMPLETED</code>)</td><td>Volver a registrar tus recordatorios tras reiniciar el dispositivo, para que un recordatorio fijado para mañana sobreviva al reinicio.</td></tr><tr><td>Servicio en primer plano (Android <code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_DATA_SYNC</code>)</td><td>Mantener en ejecución una copia de seguridad, descarga o generación con modelo cuando la app no está visible en pantalla, evitando que el sistema la cierre a medias.</td></tr><tr><td>Desbloqueo biométrico (Android <code>USE_BIOMETRIC</code>; Windows Hello en Windows)</td><td>Permitirte desbloquear la app con huella dactilar o rostro en lugar de escribir la contraseña de bloqueo. Opcional, desactivado por defecto y usado exclusivamente para el desbloqueo local.</td></tr><tr><td>Vibración (Android <code>VIBRATE</code>)</td><td>Respuesta háptica y táctil al escribir y usar controles.</td></tr><tr><td>Instalar paquetes (Android <code>REQUEST_INSTALL_PACKAGES</code>)</td><td>Instalar una actualización que hayas decidido descargar, mediante el instalador del sistema.</td></tr><tr><td>Permiso de servicio Shizuku (Android <code>moe.shizuku.manager.permission.API_V23</code>)</td><td>La integración privilegiada opcional descrita en la sección 7. Solo declarada para poder usar Shizuku si existe; no tiene efecto alguno a menos que instales Shizuku y le concedas autorización.</td></tr><tr><td>Acceso a todos los archivos (Android <code>MANAGE_EXTERNAL_STORAGE</code>)</td><td>Opcional, desactivado a menos que lo concedas, y utilizado únicamente para que la carpeta de espacio de trabajo que elijas pueda leerse y escribirse como archivos comunes. Sin él, Lucent mantiene el espacio de trabajo dentro de su propio almacenamiento.</td></tr><tr><td>Ubicación (Android <code>ACCESS_COARSE_LOCATION</code>, <code>ACCESS_FINE_LOCATION</code>)</td><td>Solo se lee cuando el asistente invoca su herramienta de ubicación, lo que a su vez solo ocurre si el control de dispositivo está habilitado y has otorgado el permiso. Lucent nunca rastrea tu ubicación en segundo plano.</td></tr></tbody></table></div>
+<p>Lucent no solicita acceso general a tus archivos ni a tu almacenamiento a menos que actives el taller del agente y lo vincules a una carpeta de trabajo, en cuyo caso el acceso total es lo que permite que esa carpeta concreta se lea y escriba como archivos corrientes; puedes rechazarlo y conservar el espacio de trabajo dentro del almacenamiento propio de Lucent. En el resto de casos, los archivos y carpetas son seleccionados por ti mediante el selector del sistema, y Lucent solo recibe el elemento exacto que hayas seleccionado. Las fuentes y los modelos funcionan igual: los seleccionas tú y se copian al almacenamiento privado de la app.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-9">9. Los controles que tienes en tus manos</h3>
+<p>La privacidad en Lucent se materializa en una serie de interruptores, todos en tus manos, todos en Ajustes. Los principales son:</p>
+<ul><li><strong>Bloqueo de la app.</strong> Ajustes → Seguridad. Elige una contraseña y, opcionalmente, una pregunta de seguridad para restablecerla si la olvidas. Solo se guarda un hash con sal.</li><li><strong>Límites de intentos de desbloqueo.</strong> Junto al bloqueo de la app. Determina cuántos intentos se permiten en la primera ronda y en las posteriores; los fallos activan bloqueos temporales progresivos que se recuerdan entre reinicios.</li><li><strong>Borrado tras fallos reiterados.</strong> También junto al bloqueo de la app, desactivado por defecto. Tras el número de contraseñas erróneas que configures, todo se borra. Esto es definitivo y nadie lo puede revertir.</li><li><strong>Desbloqueo biométrico.</strong> Opcional, desactivado por defecto.</li><li><strong>Modo Blackout.</strong> Ajustes → Privacidad. Mientras esté encendido, nada sale del dispositivo: el asistente en la nube, la búsqueda web y las funciones de red se bloquean, las interfaces de nube se congelan, la app se oculta de la vista de apps recientes, se impiden las capturas de pantalla, se retira como destino para compartir y se exige contraseña cada vez que vuelves. Prevalece sobre cualquier otro ajuste, y apagarlo restaura tus configuraciones previas.</li><li><strong>Registro de diagnósticos.</strong> Ajustes → Privacidad, desactivado por defecto y con consentimiento explícito. Se escribe en local, puede incluir texto escrito al asistente, puedes exportarlo tú mismo y puede borrarse y apagarse en cualquier momento. Crash Shield, cuando está activo, lo mantiene encendido para anotar errores interceptados.</li><li><strong>Crash Shield.</strong> Ajustes → Privacidad, desactivado por defecto. Intercepta fallos dentro de la app para que permanezca abierta en lugar de cerrarse abruptamente, y los registra de manera local. Expresa con honestidad lo que no puede evitar: un bloqueo dentro del motor del modelo local, el cierre por parte del sistema para liberar RAM o la finalización por falta de respuesta.</li><li><strong>Integración con el sistema.</strong> Ajustes → Privacidad, desactivado por defecto. Controla si Lucent puede figurar en los menús para compartir de otras apps.</li><li><strong>Historial de versiones.</strong> Ajustes → Privacidad. El historial de notas y de tareas puede desactivarse de forma independiente, deteniendo la captura de nuevas instantáneas.</li><li><strong>Proveedor de asistente y memoria.</strong> Ajustes → Asistente, luego Modelo en la nube o Modelo local. Elige el proveedor o importa un modelo local sin conexión alguna. Cada modelo gestiona su propio ajuste de memoria, que regula cuánto historial de conversación previa se incluye en cada solicitud; a menor memoria, menos texto sale del dispositivo.</li><li><strong>Búsqueda web.</strong> Ajustes → Asistente → Personalización. Un único interruptor, desactivado por defecto, con el motor de búsqueda a su lado. Se oculta si el modelo local funciona sin modo agente (ya que nada podría usarla) y vuelve exactamente en el estado en que lo dejaste.</li><li><strong>Búsqueda semántica.</strong> Ajustes → Asistente. Acompaña al modelo activo: el modelo local mantiene la indexación en el terminal; el modelo en la nube remite el texto a tu proveedor. Cambia de modelo para alternar el comportamiento, o deja el asistente apagado por completo.</li><li><strong>Contenido y contraseña de copias de seguridad.</strong> Ajustes → Datos. Elige qué incluye una copia y si lleva protección por contraseña. La copia automática, su carpeta de destino, su frecuencia y la cantidad de copias a conservar son totalmente configurables, y vienen desactivadas por defecto.</li><li><strong>Copia de seguridad en la nube.</strong> Ajustes → Datos, desactivada por defecto. Configura o elimina tus credenciales WebDAV cuando lo desees.</li><li><strong>Comprobación de cifrado.</strong> Ajustes → Seguridad. Comprueba bajo demanda que los valores almacenados están sellados y se abren debidamente.</li><li><strong>Borrar todos los datos.</strong> Ajustes → Datos. Consulta la sección 10.</li></ul>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-10">10. Conservación y eliminación</h3>
+<p>Lucent conserva tus datos en tu dispositivo hasta que decidas eliminarlos. Las notas y tareas que borras van primero a la papelera y se eliminan permanentemente tras 30 días, a menos que vacíes la papelera o borres todos los datos antes. El historial de versiones se conserva solo mientras su ajuste correspondiente esté activo, y se suprime junto con la nota o tarea a la que pertenezca.</p>
+<p>Para borrar todo:</p>
+<ul><li><strong>Ajustes → Datos → Borrar todos los datos</strong> elimina cada nota, tarea y conversación, quita los adjuntos, borra el historial, restablece los ajustes (incluida tu clave de API), elimina fuentes y modelos importados, borra el registro de diagnóstico local, desactiva el registro y vacía la caché de la aplicación. Esta acción no se puede deshacer. Existen también opciones más específicas para borrar únicamente notas, únicamente tareas o solo el historial de chats.</li><li><strong>Borrar los datos de la aplicación</strong> en los ajustes del sistema de Android o Windows elimina el almacenamiento de la app del mismo modo.</li><li><strong>Desinstalar Lucent</strong> elimina la aplicación y su almacenamiento privado.</li></ul>
+<p>Si deseas que esos datos también desaparezcan, elimina dichos archivos y utiliza las herramientas de supresión de los respectivos proveedores.</p>
+<p>Tres elementos escapan al alcance de Lucent y la aplicación no puede borrarlos por ti:</p>
+<ul><li>archivos de copia de seguridad que hayas exportado a otra carpeta, a otro dispositivo o a un servicio en la nube;</li><li>copias de seguridad ya subidas a tu servicio WebDAV;</li><li>cualquier contenido remitido a un proveedor de IA mediante el asistente, o enviado a un buscador, que se rige por las políticas de conservación propias de dichos proveedores.</li></ul>
+<p>Si deseas que esos datos también desaparezcan, elimina dichos archivos y utiliza las herramientas de supresión de los respectivos proveedores.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-11">11. Menores</h3>
+<p>Lucent es una aplicación general de notas y tareas. No está dirigida a menores, carece de sistema de cuentas, no incluye publicidad ni funciones sociales, y la desarrolladora no recopila datos personales de nadie, incluidos menores. La información de la aplicación permanece en el dispositivo de quien la utiliza.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-12">12. Cambios en esta política</h3>
+<p>Si una futura versión de Lucent modifica el tratamiento de los datos, esta política se actualizará y la fecha indicada en la cabecera cambiará. Las modificaciones sustanciales, es decir, las que afecten a qué información sale de tu dispositivo, se describirán en las notas de lanzamiento de la versión que las incorpore. La versión de la política aplicable a tu caso es la distribuida con la versión de Lucent que estés ejecutando, y su evolución histórica puede consultarse en el historial de confirmaciones (commits) del repositorio.</p>
+</div>
+<div class="panel glass prose">
+<h3 id="policy-13">13. Contacto</h3>
+<p>Preguntas, sugerencias o dudas relativas a la privacidad en Lucent pueden remitirse a <strong>yuan47578@gmail.com</strong>.</p>
+<hr>
+<p>Desarrolladora: Jessica Martinez</p>
+<p>Copyright © 2026-2027 Jessica Martinez.</p>
+</div>
+</div>
+<!--policy:end-->
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div class="brand">
+        <a class="logo" href="index.html" style="display:inline-block;margin-bottom:12px">Lucent</a>
+        <p>Notas, tareas y un asistente de IA con manos de verdad. Gratuito y de código abierto bajo la Licencia MIT.</p>
+      </div>
+      <div>
+        <h4>Páginas</h4>
+        <a href="index.html">Inicio</a><a href="features.html">Funcionalidades</a><a href="download.html">Descargar</a><a href="changelog.html">Registro de cambios</a><a href="about.html">Contacto</a><a href="support.html">Apoyo</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="privacy.html">Privacidad</a><a href="terms.html">Términos</a><a href="../license.html" target="_blank" rel="noopener">Licencia MIT</a>
+      </div>
+      <div>
+        <h4>Desarrollador</h4>
+        <a href="https://github.com/Yuan0-o" target="_blank" rel="noopener">Perfil de GitHub</a>
+        <a href="https://github.com/Lucent-Project/Lucent" target="_blank" rel="noopener">Repositorio de Lucent</a>
+        <a href="https://github.com/Lucent-Project/Lucent/issues" target="_blank" rel="noopener">Informar de un problema</a>
+        <a href="about.html">Contacto</a>
+        <a href="mailto:yuan47578@gmail.com">yuan47578@gmail.com</a>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Jessica Martinez · Licencia MIT</span>
+    </div>
+  </div>
+</footer>
+
+
+<script src="../app.js" defer></script>
+</body>
+</html>

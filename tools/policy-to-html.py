@@ -36,6 +36,14 @@ CFG = {
                button='プライバシーポリシー全文を読む ↓'),
     'ko': dict(page='ko/privacy.html', src='PRIVACY.ko.md', kicker='전문', toc='목차',
                button='개인정보처리방침 전문 읽기 ↓'),
+    'fr': dict(page='fr/privacy.html', src='PRIVACY.fr.md', kicker='POLITIQUE COMPLÈTE', toc='Sommaire',
+               button='Lire la politique de confidentialité complète ↓'),
+    'it': dict(page='it/privacy.html', src='PRIVACY.it.md', kicker='INFORMATIVA COMPLETA', toc='Indice',
+               button="Leggi l'informativa sulla privacy completa ↓"),
+    'de': dict(page='de/privacy.html', src='PRIVACY.de.md', kicker='DIE VOLLSTÄNDIGE RICHTLINIE', toc='Inhalt',
+               button='Datenschutzrichtlinie vollständig lesen ↓'),
+    'nl': dict(page='nl/privacy.html', src='PRIVACY.nl.md', kicker='HET VOLLEDIGE BELEID', toc='Inhoud',
+               button='Lees het volledige privacybeleid ↓'),
 }
 
 warnings = []

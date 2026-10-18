@@ -46,7 +46,7 @@ matchMedia('(prefers-color-scheme: light)').addEventListener?.('change',e=>{
 const setMenu=o=>{nav.classList.toggle('open',o);burger?.setAttribute('aria-expanded',o)};
 burger?.addEventListener('click',()=>{setMenu(!nav.classList.contains('open'));if(lg)lg.open=false});
 lg?.addEventListener('toggle',()=>{if(lg.open)setMenu(false)});
-$$('.lang .menu a').forEach(a=>a.addEventListener('click',()=>{try{var hl=(a.getAttribute('hreflang')||'en').toLowerCase();localStorage.setItem('lucent-lang',hl.indexOf('zh')===0?'zh':hl.indexOf('ja')===0?'ja':hl.indexOf('ko')===0?'ko':'en')}catch(e){}}));
+$$('.lang .menu a').forEach(a=>a.addEventListener('click',()=>{try{var hl=(a.getAttribute('hreflang')||'en').toLowerCase();var t='en';if(hl.indexOf('zh-hant')===0)t='zh-Hant';else if(hl.indexOf('zh')===0)t='zh';else{var s=hl.split('-')[0];if(['es','fr','de','pt','ru','it','nl','ar','tr','ja','ko'].indexOf(s)!==-1)t=s}localStorage.setItem('lucent-lang',t)}catch(e){}}));
 d.addEventListener('click',e=>{
   if(lg?.open&&!lg.contains(e.target))lg.open=false;
   if(!nav.contains(e.target))setMenu(false);
@@ -254,12 +254,9 @@ const cl=$('[data-changelog]');
 if(cl){
   const L=cl.dataset,list=$('[data-cl-list]',cl),status=$('[data-cl-status]',cl),prev=$('[data-cl-previews]',cl);
   const RK='lucent-releases-v2',ALL='https://github.com/Lucent-Project/Lucent/releases';
-  const LANG_SUFFIX={zh:'zh-CN',ja:'ja',ko:'ko'};
+  const LANG_SUFFIX={zh:'zh-CN',ja:'ja',ko:'ko',es:'es',fr:'fr',de:'de',pt:'pt',ru:'ru',it:'it',nl:'nl',ar:'ar',tr:'tr','zh-Hant':'zh-Hant'};
   const RAW='https://raw.githubusercontent.com/Lucent-Project/Lucent/main/docs/releases/';
-  const pageLang=(h.lang||'').toLowerCase().startsWith('zh')?'zh':
-                 (h.lang||'').toLowerCase().startsWith('ja')?'ja':
-                 (h.lang||'').toLowerCase().startsWith('ko')?'ko':
-                 (/\/(zh|ja|ko)(\/|$)/.exec(location.pathname)?.[1]||'en');
+  const pageLang=(()=>{const hl=(h.lang||'').toLowerCase();if(hl.indexOf('zh-hant')===0)return 'zh-Hant';if(hl.indexOf('zh')===0)return 'zh';const s=hl.split('-')[0];if(['es','fr','de','pt','ru','it','nl','ar','tr','ja','ko'].indexOf(s)!==-1)return s;return (/\/(zh-Hant|zh|ja|ko|es|fr|de|pt|ru|it|nl|ar|tr)(\/|$)/.exec(location.pathname)||[])[1]||'en'})();
   const el=(tag,cls,txt)=>{const n=d.createElement(tag);if(cls)n.className=cls;if(txt!=null)n.textContent=txt;return n};
   const fmt=iso=>{try{return new Intl.DateTimeFormat(h.lang||undefined,{year:'numeric',month:'short',day:'numeric'}).format(new Date(iso))}catch(e){return String(iso||'').slice(0,10)}};
   const PER=10;let pg=0;
@@ -276,6 +273,28 @@ if(cl){
     const suf=LANG_SUFFIX[lang];
     if(!suf||/^p/i.test(tag||''))return null;
     return RAW+tag+'.'+suf+'.md';
+  };
+  const noteCache=new Map();
+  const fetchNotes=(tag,lang)=>{
+    const url=noteFile(tag,lang);
+    if(!url)return Promise.resolve(null);
+    const key=tag+'|'+lang;
+    if(!noteCache.has(key)){
+      noteCache.set(key,(async()=>{
+        try{
+          const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),8000);
+          const res=await fetch(url,{signal:ac.signal});
+          clearTimeout(tm);
+          if(!res.ok)return null;
+          return (await res.text()).replace(/\r/g,'').trim();
+        }catch(e){return null}
+      })());
+    }
+    return noteCache.get(key);
+  };
+  const noteTitle=md=>{
+    const m=/^#{1,6}\s+(.*)$/m.exec(md||'');
+    return m?m[1].trim():null;
   };
   const mirrorFor=async tag=>{
     try{
@@ -365,21 +384,18 @@ if(cl){
       body.append(notesBox);
       const nf=noteFile(r.tag_name,pageLang);
       if(nf){
+        const ver=String(r.tag_name||'').replace(/^v/i,'');
+        const setTitle=t=>{if(t)titleEl.textContent='Lucent '+ver+' — '+t};
+        fetchNotes(r.tag_name,pageLang).then(md=>setTitle(noteTitle(md)));
         let loaded=false;
         det.addEventListener('toggle',async()=>{
           if(!det.open||loaded)return;loaded=true;
-          try{
-            const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),8000);
-            const res=await fetch(nf,{signal:ac.signal});
-            clearTimeout(tm);
-            if(!res.ok)return;
-            const md=(await res.text()).replace(/\r/g,'').trim();
-            const tmatch=md.match(/^#{1,6}\s+(.*)$/m);
-            if(tmatch)titleEl.textContent=tmatch[1].trim();
-            const nn=notes(md.replace(/^#{1,6}\s+.*$/m,'').trim());
-            notesBox.replaceChildren();
-            if(nn.childNodes.length)notesBox.append(nn);else notesBox.append(el('p',0,L.lNoNotes));
-          }catch(e){}
+          const md=await fetchNotes(r.tag_name,pageLang);
+          if(!md)return;
+          setTitle(noteTitle(md));
+          const nn=notes(md.replace(/^#{1,6}\s+.*$/m,'').trim());
+          notesBox.replaceChildren();
+          if(nn.childNodes.length)notesBox.append(nn);else notesBox.append(el('p',0,L.lNoNotes));
         });
       }
       if(r._dl&&(r._dl.android||r._dl.windows)){
