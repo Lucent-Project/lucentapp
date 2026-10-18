@@ -254,7 +254,8 @@ const cl=$('[data-changelog]');
 if(cl){
   const L=cl.dataset,list=$('[data-cl-list]',cl),status=$('[data-cl-status]',cl),prev=$('[data-cl-previews]',cl);
   const RK='lucent-releases-v2',ALL='https://github.com/Lucent-Project/Lucent/releases';
-  const LANG_LABELS={zh:'简体中文',ja:'日本語',ko:'한국어'};
+  const LANG_SUFFIX={zh:'zh-CN',ja:'ja',ko:'ko'};
+  const RAW='https://raw.githubusercontent.com/Lucent-Project/Lucent/main/docs/releases/';
   const pageLang=(h.lang||'').toLowerCase().startsWith('zh')?'zh':
                  (h.lang||'').toLowerCase().startsWith('ja')?'ja':
                  (h.lang||'').toLowerCase().startsWith('ko')?'ko':
@@ -264,22 +265,17 @@ if(cl){
   const PER=10;let pg=0;
   const pager=el('nav','rel-pager');pager.hidden=true;list.after(pager);
   const isPre=r=>!!r.prerelease||/^p/i.test(r.tag_name||'');
-  const parseRelease=(body,lang)=>{
+  const parseRelease=body=>{
     const text=String(body||'').replace(/\r/g,'').replace(/Yuan0-o\/Lucent/g,'Lucent-Project/Lucent');
-    const firstDet=text.indexOf('<details>');
-    const enBody=(firstDet!==-1?text.slice(0,firstDet):text).trim();
-    if(lang==='en')return {title:null,body:enBody};
-    const lbl=LANG_LABELS[lang];
-    if(lbl){
-      const re=new RegExp('<details>\\s*<summary>\\s*'+lbl+'\\s*<\\/summary>([\\s\\S]*?)<\\/details>','i');
-      const m=text.match(re);
-      if(m){
-        const content=m[1].trim();
-        const tm=content.match(/^#{1,6}\s+(.*)$/m);
-        return {title:tm?tm[1].trim():null,body:content};
-      }
-    }
-    return {title:null,body:enBody};
+    const divEnd=text.indexOf('</div>');
+    const afterDiv=divEnd!==-1?text.slice(divEnd+6):text;
+    const firstDet=afterDiv.indexOf('<details>');
+    return {title:null,body:(firstDet!==-1?afterDiv.slice(0,firstDet):afterDiv).trim()};
+  };
+  const noteFile=(tag,lang)=>{
+    const suf=LANG_SUFFIX[lang];
+    if(!suf||/^p/i.test(tag||''))return null;
+    return RAW+tag+'.'+suf+'.md';
   };
   const mirrorFor=async tag=>{
     try{
@@ -355,15 +351,37 @@ if(cl){
     slice.forEach(r=>{
       const det=el('details','release glass');
       const sum=el('summary');
-      const parsed=parseRelease(r.body,pageLang);
-      sum.append(el('span','rel-title',parsed.title||r.name||r.tag_name));
+      const parsed=parseRelease(r.body);
+      const titleEl=el('span','rel-title',parsed.title||r.name||r.tag_name);
+      sum.append(titleEl);
       if(isPre(r))sum.append(el('span','rel-badge',L.lPreview));
       else if(latest){sum.append(el('span','rel-badge',L.lLatest));latest=false}
       sum.append(el('span','rel-meta',[r.tag_name,r.published_at?fmt(r.published_at):''].filter(Boolean).join(' · ')));
       det.append(sum);
       const body=el('div','rel-body prose');
+      const notesBox=el('div','rel-notes');
       const n=notes(parsed.body);
-      if(n.childNodes.length)body.append(n);else body.append(el('p',0,L.lNoNotes));
+      if(n.childNodes.length)notesBox.append(n);else notesBox.append(el('p',0,L.lNoNotes));
+      body.append(notesBox);
+      const nf=noteFile(r.tag_name,pageLang);
+      if(nf){
+        let loaded=false;
+        det.addEventListener('toggle',async()=>{
+          if(!det.open||loaded)return;loaded=true;
+          try{
+            const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),8000);
+            const res=await fetch(nf,{signal:ac.signal});
+            clearTimeout(tm);
+            if(!res.ok)return;
+            const md=(await res.text()).replace(/\r/g,'').trim();
+            const tmatch=md.match(/^#{1,6}\s+(.*)$/m);
+            if(tmatch)titleEl.textContent=tmatch[1].trim();
+            const nn=notes(md.replace(/^#{1,6}\s+.*$/m,'').trim());
+            notesBox.replaceChildren();
+            if(nn.childNodes.length)notesBox.append(nn);else notesBox.append(el('p',0,L.lNoNotes));
+          }catch(e){}
+        });
+      }
       if(r._dl&&(r._dl.android||r._dl.windows)){
         const dl=el('div','rel-dl');
         ['android','windows'].forEach(k=>{
