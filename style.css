@@ -801,3 +801,7 @@ section#donate {
   }
 }
 
+.rel-pager{display:flex;align-items:center;justify-content:center;gap:14px;margin:26px 0 8px}
+.rel-pager[hidden]{display:none}
+.rel-pageinfo{color:var(--faint);font-size:14px;min-width:52px;text-align:center}
+.rel-pager .btn[disabled]{opacity:.35;cursor:default}

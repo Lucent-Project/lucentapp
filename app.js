@@ -260,6 +260,8 @@ if(cl){
                  (/\/(zh|ja|ko)(\/|$)/.exec(location.pathname)?.[1]||'en');
   const el=(tag,cls,txt)=>{const n=d.createElement(tag);if(cls)n.className=cls;if(txt!=null)n.textContent=txt;return n};
   const fmt=iso=>{try{return new Intl.DateTimeFormat(h.lang||undefined,{year:'numeric',month:'short',day:'numeric'}).format(new Date(iso))}catch(e){return String(iso||'').slice(0,10)}};
+  const PER=10;let pg=0;
+  const pager=el('nav','rel-pager');pager.hidden=true;list.after(pager);
   const isPre=r=>!!r.prerelease||/^p/i.test(r.tag_name||'');
   const parseRelease=(body,lang)=>{
     const text=String(body||'').replace(/\r/g,'').replace(/Yuan0-o\/Lucent/g,'Lucent-Project/Lucent');
@@ -341,11 +343,15 @@ if(cl){
       status.hidden=false;
       const hiddenPre=(cl._rel||[]).some(r=>!r.draft&&isPre(r))&&!prev.checked;
       status.textContent=L.lEmpty+(hiddenPre&&L.lEmptyHint?' '+L.lEmptyHint:'');
+      pager.hidden=true;
       return;
     }
     status.hidden=true;
+    const pages=Math.max(1,Math.ceil(rows.length/PER));
+    if(pg>pages-1)pg=pages-1;
+    const slice=rows.slice(pg*PER,pg*PER+PER);
     let latest=true;
-    rows.forEach(r=>{
+    slice.forEach(r=>{
       const det=el('details','release glass');
       const sum=el('summary');
       const parsed=parseRelease(r.body,pageLang);
@@ -385,11 +391,18 @@ if(cl){
       if(/^https:\/\/github\.com\//.test(r.html_url||'')){const a=el('a','rel-link',r.tag_name===cl._latestTag?L.lView:L.lDlGh);a.href=r.html_url;a.target='_blank';a.rel='noopener';body.append(a)}
       det.append(body);list.append(det);
     });
+    pager.replaceChildren();
+    if(pages<=1){pager.hidden=true;return}
+    pager.hidden=false;
+    const go=n=>{pg=n;draw();const s=document.getElementById('changelog');if(s)s.scrollIntoView({block:'start',behavior:'smooth'})};
+    const bP=el('button','btn ghost',L.lPrev||'←');bP.disabled=pg===0;bP.addEventListener('click',()=>go(pg-1));
+    const bN=el('button','btn ghost',L.lNext||'→');bN.disabled=pg>=pages-1;bN.addEventListener('click',()=>go(pg+1));
+    pager.append(bP,el('span','rel-pageinfo',(pg+1)+' / '+pages),bN);
   };
   const save=data=>{const s=JSON.stringify({ts:Date.now(),data});try{sessionStorage.setItem(RK,s)}catch(e){}try{localStorage.setItem(RK,s)}catch(e){}};
   const read=(st,max)=>{try{const it=JSON.parse(st.getItem(RK));if(it&&it.ts&&Date.now()-it.ts<max&&Array.isArray(it.data))return it.data}catch(e){}return null};
   const fail=()=>{status.hidden=false;status.textContent=L.lError+' ';const a=el('a',0,L.lErrLink);a.href=ALL;a.target='_blank';a.rel='noopener';status.append(a)};
-  prev.addEventListener('change',()=>{if(cl._rel)draw()});
+  prev.addEventListener('change',()=>{pg=0;if(cl._rel)draw()});
   (async()=>{
     status.hidden=false;status.textContent=L.lLoading;
     let data=read(sessionStorage,15*60*1000);
@@ -435,7 +448,7 @@ if(cl){
       }
     }
     if(!data){fail();return}
-    cl._rel=data;
+    cl._rel=data;pg=0;
     const latest=data.find(r=>!r.draft&&!isPre(r));
     if(latest){
       cl._latestTag=latest.tag_name;
