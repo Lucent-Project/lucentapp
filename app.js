@@ -430,9 +430,9 @@ if(cl){
     if(pages<=1){pager.hidden=true;return}
     pager.hidden=false;
     const go=n=>{pg=n;draw();const s=document.getElementById('changelog');if(s)s.scrollIntoView({block:'start',behavior:'smooth'})};
-    const bP=el('button','btn ghost',L.lPrev||'←');bP.disabled=pg===0;bP.addEventListener('click',()=>go(pg-1));
-    const bN=el('button','btn ghost',L.lNext||'→');bN.disabled=pg>=pages-1;bN.addEventListener('click',()=>go(pg+1));
-    pager.append(bP,el('span','rel-pageinfo',(pg+1)+' / '+pages),bN);
+    const bP=el('button','rel-pagelink',L.lPrev||'‹');bP.disabled=pg===0;bP.addEventListener('click',()=>go(pg-1));
+    const bN=el('button','rel-pagelink',L.lNext||'›');bN.disabled=pg>=pages-1;bN.addEventListener('click',()=>go(pg+1));
+    pager.append(bP,bN);
   };
   const save=data=>{const s=JSON.stringify({ts:Date.now(),data});try{sessionStorage.setItem(RK,s)}catch(e){}try{localStorage.setItem(RK,s)}catch(e){}};
   const read=(st,max)=>{try{const it=JSON.parse(st.getItem(RK));if(it&&it.ts&&Date.now()-it.ts<max&&Array.isArray(it.data))return it.data}catch(e){}return null};
