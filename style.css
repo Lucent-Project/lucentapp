@@ -246,7 +246,7 @@ footer .bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--edge)
   .orb.d{display:none}.orb{will-change:auto}
   nav{top:0;margin:0;width:100%;border-radius:0 0 26px 26px;padding-top:env(safe-area-inset-top)}
   nav .wrap{height:58px;padding:0 max(14px,env(safe-area-inset-right)) 0 max(20px,env(safe-area-inset-left))}
-  .burger{display:flex}.logo{margin-right:auto}
+  .burger{display:flex}.logo{margin-inline-end:auto}
   nav .links{position:absolute;left:12px;right:12px;top:calc(100% + 8px);flex-direction:column;gap:2px;margin:0;padding:8px;border-radius:26px;
     background:var(--sheet-solid);border:1px solid var(--edge);box-shadow:0 24px 60px var(--shadow);
     opacity:0;visibility:hidden;transform:translateY(-8px) scale(.98);transform-origin:top right;transition:opacity .22s,transform .22s,visibility .22s}
