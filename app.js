@@ -374,7 +374,6 @@ if(cl){
     const pages=Math.max(1,Math.ceil(rows.length/PER));
     if(pg>pages-1)pg=pages-1;
     const slice=rows.slice(pg*PER,pg*PER+PER);
-    let latest=true;
     slice.forEach(r=>{
       const det=el('details','release glass');
       const sum=el('summary');
@@ -382,7 +381,7 @@ if(cl){
       const titleEl=el('span','rel-title',parsed.title||r.name||r.tag_name);
       sum.append(titleEl);
       if(isPre(r))sum.append(el('span','rel-badge',L.lPreview));
-      else if(latest){sum.append(el('span','rel-badge',L.lLatest));latest=false}
+      else if(r.tag_name===cl._latestTag)sum.append(el('span','rel-badge',L.lLatest));
       sum.append(el('span','rel-meta',[r.tag_name,r.published_at?fmt(r.published_at):''].filter(Boolean).join(' · ')));
       det.append(sum);
       const body=el('div','rel-body prose');
