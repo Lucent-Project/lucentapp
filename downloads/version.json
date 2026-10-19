@@ -1,77 +1,46 @@
 {
-  "tag_name": "v3.0.5",
-  "version": "3.0.5",
-  "name": "Lucent 3.0.5 — The Toolbox Looks Before It Leaps, and Termux Gets a Proper Introduction",
-  "html_url": "https://github.com/Lucent-Project/Lucent/releases/tag/v3.0.5",
-  "published_at": "2026-09-29T22:17:27Z",
-  "body": "# The Toolbox Looks Before It Leaps, and Termux Gets a Proper Introduction\r\n\r\nLucent 3.0.5 is a small release with one large idea: installing a plugin should never be a leap of faith. The toolbox now inspects every plugin before it downloads a single byte, reports exactly what stands in the way, and tells you how to move it — in your own language, with the same dry patience throughout.\r\n\r\n**A preflight check, not a blind leap.** Every install now begins with an inspection. The assistant has a new tool, `plugin_inspect`, and the Plugins settings page runs the same check before offering the install button. If something blocks the way — no install script for this platform, no download source, every mirror silent, a folder that cannot be written, a staged file Termux could never read, or no working shell at all — the check says so up front, with a short list of concrete repair steps instead of a failed download and a shrug. Each problem carries a stable code, so the assistant and the settings screen always describe the same situation in the same words.\r\n\r\n**Termux, introduced properly.** On Android, most plugin failures were really Termux introductions that never happened. Lucent now refreshes Termux's package list once per session before installing anything, which retires the classic \"unable to locate package\" mystery. And when the shell is missing entirely, the guidance is finally specific: install Termux from F-Droid, open it once, run `termux-setup-storage`, set `allow-external-apps=true` in `~/.termux/termux.properties`, and grant the run-command permission when Android asks. If Termux never answers at all, the error now mentions that some forks ship under different package names — the sort of detail that saves an evening.\r\n\r\n**Downloads that remember.** The fastest mirror you picked is now actually the one used — previously the preference was stored and then politely ignored. If a download was interrupted, the next attempt reuses the staged file instead of fetching it again, provided it is intact. A small journal keeps notes on where each install got to, so a retry resumes the story rather than restarting it. And when a mirror sends a file of a different size than advertised, the message now suggests the mirror may simply have refreshed its image, and points at another source.\r\n\r\n**The assistant explains itself.** The `install_plugin` tool runs the preflight check first and declines with reasons rather than failing halfway through. Progress notes appear from the first byte instead of waiting for twenty percent. When a Termux package cannot be found, the hint explains the package list was probably stale — and that Lucent refreshes it automatically now.\r\n\r\n**Quieter logs.** The activity log now redacts secret-shaped values and credentials embedded in URLs before anything is written to disk. What was never meant to be read by anyone keeps it that way.\r\n\r\nNothing about Lucent's look has changed; the toolbox simply behaves as though it has read the manual.\r\n\r\n---\r\n\r\n<details>\r\n<summary>简体中文</summary>\r\n\r\n# 工具箱先看再跳，Termux 终于得到正式介绍\r\n\r\nLucent 3.0.5 是一个小版本，装着一个大想法：安装插件不该是一次信仰之跃。现在，工具箱在下载任何字节之前都会先检查每个插件，明确指出挡路的是什么，并告诉你怎么搬开——用你自己的语言，带着一贯的沉稳耐心。\r\n\r\n**先检查再动手，不再盲目一跃。** 每次安装都从检查开始。助手新增了 `plugin_inspect` 工具，插件设置页在显示安装按钮之前也会做同样的检查。如果有东西挡路——这个平台没有安装脚本、没有下载源、所有镜像都没有响应、文件夹写不进去、Termux 读不到暂存文件，或者根本没有可用的 shell——检查会提前说明，并给出具体的修复步骤，而不是下载失败后耸耸肩。每个问题都有固定的编号，助手和设置界面描述的是同一种情况，用的也是同样的说法。\r\n\r\n**Termux，正式介绍一下。** 在安卓上，大多数插件安装失败，其实都是 Termux 这场介绍从未发生。Lucent 现在每次会话会在安装前刷新一次 Termux 的软件包列表，经典的 \"unable to locate package\" 之谜就此退役。如果 shell 完全缺席，指引终于具体了：从 F-Droid 安装 Termux，打开一次，运行 `termux-setup-storage`，在 `~/.termux/termux.properties` 里设置 `allow-external-apps=true`，并在安卓询问时授予运行命令的权限。如果 Termux 始终没有回应，错误信息现在会提到某些分支用了不同的包名——这种细节能省下一个晚上。\r\n\r\n**会记事的下载。** 你选的最快镜像，现在真的会被使用——以前这个偏好只是存着，然后被客气地忽略。如果下载中断，下次会复用完好的暂存文件，而不是重新下载。一份小小的日志记下每次安装走到了哪一步，重试是接着讲故事，而不是从头再来。当镜像发来的文件大小与标称不符，提示现在会说：镜像可能只是更新了文件，并指引你换个源试试。\r\n\r\n**助手会解释自己了。** `install_plugin` 工具先做预检，宁可有理有据地拒绝，也不半途失败。进度提示从第一个字节就开始出现，不再等到百分之二十。Termux 找不到软件包时，提示会解释可能是软件包列表过期了——而 Lucent 现在会自动刷新它。\r\n\r\n**更安静的日志。** 操作日志在写入磁盘之前，会先把形似密钥的内容和网址里嵌的凭据涂掉。本来就不该被读到的东西，继续保持不被读到。\r\n\r\nLucent 的样子没有任何变化；只是工具箱如今像读过说明书一样行事。\r\n\r\n</details>\r\n\r\n---\r\n\r\n<details>\r\n<summary>日本語</summary>\r\n\r\n# 工具箱は跳ぶ前に確かめ、Termux は正式に紹介される\r\n\r\nLucent 3.0.5 は小さなリリースですが、考えは大きなひとつです。プラグインの導入が信仰の跳躍であってはならない、ということ。工具箱はこれから、一バイトたりとも落とす前にすべてのプラグインを点検し、何が邪魔をしているのかを正確に伝え、どかし方まで教えます。あなたの言語で、いつもの乾いた落ち着きとともに。\r\n\r\n**盲目的な跳躍ではなく、出発前の点検を。** 導入はすべて点検から始まります。アシスタントには新しい道具 `plugin_inspect` が加わり、プラグイン設定画面もインストールボタンを出す前に同じ点検を行います。行く手を阻むものがあれば——この機種向けの導入手順がない、配布元がない、ミラーがどれも無応答、フォルダに書き込めない、Termux が仮置きファイルを読めない、そもそも使えるシェルがない——失敗してから肩をすくめるのではなく、前もって理由と具体的な修復手順を示します。問題には固有の番号がつくので、アシスタントと設定画面はつねに同じ状況を同じ言葉で語ります。\r\n\r\n**Termux、改めてご紹介。** Android での導入失敗のほとんどは、実のところ Termux の紹介が一度も行われていなかったことにありました。Lucent はこれから、導入の前に Termux のパッケージ一覧をひと作業ごとに一度更新します。名物だった \"unable to locate package\" の謎はこれで退役です。シェルそのものが不在の場合は、案内もようやく具体的になりました。F-Droid から Termux を入れ、一度開き、`termux-setup-storage` を実行し、`~/.termux/termux.properties` に `allow-external-apps=true` を設定、Android に求められたらコマンド実行の権限を許可する。Termux がまったく応答しない場合は、一部の派生版ではパッケージ名が異なることにも触れるようになりました。夜を救うのは、こういう細部です。\r\n\r\n**覚えているダウンロード。** 選んだ最速のミラーが、今度こそ実際に使われます——以前は設定だけ保存されて、丁重に無視されていました。ダウンロードが中断しても、仮置きファイルが無事なら次回はそれを使い回し、取り直しはしません。小さな記録が各導入の到達点を書き留めるので、再試行は最初からではなく続きから始まります。ミラーが公称と異なる大きさのファイルを送ってきた場合は、ミラー側が画像を更新しただけかもしれないと伝え、別の配布元を指し示します。\r\n\r\n**説明するアシスタント。** `install_plugin` は先に点検を行い、半ばで失敗する代わりに理由を添えて辞退します。進捗の表示は最初のバイトから始まり、二割まで待たされません。Termux がパッケージを見つけられないときは、パッケージ一覧が古かったのだろうと説明します——Lucent が自動で更新するようになったことも添えて。\r\n\r\n**静かな記録。** 操作ログは、書き出す前に秘密の鍵らしい値や URL に埋め込まれた認証情報を塗りつぶします。誰にも読まれるはずのなかったものは、これからも読まれません。\r\n\r\nLucent の見た目は少しも変わっていません。工具箱が、取扱説明書を読んだかのように振る舞うようになっただけです。\r\n\r\n</details>\r\n\r\n---\r\n\r\n<details>\r\n<summary>한국어</summary>\r\n\r\n# 도구함은 뛰기 전에 살피고, Termux는 정식으로 소개받다\r\n\r\nLucent 3.0.5는 작은 릴리스지만 담은 생각은 큽니다. 플러그인 설치가 믿음의 도약이어서는 안 된다는 것. 이제 도구함은 한 바이트도 받기 전에 모든 플러그인을 점검하고, 무엇이 가로막고 있는지 정확히 알려 주며, 치우는 방법까지 설명합니다. 당신의 언어로, 늘 그렇듯 담담하게.\r\n\r\n**막무가내로 뛰지 말고, 출발 전에 점검을.** 모든 설치는 점검부터 시작합니다. 어시스턴트에 새 도구 `plugin_inspect`가 생겼고, 플러그인 설정 화면도 설치 버튼을 내밀기 전에 같은 점검을 합니다. 가로막는 것이 있다면——이 기기용 설치 방법이 없음, 받을 곳이 없음, 미러가 전부 무응답, 폴더에 쓸 수 없음, Termux가 임시 파일을 읽을 수 없음, 쓸 만한 셸 자체가 없음——실패하고 어깨를 으쓱하는 대신, 미리 이유와 구체적인 해결 단계를 보여 줍니다. 문제마다 고유 번호가 있어 어시스턴트와 설정 화면은 언제나 같은 상황을 같은 말로 설명합니다.\r\n\r\n**Termux, 정식으로 소개합니다.** Android에서 설치가 실패하는 일의 대부분은, 실은 Termux 소개가 한 번도 이루어지지 않았기 때문이었습니다. 이제 Lucent는 설치하기 전에 Termux 패키지 목록을 작업마다 한 번씩 새로고침합니다. 그 유명한 \"unable to locate package\" 미스터리는 이로써 은퇴합니다. 셸 자체가 없을 때의 안내도 마침내 구체적입니다. F-Droid에서 Termux를 설치하고, 한 번 열고, `termux-setup-storage`를 실행하고, `~/.termux/termux.properties`에 `allow-external-apps=true`를 설정하고, Android가 물으면 명령 실행 권한을 허용하세요. Termux가 전혀 응답하지 않으면, 일부 파생판은 패키지 이름이 다르다는 점도 알려 줍니다. 밤을 구하는 건 이런 세부 사항입니다.\r\n\r\n**기억하는 다운로드.** 선택한 가장 빠른 미러가 이제 정말로 사용됩니다——예전에는 설정만 저장되고 정중히 무시됐습니다. 다운로드가 중단돼도 임시 파일이 멀쩡하면 다음번에 재사용하고 다시 받지 않습니다. 작은 기록이 각 설치가 어디까지 갔는지 적어 두니, 재시도는 처음부터가 아니라 이어서 시작합니다. 미러가 공시와 다른 크기의 파일을 보내면, 미러가 이미지를 새로 올렸을 수도 있다고 알려 주고 다른 곳을 가리킵니다.\r\n\r\n**설명하는 어시스턴트.** `install_plugin` 도구는 먼저 점검하고, 중간에 실패하는 대신 이유를 들어 사양합니다. 진행 표시는 첫 바이트부터 나오고, 20%를 기다리지 않습니다. Termux가 패키지를 찾지 못하면 패키지 목록이 오래됐을 거라고 설명합니다——이제 Lucent가 자동으로 새로고침한다는 말과 함께.\r\n\r\n**조용한 기록.** 작업 로그는 디스크에 쓰기 전에 비밀 키처럼 생긴 값과 URL에 박힌 인증 정보를 지웁니다. 누구에게도 읽힐 일이 없던 것은 앞으로도 읽히지 않습니다.\r\n\r\nLucent의 모습은 조금도 달라지지 않았습니다. 도구함이 사용 설명서를 읽은 것처럼 행동하게 됐을 뿐입니다.\r\n\r\n</details>\r\n\r\n\r\n---\r\n\r\n**Build info**\r\n\r\n- Android APK: 58.90 MiB\r\n- Windows installer: 165.84 MiB\r\n- Built from commit `2956b045dde1c06ba7c001080df7d2952e762b9e`\r\n- Build log: https://github.com/Lucent-Project/Lucent/actions/runs/36590231058\r",
+  "tag_name": "v3.1.2",
+  "version": "3.1.2",
+  "name": "Lucent 3.1.2 — Fourteen Languages, a Leaner Build",
+  "html_url": "https://github.com/Lucent-Project/Lucent/releases/tag/v3.1.2",
+  "published_at": "2026-10-19T10:20:01Z",
+  "body": "<div align=\"center\">\n\n[🇨🇳 简体中文](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.zh-CN.md) · [🇭🇰 繁體中文](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.zh-Hant.md) · [🇪🇸 Español](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.es.md) · [🇸🇦 العربية](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.ar.md)<br>\n[🇵🇹 Português](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.pt.md) · [🇫🇷 Français](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.fr.md) · [🇷🇺 Русский](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.ru.md) · [🇩🇪 Deutsch](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.de.md)<br>\n[🇯🇵 日本語](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.ja.md) · [🇹🇷 Türkçe](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.tr.md) · [🇰🇷 한국어](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.ko.md) · [🇮🇹 Italiano](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.it.md)<br>\n[🇳🇱 Nederlands](https://github.com/Lucent-Project/Lucent/blob/main/docs/releases/v3.1.2.nl.md)\n\n</div>\n\n# Fourteen Languages, a Leaner Build, and an Apology for the Wait\n\nLucent 3.1.2 took longer than it should have, and I owe you an honest word about that before anything else. Between 3.0.5 and today, the app went through its biggest internal rebuild yet: the entire shared codebase was migrated to Kotlin Multiplatform, the website grew to fourteen languages, and the project moved under a new GitHub organisation. None of that is your problem, but it is the reason the wait stretched to three weeks. Thank you for your patience — this release is the payoff.\n\n**Fourteen languages.** Lucent now speaks fourteen languages: English, Simplified and Traditional Chinese, Spanish, Arabic, Portuguese, French, Russian, German, Japanese, Turkish, Korean, Italian, and Dutch. The language picker shows four and a half entries at a time so it is obvious the list scrolls, Arabic gets a proper right-to-left layout, and font settings now live in their own card above the language list.\n\n**A leaner Windows build.** The desktop installer is down to about 86 MB — comfortably under the 100 MB mark — thanks to JDK module stripping. It downloads faster and takes up less room, with nothing removed that matters.\n\n**Updates that actually update.** Two embarrassing updater bugs are fixed. Preview builds were showing a build ID of R000000000000 and missing their alpha label, because a validation rule still expected the old ID format. Worse, the new-format build IDs failed validation entirely, so the updater fell back to comparing \"3.1.2\" with \"3.1.2\" and concluded there was nothing new — auto-update was silently dead. Both are fixed, and stable releases now update through the website mirror with GitHub as a fallback.\n\n**Search that stays fresh.** If you use a specific search engine instead of Auto, results could go stale: a cached instant answer would block the fallback chain and leave you with yesterday's web. The fallback now runs regardless, so fresh results come through.\n\n**Sub-assistants, grown up.** Sub-assistants now have full chat parity — an always-enabled composer, conversation resumption, visible reasoning, per-conversation numbering, breadcrumb navigation, and a redesigned tree popup. Thinking steps collapse by default to keep the view tidy.\n\n**A better terminal and browser.** The terminal is now a real PTY with multiple tabs, a key bar, and font size controls, and adb ships bundled. Links open in an embedded browser that stays in Lucent's recent tasks, and message text — URLs included — can be selected and copied.\n\n**Smoother navigation.** A Home swipe goes straight to Notebooks, the pager is four pages, Tasks and Notes are drawer-only, and swipe directions feel natural again. Popups and dialogs use the new jelly-glass visual style.\n\n**Backups with passwords.** Auto-backups can now be encrypted with your own passwords, with a security question as a recovery path.\n\n**Plugin installs that explain themselves.** Installs use region-aware mirrors, recover interrupted package states, report accurate cancellation reasons, skip reinstalling tools you already have, and stream live output — with a guided setup wizard when the environment needs preparing.\n\n**And the smaller things.** Swipe-to-reply with quoted context in assistant chat, continuous send with breakpoint resume, DeepSeek reasoning no longer showing literal \"null\" chunks, the About page's Support link opening the right page in your language, and the website changelog now covering every release since 1.0.0 with per-language notes.\n\n---\n\n**Build info**\n\n- Build-ID: R202610191003\n- Android APK: 36.39 MiB\n- Windows installer: 86.34 MiB\n- Built from commit `c3257b5631fc4bd8a2f3b2d7ea33cd1e00ae60fe`\n- Build log: https://github.com/Lucent-Project/Lucent/actions/runs/39234621306",
   "assets": [
     {
-      "name": "Lucent.for.Android-3.0.5.apk",
-      "version": "3.0.5",
+      "name": "Lucent.for.Android-3.1.2-R202610191003.apk",
+      "version": "3.1.2",
       "platform": "android",
-      "size": 61761669,
-      "sha256": "5bc15314eb09cba08c387424b75c2196db0963ffa5df3c20857e9d9c7aedd138",
-      "browser_download_url": "https://lucent-project.github.io/lucentapp/downloads/Lucent.for.Android-3.0.5.apk",
-      "fallback_download_url": "https://github.com/Lucent-Project/Lucent/releases/download/v3.0.5/Lucent.for.Android-3.0.5.apk"
+      "size": 38153461,
+      "sha256": "4f8ba1db372dbbbd9a1f1f9fe1dfaf0aa89f7e1d4d1a8ac74952a4f60b0174f7",
+      "browser_download_url": "https://lucent-project.github.io/lucentapp/downloads/Lucent.for.Android-3.1.2-R202610191003.apk",
+      "fallback_download_url": "https://github.com/Lucent-Project/Lucent/releases/download/v3.1.2/Lucent.for.Android-3.1.2-R202610191003.apk"
     },
     {
-      "name": "Lucent.for.Windows-3.0.5.exe",
-      "version": "3.0.5",
+      "name": "Lucent.for.Windows-3.1.2-R202610191003.exe",
+      "version": "3.1.2",
       "platform": "windows",
-      "size": 173897656,
-      "sha256": "ee79978109efb4a912ccd35b55c467b36ff2cdd4fe121ebdc39b1c4992b00371",
-      "fallback_download_url": "https://github.com/Lucent-Project/Lucent/releases/download/v3.0.5/Lucent.for.Windows-3.0.5.exe",
-      "split": {
-        "parts": [
-          {
-            "name": "Lucent.for.Windows-3.0.5.exe.partaa",
-            "size": 99614720,
-            "sha256": "4df10935c3f29167c6870e777f2948a27d655dd701d4623657b80ac497e7daf6",
-            "url": "https://lucent-project.github.io/lucentapp/downloads/Lucent.for.Windows-3.0.5.exe.partaa"
-          },
-          {
-            "name": "Lucent.for.Windows-3.0.5.exe.partab",
-            "size": 74282936,
-            "sha256": "06b9f97b9b08389b6e7647ce9941ae628a7c290e0b80abb778f38602ee1fea15",
-            "url": "https://lucent-project.github.io/lucentapp/downloads/Lucent.for.Windows-3.0.5.exe.partab"
-          }
-        ]
-      }
+      "size": 90531768,
+      "sha256": "47dae38c94b5cab5783bc952cfc1a6ed57e50dbc3802ae37520f1d0b3fad3f3a",
+      "browser_download_url": "https://lucent-project.github.io/lucentapp/downloads/Lucent.for.Windows-3.1.2-R202610191003.exe",
+      "fallback_download_url": "https://github.com/Lucent-Project/Lucent/releases/download/v3.1.2/Lucent.for.Windows-3.1.2-R202610191003.exe"
     }
   ],
   "files": [
     {
-      "name": "Lucent.for.Android-3.0.5.apk",
-      "version": "3.0.5",
+      "name": "Lucent.for.Android-3.1.2-R202610191003.apk",
+      "version": "3.1.2",
       "platform": "android",
-      "size": 61761669,
-      "sha256": "5bc15314eb09cba08c387424b75c2196db0963ffa5df3c20857e9d9c7aedd138",
-      "url": "https://lucent-project.github.io/lucentapp/downloads/Lucent.for.Android-3.0.5.apk"
+      "size": 38153461,
+      "sha256": "4f8ba1db372dbbbd9a1f1f9fe1dfaf0aa89f7e1d4d1a8ac74952a4f60b0174f7",
+      "url": "https://lucent-project.github.io/lucentapp/downloads/Lucent.for.Android-3.1.2-R202610191003.apk"
     },
     {
-      "name": "Lucent.for.Windows-3.0.5.exe",
-      "version": "3.0.5",
+      "name": "Lucent.for.Windows-3.1.2-R202610191003.exe",
+      "version": "3.1.2",
       "platform": "windows",
-      "size": 173897656,
-      "sha256": "ee79978109efb4a912ccd35b55c467b36ff2cdd4fe121ebdc39b1c4992b00371",
-      "fallback_download_url": "https://github.com/Lucent-Project/Lucent/releases/download/v3.0.5/Lucent.for.Windows-3.0.5.exe",
-      "split": {
-        "parts": [
-          {
-            "name": "Lucent.for.Windows-3.0.5.exe.partaa",
-            "size": 99614720,
-            "sha256": "4df10935c3f29167c6870e777f2948a27d655dd701d4623657b80ac497e7daf6",
-            "url": "https://lucent-project.github.io/lucentapp/downloads/Lucent.for.Windows-3.0.5.exe.partaa"
-          },
-          {
-            "name": "Lucent.for.Windows-3.0.5.exe.partab",
-            "size": 74282936,
-            "sha256": "06b9f97b9b08389b6e7647ce9941ae628a7c290e0b80abb778f38602ee1fea15",
-            "url": "https://lucent-project.github.io/lucentapp/downloads/Lucent.for.Windows-3.0.5.exe.partab"
-          }
-        ]
-      }
+      "size": 90531768,
+      "sha256": "47dae38c94b5cab5783bc952cfc1a6ed57e50dbc3802ae37520f1d0b3fad3f3a",
+      "url": "https://lucent-project.github.io/lucentapp/downloads/Lucent.for.Windows-3.1.2-R202610191003.exe"
     }
   ]
 }
